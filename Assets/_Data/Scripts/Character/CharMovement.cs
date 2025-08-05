@@ -1,4 +1,5 @@
-﻿using Unity.VisualScripting;
+﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 public class CharMovement : MyMonoBehaviour
@@ -38,7 +39,7 @@ public class CharMovement : MyMonoBehaviour
     {
 
         xDirection = InputManager.Instance.MoveInput;
-       // if (_xDirection == 0) return;
+        // if (_xDirection == 0) return;
     }
     //CHARACTER MOVE
     protected virtual void Move()
@@ -102,6 +103,6 @@ public class CharMovement : MyMonoBehaviour
         if (!charCtrl.CharState.IsGrounded) return;
         jumpCount = 0;
     }
-
+    //CHARACTER DASH
 
 }
