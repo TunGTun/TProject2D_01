@@ -1,36 +1,38 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(BoxCollider2D))]
+
 
 public class CharCtrl : MyMonoBehaviour
 {
     [Header("CharacterCtrl")]
     [SerializeField] protected Rigidbody2D rigidBody2D;
     public Rigidbody2D RigidBody2D => rigidBody2D;
-    [SerializeField] protected BoxCollider2D boxCollider2D;
-    public BoxCollider2D BoxCollider2D => boxCollider2D;
+
     [SerializeField] protected CharState charState;
     public CharState CharState => charState;
     [SerializeField] protected CharMovement charMovement;
     public CharMovement CharMovement => charMovement;
+    [SerializeField] protected CharBodyCollider charBodyCollider;
+    public CharBodyCollider CharBodyCollider => charBodyCollider;
+    [SerializeField] protected CharGroundCollider charGroundCollider;
+    public CharGroundCollider CharGroundCollider => charGroundCollider;
 
     protected override void LoadComponents()
     {
-        base.LoadComponents();
-        this.LoadBoxCollider2D();
+        base.LoadComponents();;
         this.LoadRigidbody2D();
         this.LoadCharMovement();
         this.LoadCharState();
+        this.LoadCharBodyCollider();
+        this.LoadCharGroundCollider();
     }
-    protected virtual void LoadBoxCollider2D()
+
+    protected virtual void LoadRigidbody2D()
     {
-        if (boxCollider2D != null) return;
-        this.boxCollider2D = GetComponent<BoxCollider2D>();
-        this.boxCollider2D.offset = new Vector2(0.01792541f, -0.51429f);        // Vị trí offset của collider so với tâm object
-        this.boxCollider2D.size = new Vector2(0.3403783f, 1.035643f);          // Kích thước collider
-        this.boxCollider2D.isTrigger = false;                                  // Bật nếu collider là trigger (không va chạm thật)
-        Debug.Log(transform.name + ": LoadBoxCollider2D", gameObject);
+        if (rigidBody2D != null) return;
+        this.rigidBody2D = GetComponent<Rigidbody2D>();
+        Debug.Log(transform.name + ": LoadRigidbody2D", gameObject);
     }
     protected virtual void LoadCharState()
     {
@@ -44,11 +46,18 @@ public class CharCtrl : MyMonoBehaviour
         charMovement = GetComponentInChildren<CharMovement>();
         Debug.LogWarning(transform.name + ": LoadCharMovement", gameObject);
     }
-    protected virtual void LoadRigidbody2D()
+    protected virtual void LoadCharBodyCollider()
     {
-        if (rigidBody2D != null) return;
-        this.rigidBody2D = GetComponent<Rigidbody2D>();
-        Debug.Log(transform.name + ": LoadRigidbody2D", gameObject);
+        if (charBodyCollider != null) return;
+        charBodyCollider = GetComponentInChildren<CharBodyCollider>();
+        Debug.LogWarning(transform.name + ": LoadCharBodyCollider", gameObject);
     }
+    protected virtual void LoadCharGroundCollider()
+    {
+        if (charGroundCollider != null) return;
+        charGroundCollider = GetComponentInChildren<CharGroundCollider>();
+        Debug.LogWarning(transform.name + ": LoadCharGroundCollider", gameObject);
+    }
+    
 
 }

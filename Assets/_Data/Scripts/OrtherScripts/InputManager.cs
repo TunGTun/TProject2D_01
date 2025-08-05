@@ -17,13 +17,9 @@ public class InputManager : MyMonoBehaviour
     [SerializeField] protected bool jumpInput;
     public bool JumpInput { get => jumpInput; }
 
+    [SerializeField] protected bool dashInput;
+    public bool DashInput { get => dashInput; }
 
-
-    //[SerializeField] protected bool dashInput;
-    //public bool DashInput { get => dashInput; }
-
-    //[SerializeField] protected bool _invisibleInput;
-    //public bool InvisibleInput { get => _invisibleInput; }
     [SerializeField] protected bool canControl = true;
     public bool CanControl => canControl;
 
@@ -45,8 +41,7 @@ public class InputManager : MyMonoBehaviour
 
         this.CheckMoveInput();
         this.CheckJumpInput();
-        //this.CheckDashInput();
-        //this.CheckInvisibleInput();
+        this.CheckDashInput();
     }
 
     protected virtual void CheckMoveInput()
@@ -87,13 +82,9 @@ public class InputManager : MyMonoBehaviour
         this.jumpInput = Input.GetKeyDown(KeyCode.Space);
     }
 
-    //protected virtual void CheckDashInput()
-    //{
-    //    this._dashInput = Input.GetKeyDown(KeyCode.Z);
-    //}
+    protected virtual void CheckDashInput()
+    {
+        this.dashInput = Input.GetKeyDown(KeyCode.LeftShift);
+    }
 
-    //protected virtual void CheckInvisibleInput()
-    //{
-    //    this._invisibleInput = Input.GetKeyDown(KeyCode.C);
-    //}
 }

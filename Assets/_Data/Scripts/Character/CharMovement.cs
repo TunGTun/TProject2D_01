@@ -1,4 +1,5 @@
-﻿using Unity.VisualScripting;
+﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 public class CharMovement : MyMonoBehaviour
@@ -9,7 +10,7 @@ public class CharMovement : MyMonoBehaviour
     protected float xDirection;
     protected int jumpCount = 0;
     protected bool canJump;
-    protected int maxExtraJump = 2;
+    protected int maxExtraJump = 1;
     [SerializeField] protected float jumpForce = 6f;
     //AUTO LOAD
     protected override void LoadComponents()
@@ -38,7 +39,7 @@ public class CharMovement : MyMonoBehaviour
     {
 
         xDirection = InputManager.Instance.MoveInput;
-       // if (_xDirection == 0) return;
+        // if (_xDirection == 0) return;
     }
     //CHARACTER MOVE
     protected virtual void Move()
@@ -90,7 +91,7 @@ public class CharMovement : MyMonoBehaviour
             canJump = true;
         }
 
-        if (canJump || jumpCount < maxExtraJump - 1)
+        if (canJump || jumpCount < maxExtraJump)
         {
             charCtrl.RigidBody2D.linearVelocity = new Vector2(charCtrl.RigidBody2D.linearVelocity.x, jumpForce);
             jumpCount++;
@@ -102,6 +103,6 @@ public class CharMovement : MyMonoBehaviour
         if (!charCtrl.CharState.IsGrounded) return;
         jumpCount = 0;
     }
-
+    //CHARACTER DASH
 
 }
