@@ -9,7 +9,7 @@ public class CharMovement : MyMonoBehaviour
     protected float xDirection;
     protected int jumpCount = 0;
     protected bool canJump;
-    protected int maxExtraJump = 2;
+    protected int maxExtraJump = 1;
     [SerializeField] protected float jumpForce = 6f;
     //AUTO LOAD
     protected override void LoadComponents()
@@ -90,7 +90,7 @@ public class CharMovement : MyMonoBehaviour
             canJump = true;
         }
 
-        if (canJump || jumpCount < maxExtraJump - 1)
+        if (canJump || jumpCount < maxExtraJump)
         {
             charCtrl.RigidBody2D.linearVelocity = new Vector2(charCtrl.RigidBody2D.linearVelocity.x, jumpForce);
             jumpCount++;

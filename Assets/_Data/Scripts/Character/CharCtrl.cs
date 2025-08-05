@@ -32,6 +32,12 @@ public class CharCtrl : MyMonoBehaviour
         this.boxCollider2D.isTrigger = false;                                  // Bật nếu collider là trigger (không va chạm thật)
         Debug.Log(transform.name + ": LoadBoxCollider2D", gameObject);
     }
+    protected virtual void LoadRigidbody2D()
+    {
+        if (rigidBody2D != null) return;
+        this.rigidBody2D = GetComponent<Rigidbody2D>();
+        Debug.Log(transform.name + ": LoadRigidbody2D", gameObject);
+    }
     protected virtual void LoadCharState()
     {
         if (charState != null) return;
@@ -44,11 +50,6 @@ public class CharCtrl : MyMonoBehaviour
         charMovement = GetComponentInChildren<CharMovement>();
         Debug.LogWarning(transform.name + ": LoadCharMovement", gameObject);
     }
-    protected virtual void LoadRigidbody2D()
-    {
-        if (rigidBody2D != null) return;
-        this.rigidBody2D = GetComponent<Rigidbody2D>();
-        Debug.Log(transform.name + ": LoadRigidbody2D", gameObject);
-    }
+    
 
 }
