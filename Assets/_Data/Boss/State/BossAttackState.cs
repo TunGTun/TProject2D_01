@@ -26,9 +26,9 @@ public class BossAttackState : IState<BossBaseState>
 
         DG.Tweening.Sequence seq = DOTween.Sequence();
 
-        seq.Append(boss.hand.transform.DOMove(boss.attackPos.position, BossData.attackSpeed / 2))
+        seq.Append(boss.BossCtrl.hand.transform.DOMove(boss.BossCtrl.attackPos.position, BossData.attackSpeed / 2))
            .AppendInterval(BossData.waitDuration)
-           .Append(boss.hand.transform.DOMove(originalPosition, BossData.attackSpeed / 2))
+           .Append(boss.BossCtrl.hand.transform.DOMove(originalPosition, BossData.attackSpeed / 2))
            .OnComplete(() => {
                boss.BossCtrl.BossBaseState.ChangeState(boss.idle);
            });

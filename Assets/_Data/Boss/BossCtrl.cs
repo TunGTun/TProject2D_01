@@ -10,6 +10,10 @@ public class BossCtrl : MyMonoBehaviour
     [SerializeField] protected BossBaseState bossBaseState;
     public BossBaseState BossBaseState => bossBaseState;
 
+    public Transform hand;
+    public Transform attackPos;
+    public SpriteRenderer chargeSprite;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();

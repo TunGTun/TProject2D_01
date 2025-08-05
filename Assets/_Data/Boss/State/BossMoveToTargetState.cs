@@ -2,17 +2,17 @@
 
 public class BossMoveToTargetState : IState<BossBaseState>
 {
-    public void OnEnter(BossBaseState context)
+    public void OnEnter(BossBaseState boss)
     {
         Debug.Log("BossMoveToTargetState Enter");
     }
 
-    public void OnExit(BossBaseState context)
+    public void OnExit(BossBaseState boss)
     {
         Debug.Log("BossMoveToTargetState Exit");
     }
 
-    public void OnFrameUpdate(BossBaseState context)
+    public void OnFrameUpdate(BossBaseState boss)
     {
         
     }

@@ -7,24 +7,22 @@ public abstract class BossBaseState : BaseState<BossBaseState>
     [SerializeField] protected BossCtrl bossCtrl;
     public BossCtrl BossCtrl => bossCtrl;
 
-    public Transform hand;
-    public Transform attackPos;
-
     public BossIdleState idle;
     public BossMoveToTargetState move;
     public BossAttackState attack;
+    public BossChargeState charge;
+    public BossHeavyJumpState heavyJump;
+    public BossFastJumpState fastJump;
 
-    protected override void Awake()
+    protected override void Start()
     {
-        base.Awake();
-        idle = new BossIdleState();
-        move = new BossMoveToTargetState();
-        attack = new BossAttackState();
+        base.Start();
     }
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
+        this.CreateState();
         this.LoadBossCtrl();
     }
 
@@ -33,5 +31,15 @@ public abstract class BossBaseState : BaseState<BossBaseState>
         if (bossCtrl != null) return;
         bossCtrl = GetComponentInParent<BossCtrl>();
         Debug.LogWarning(transform.name + ": LoadBossCtrl", gameObject);
+    }
+
+    protected virtual void CreateState()
+    {
+        idle = new BossIdleState();
+        move = new BossMoveToTargetState();
+        attack = new BossAttackState();
+        charge = new BossChargeState();
+        heavyJump = new BossHeavyJumpState();
+        fastJump = new BossFastJumpState();
     }
 }

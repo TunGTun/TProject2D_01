@@ -19,7 +19,7 @@ public class BossIdleState : IState<BossBaseState>
 
     public void OnPhysicUpdate(BossBaseState boss)
     {
-        boss.BossCtrl.Rigidbody2D.linearVelocity = Vector3.zero;
+        boss.BossCtrl.Rigidbody2D.linearVelocity = new Vector2(0f, boss.BossCtrl.Rigidbody2D.linearVelocity.y);
         Debug.Log("BossIdleState PhysicUpdate");
     }
 }

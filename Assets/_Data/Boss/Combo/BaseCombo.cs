@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class BaseCombo : MyMonoBehaviour
 {
-    [Header("BossErathCombo")]
+    [Header("BossCombo")]
     [SerializeField] protected BossCtrl bossCtrl;
     public BossCtrl BossCtrl => bossCtrl;
 

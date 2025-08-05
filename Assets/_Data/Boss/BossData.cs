@@ -10,4 +10,15 @@ public static class BossData
     public static Transform attackPos;
     public static float attackSpeed = 1f;
     public static float waitDuration = 0.5f;
+
+    //charge
+    public static float chargeDuration = 2f;
+    public static Color chargedColor = Color.red;
+    //public static Color chargedColor = new Color(255f / 255f, 100f / 255f, 0f / 255f, 1f);
+
+    //heavy jump
+    public static float airTimeHeavy = 2f;
+
+    //fast jump
+    public static float airTimeFast = 1f;
 }
