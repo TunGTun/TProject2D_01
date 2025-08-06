@@ -8,8 +8,8 @@ public class BossErathCombo : BaseCombo
     private Coroutine comboRoutine;
     //private BossEarthSkillOne skillOne;
     //private BossEarthSkillTwo skillTwo;
-    //private BossEarthSkillThree skillThree;
-    private BossEarthSkillFour skillFour;
+    private BossEarthSkillThree skillThree;
+    //private BossEarthSkillFour skillFour;
 
     protected override void Start()
     {
@@ -18,8 +18,8 @@ public class BossErathCombo : BaseCombo
 
         //skillOne = new BossEarthSkillOne();
         //skillTwo = new BossEarthSkillTwo();
-        //skillThree = new BossEarthSkillThree();
-        skillFour = new BossEarthSkillFour();
+        skillThree = new BossEarthSkillThree();
+        //skillFour = new BossEarthSkillFour();
 
         comboRoutine = StartCoroutine(SkillLoopRoutine());
         //StartCoroutine(EnterBurrowAndRiseState());
@@ -93,11 +93,11 @@ public class BossErathCombo : BaseCombo
 
     private IEnumerator SkillLoopRoutine()
     {
-        if (skillFour == null) yield return null;
+        if (skillThree == null) yield return null;
         while (true)
         {
             yield return new WaitForSeconds(3f);
-            yield return StartCoroutine(skillFour.Execute(this.bossCtrl));
+            yield return StartCoroutine(skillThree.Execute(this.bossCtrl));
         }
     }
 }

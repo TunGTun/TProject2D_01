@@ -61,9 +61,12 @@ public class BossThrowRockState : IState<BossBaseState>
     {
         if (bossEarth.rock == null || bossEarth.BossCtrl.Target == null || bossEarth.BossCtrl.hand == null) return;
 
+        Vector2 startPos = bossEarth.BossCtrl.hand.position;
+        Vector2 targetPos = bossEarth.BossCtrl.Target.position;
+
         GameObject rockObj = GameObject.Instantiate(
             bossEarth.rock,
-            bossEarth.BossCtrl.hand.position,
+            startPos,
             Quaternion.identity
         );
 
@@ -71,8 +74,7 @@ public class BossThrowRockState : IState<BossBaseState>
 
         if (projectile != null)
         {
-            Vector2 dir = (bossEarth.BossCtrl.Target.position - bossEarth.BossCtrl.hand.position).normalized;
-            projectile.Initialize(dir);
+            projectile.Initialize(startPos, targetPos);
         }
     }
 }
