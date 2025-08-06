@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BossCtrl : MyMonoBehaviour
 {
@@ -10,9 +10,13 @@ public class BossCtrl : MyMonoBehaviour
     [SerializeField] protected BossBaseState bossBaseState;
     public BossBaseState BossBaseState => bossBaseState;
 
+    // Tạm
     public Transform hand;
     public Transform attackPos;
     public SpriteRenderer chargeSprite;
+    public Transform leftBottomPos;
+    public Transform rightBottomPos;
+    //
 
     protected override void LoadComponents()
     {

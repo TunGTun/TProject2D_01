@@ -4,7 +4,7 @@ public class BossHeavyJumpState : IState<BossBaseState>
 {
     public void OnEnter(BossBaseState boss)
     {
-        Vector2 startPos = boss.BossCtrl.Rigidbody2D.position;
+        Vector2 startPos = boss.BossCtrl.transform.position;
         Vector2 endPos = new Vector2(boss.BossCtrl.Target.position.x, startPos.y);
         Vector2 distance = endPos - startPos;
 

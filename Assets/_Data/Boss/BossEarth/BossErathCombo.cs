@@ -7,7 +7,8 @@ public class BossErathCombo : BaseCombo
 
     private Coroutine comboRoutine;
     //private BossEarthSkillOne skillOne;
-    private BossEarthSkillTwo skillTwo;
+    //private BossEarthSkillTwo skillTwo;
+    private BossEarthSkillThree skillThree;
 
     protected override void Start()
     {
@@ -15,10 +16,12 @@ public class BossErathCombo : BaseCombo
         this.SetInitState();
 
         //skillOne = new BossEarthSkillOne();
-        skillTwo = new BossEarthSkillTwo();
+        //skillTwo = new BossEarthSkillTwo();
+        skillThree = new BossEarthSkillThree();
 
         comboRoutine = StartCoroutine(SkillLoopRoutine());
-        //StartCoroutine(EnterFastJumpState());
+        //StartCoroutine(EnterThrowRockState());
+
     }
 
     protected virtual void SetInitState()
@@ -42,15 +45,23 @@ public class BossErathCombo : BaseCombo
 
     //private IEnumerator EnterIdleState()
     //{
-    //    yield return new WaitForSeconds(BossData.airTimeHeavy);
+    //    yield return new WaitForSeconds(BossData.airTimeFast);
     //    bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
-    //    //StartCoroutine(EnterChargeState());
+    //    StartCoroutine(EnterFastJumpState());
     //}
 
     //private IEnumerator EnterFastJumpState()
     //{
-    //    yield return new WaitForSeconds(BossData.airTimeFast);
+    //    yield return new WaitForSeconds(3f);
     //    bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.fastJump);
+    //    StartCoroutine(EnterIdleState());
+    //}
+
+    //private IEnumerator EnterThrowRockState()
+    //{
+    //    yield return new WaitForSeconds(3f);
+    //    bossCtrl.BossBaseState.ChangeState(((BossEarthState)(bossCtrl.BossBaseState)).throwRock);
+    //    //StartCoroutine(EnterIdleState());
     //}
 
     protected override void OnDisable()
@@ -65,13 +76,11 @@ public class BossErathCombo : BaseCombo
 
     private IEnumerator SkillLoopRoutine()
     {
+        if (skillThree == null) yield return null;
         while (true)
         {
-            if (skillTwo != null)
-            {
-                yield return new WaitForSeconds(3f);
-                yield return StartCoroutine(skillTwo.Execute(this.bossCtrl));
-            }
+            yield return new WaitForSeconds(3f);
+            yield return StartCoroutine(skillThree.Execute(this.bossCtrl));
         }
     }
 }

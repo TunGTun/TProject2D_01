@@ -21,4 +21,9 @@ public static class BossData
 
     //fast jump
     public static float airTimeFast = 1f;
+    public static float newGravity = 4f;
+
+    //throw rock
+    public static float throwInterval = 1.0f;
+    public static int throwNumber = 3;
 }

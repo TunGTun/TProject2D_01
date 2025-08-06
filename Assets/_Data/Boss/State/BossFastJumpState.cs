@@ -2,10 +2,27 @@ using UnityEngine;
 
 public class BossFastJumpState : IState<BossBaseState>
 {
+    protected float originalGravity;
+
     public void OnEnter(BossBaseState boss)
     {
-        Vector2 startPos = boss.BossCtrl.Rigidbody2D.position;
-        Vector2 endPos = new Vector2(boss.BossCtrl.Target.position.x, startPos.y);
+        originalGravity = boss.BossCtrl.Rigidbody2D.gravityScale;
+        boss.BossCtrl.Rigidbody2D.gravityScale = BossData.newGravity;
+
+        Vector2 startPos = boss.BossCtrl.transform.position;
+
+        Vector2 leftBottomPos = boss.BossCtrl.leftBottomPos.position;
+        Vector2 rightBottomPos = boss.BossCtrl.rightBottomPos.position;
+
+        float targetX = boss.BossCtrl.Target.position.x;
+
+        float leftDistX = Mathf.Abs(leftBottomPos.x - targetX);
+        float rightDistX = Mathf.Abs(rightBottomPos.x - targetX);
+
+        Vector2 endPos = (leftDistX > rightDistX) ? leftBottomPos : rightBottomPos;
+
+        endPos = new Vector2(endPos.x, startPos.y);
+
         Vector2 distance = endPos - startPos;
 
         float vx = distance.x / BossData.airTimeFast;
@@ -16,12 +33,13 @@ public class BossFastJumpState : IState<BossBaseState>
         Vector2 velocity = new Vector2(vx, vy);
         boss.BossCtrl.Rigidbody2D.linearVelocity = velocity;
 
-        Debug.Log("BossHeavyJumpState Enter");
+        Debug.Log("BossFastJumpState Enter");
     }
 
     public void OnExit(BossBaseState boss)
     {
-        Debug.Log("BossHeavyJumpState Exit");
+        boss.BossCtrl.Rigidbody2D.gravityScale = originalGravity;
+        Debug.Log("BossFastJumpState Exit");
     }
 
     public void OnFrameUpdate(BossBaseState boss)
@@ -31,6 +49,6 @@ public class BossFastJumpState : IState<BossBaseState>
 
     public void OnPhysicUpdate(BossBaseState boss)
     {
-        Debug.Log("BossHeavyJumpState PhysicUpdate");
+        Debug.Log("BossFastJumpState PhysicUpdate");
     }
 }
