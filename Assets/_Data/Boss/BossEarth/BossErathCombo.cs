@@ -8,7 +8,8 @@ public class BossErathCombo : BaseCombo
     private Coroutine comboRoutine;
     //private BossEarthSkillOne skillOne;
     //private BossEarthSkillTwo skillTwo;
-    private BossEarthSkillThree skillThree;
+    //private BossEarthSkillThree skillThree;
+    private BossEarthSkillFour skillFour;
 
     protected override void Start()
     {
@@ -17,10 +18,11 @@ public class BossErathCombo : BaseCombo
 
         //skillOne = new BossEarthSkillOne();
         //skillTwo = new BossEarthSkillTwo();
-        skillThree = new BossEarthSkillThree();
+        //skillThree = new BossEarthSkillThree();
+        skillFour = new BossEarthSkillFour();
 
         comboRoutine = StartCoroutine(SkillLoopRoutine());
-        //StartCoroutine(EnterThrowRockState());
+        //StartCoroutine(EnterBurrowAndRiseState());
 
     }
 
@@ -64,6 +66,21 @@ public class BossErathCombo : BaseCombo
     //    //StartCoroutine(EnterIdleState());
     //}
 
+    //private IEnumerator EnterBurrowAndRiseState()
+    //{
+    //    yield return new WaitForSeconds(3f);
+    //    bossCtrl.BossBaseState.ChangeState(((BossEarthState)(bossCtrl.BossBaseState)).burrowAndRise);
+    //    //StartCoroutine(EnterIdleState());
+    //    StartCoroutine(EnterEarthSmashStateState());
+    //}
+
+    //private IEnumerator EnterEarthSmashStateState()
+    //{
+    //    yield return new WaitForSeconds(4f);
+    //    bossCtrl.BossBaseState.ChangeState(((BossEarthState)(bossCtrl.BossBaseState)).earthSmash);
+    //    //StartCoroutine(EnterIdleState());
+    //}
+
     protected override void OnDisable()
     {
         base.OnDisable();
@@ -76,11 +93,11 @@ public class BossErathCombo : BaseCombo
 
     private IEnumerator SkillLoopRoutine()
     {
-        if (skillThree == null) yield return null;
+        if (skillFour == null) yield return null;
         while (true)
         {
             yield return new WaitForSeconds(3f);
-            yield return StartCoroutine(skillThree.Execute(this.bossCtrl));
+            yield return StartCoroutine(skillFour.Execute(this.bossCtrl));
         }
     }
 }

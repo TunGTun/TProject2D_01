@@ -26,4 +26,10 @@ public static class BossData
     //throw rock
     public static float throwInterval = 1.0f;
     public static int throwNumber = 3;
+
+    //burrow and rise
+    public static float barAnimTime = 1f;
+
+    //earth smash
+    public static float esAnimTime = 1f;
 }

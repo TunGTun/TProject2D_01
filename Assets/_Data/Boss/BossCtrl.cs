@@ -16,6 +16,7 @@ public class BossCtrl : MyMonoBehaviour
     public SpriteRenderer chargeSprite;
     public Transform leftBottomPos;
     public Transform rightBottomPos;
+    public Transform centerBottomPos;
     //
 
     protected override void LoadComponents()
