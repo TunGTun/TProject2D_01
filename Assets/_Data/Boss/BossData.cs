@@ -1,0 +1,44 @@
+using UnityEngine;
+
+public static class BossData
+{
+    //move
+    public static float moveSpeed = 3f;
+
+    //attack
+    public static float attackRange = 2f;
+    public static Transform attackPos;
+    public static float attackSpeed = 1f;
+    public static float waitDuration = 0.5f;
+
+    //charge
+    public static float chargeDuration = 2f;
+    public static Color chargedColor = Color.red;
+    //public static Color chargedColor = new Color(255f / 255f, 100f / 255f, 0f / 255f, 1f);
+
+    //heavy jump
+    public static float airTimeHeavy = 2f;
+
+    //fast jump
+    public static float airTimeFast = 1f;
+    public static float newGravity = 4f;
+
+    //throw rock
+    public static float throwInterval = 1.0f;
+    public static int throwNumber = 3;
+
+    //burrow and rise
+    public static float barAnimTime = 1f;
+
+    //earth smash
+    public static float esAnimTime = 1f;
+
+    //combo
+    public static float skillTwoTimer = 0f;
+    public static float skillThreeTimer = 0f;
+    public static float skillFourTimer = 0f;
+    public static bool isExecutingSkill = false;
+    public static float executeSkillRange = 5f;
+    public static float delayAfterSkill = 2f;
+
+}
