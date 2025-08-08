@@ -32,6 +32,8 @@ public class CharCtrl : MyMonoBehaviour
     {
         if (rigidBody2D != null) return;
         this.rigidBody2D = GetComponent<Rigidbody2D>();
+        this.rigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         Debug.Log(transform.name + ": LoadRigidbody2D", gameObject);
     }
     protected virtual void LoadCharState()

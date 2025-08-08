@@ -38,7 +38,6 @@ public class InputManager : MyMonoBehaviour
             //this._moveAccelInput = 0;
             return;
         }
-
         this.CheckMoveInput();
         this.CheckJumpInput();
         this.CheckDashInput();
