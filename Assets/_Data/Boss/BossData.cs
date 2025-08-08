@@ -32,4 +32,13 @@ public static class BossData
 
     //earth smash
     public static float esAnimTime = 1f;
+
+    //combo
+    public static float skillTwoTimer = 0f;
+    public static float skillThreeTimer = 0f;
+    public static float skillFourTimer = 0f;
+    public static bool isExecutingSkill = false;
+    public static float executeSkillRange = 5f;
+    public static float delayAfterSkill = 2f;
+
 }
