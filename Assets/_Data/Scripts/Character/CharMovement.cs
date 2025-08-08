@@ -9,9 +9,14 @@ public class CharMovement : MyMonoBehaviour
     [SerializeField] protected float _moveSpeed = 3f;
     protected float xDirection;
     protected int jumpCount = 0;
-    protected bool canJump;
-    protected int maxExtraJump = 1;
+    protected int maxJump = 1;
     [SerializeField] protected float jumpForce = 6f;
+    [SerializeField] protected float coyoteTime = 0.1f; //Jump sau khi roi khoi dat
+    [SerializeField] protected float jumpBufferTime = 0.1f; //bam Jump trc khi cham dat
+
+    protected float coyoteTimeCounter;
+    protected float jumpBufferCounter;
+
     //AUTO LOAD
     protected override void LoadComponents()
     {
@@ -27,31 +32,35 @@ public class CharMovement : MyMonoBehaviour
     private void Update()
     {
         this.GetXDirection();
-        this.CheckJump();
+
+        // Đếm thời gian kể từ khi rơi khỏi nền
+        if (charCtrl.CharState.IsGrounded)
+            coyoteTimeCounter = coyoteTime;
+        else
+            coyoteTimeCounter -= Time.deltaTime;
+
+        // Đếm thời gian kể từ khi nhấn Jump
+        if (InputManager.Instance.JumpInput)
+            jumpBufferCounter = jumpBufferTime;
+        else
+            jumpBufferCounter -= Time.deltaTime;
+
+        this.HandleJump();
         this.ResetJumpCount();
     }
+
     private void FixedUpdate()
     {
         this.Move();
-        this.Jump();
     }
     protected virtual void GetXDirection()
     {
 
         xDirection = InputManager.Instance.MoveInput;
-        // if (_xDirection == 0) return;
     }
-    //CHARACTER MOVE
     protected virtual void Move()
     {
-        //if (_charCtrl.CharState.GetIsDead())
-        //{
-        //    _charCtrl.Rigidbody2D.velocity = new Vector2(0, _charCtrl.Rigidbody2D.velocity.y);
-        //    return;
-        //}
         float _moveStep = xDirection * _moveSpeed;
-        //if (_charCtrl.CharState.WallJumping) return;
-        //if (_charCtrl.CharState.Dashing) return;
         charCtrl.RigidBody2D.linearVelocity = new Vector2(_moveStep, charCtrl.RigidBody2D.linearVelocity.y);
 
         this.RunningFlip();
@@ -74,35 +83,44 @@ public class CharMovement : MyMonoBehaviour
         _moveSpeed = newSpeed;
     }
     //CHARACTER JUMP
-    protected virtual void Jump()
-    {
-        if (!canJump) return;
-        this.charCtrl.RigidBody2D.linearVelocity = new Vector2(charCtrl.RigidBody2D.linearVelocity.x, this.jumpForce);
-        canJump = !canJump;
-        jumpCount++;
-    }
-    protected virtual void CheckJump()
-    {
-        if (!InputManager.Instance.JumpInput) return;
 
-        if (charCtrl.CharState.IsGrounded)
-        {
-            jumpCount = 0;
-            canJump = true;
-        }
-
-        if (canJump || jumpCount < maxExtraJump)
-        {
-            charCtrl.RigidBody2D.linearVelocity = new Vector2(charCtrl.RigidBody2D.linearVelocity.x, jumpForce);
-            jumpCount++;
-            canJump = false;
-        }
-    }
     protected virtual void ResetJumpCount()
     {
         if (!charCtrl.CharState.IsGrounded) return;
         jumpCount = 0;
     }
+    protected virtual void HandleJump()
+    {
+        // Nếu có jump input và số lần nhảy chưa vượt quá giới hạn
+        if (jumpBufferCounter > 0f && jumpCount < maxJump)
+        {
+            // Cho phép nhảy nếu: đang đứng đất HOẶC còn trong coyoteTime
+            if (charCtrl.CharState.IsGrounded || coyoteTimeCounter > 0f)
+            {
+                charCtrl.RigidBody2D.linearVelocity = new Vector2(
+                    charCtrl.RigidBody2D.linearVelocity.x,
+                    jumpForce
+                );
+
+                jumpCount++;
+                jumpBufferCounter = 0f; // reset buffer sau khi nhảy
+            }
+            // Nếu đang ở trên không nhưng vẫn còn lượt nhảy (ví dụ double-jump)
+            else if (jumpCount < maxJump)
+            {
+                charCtrl.RigidBody2D.linearVelocity = new Vector2(
+                    charCtrl.RigidBody2D.linearVelocity.x,
+                    jumpForce
+                );
+
+                jumpCount++;
+                jumpBufferCounter = 0f;
+            }
+        }
+    }
+
+
+
     //CHARACTER DASH
 
 }
