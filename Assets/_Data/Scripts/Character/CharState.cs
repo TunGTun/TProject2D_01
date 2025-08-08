@@ -30,9 +30,9 @@ public class CharState : MyMonoBehaviour
 
     public virtual void CheckGrounded()
     {
-        isGrounded= Physics2D.OverlapAreaAll(charCtrl.CharGroundCollider.CharGroundBoxCollider2D.bounds.min, charCtrl.CharGroundCollider.CharGroundBoxCollider2D.bounds.max, LayerMask.GetMask("Ground")).Length>0;
-
-
+        isGrounded = Physics2D.OverlapAreaAll(
+    charCtrl.CharGroundCollider.CharGroundBoxCollider2D.bounds.min,
+    charCtrl.CharGroundCollider.CharGroundBoxCollider2D.bounds.max,
+    LayerMask.GetMask("Ground", "DropDownPlatform")).Length > 0;
     }
-
 }

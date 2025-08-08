@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 public class CharMovement : MyMonoBehaviour
 {
     [Header("CharMovement")]
@@ -30,7 +31,15 @@ public class CharMovement : MyMonoBehaviour
     [SerializeField] private float baseGravityScale = 1f;
     [SerializeField] private float maxGravityScale = 30f;
     [SerializeField] private float gravityIncreaseRate = 3f;
-    private float currentGravityScale;
+    protected float currentGravityScale;
+
+    [Header("DropDownPlatform Settings")]
+    [SerializeField] private float dropDownDuration = 0.1f;
+    protected bool isDropping = false;
+
+
+    protected int playerLayer;
+    protected int dropPlatformLayer;
     //AUTO LOAD
     protected override void LoadComponents()
     {
@@ -44,6 +53,12 @@ public class CharMovement : MyMonoBehaviour
         charCtrl = GetComponentInParent<CharCtrl>();
         Debug.LogWarning(transform.name + ": LoadCharCtrl", gameObject);
     }
+    protected virtual void LoadLayerMask()
+    {
+        playerLayer = LayerMask.NameToLayer("Player");
+        dropPlatformLayer = LayerMask.NameToLayer("DropDownPlatform");
+    }
+    
 
     private void Update()
     {
@@ -56,13 +71,23 @@ public class CharMovement : MyMonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
 
         // Jump Buffer
-        if (InputManager.Instance.JumpInput)
+        if (InputManager.Instance.SpaceInput)
             jumpBufferCounter = jumpBufferTime;
         else
             jumpBufferCounter -= Time.deltaTime;
 
+
+        // ========================
+        // NHẢY XUỐNG NỀN:
+        if (InputManager.Instance.SpaceInput && InputManager.Instance.SInput && !isDropping)
+        {
+            StartCoroutine(DropThroughPlatform());
+            jumpBufferCounter = 0f; // bỏ nhảy thường
+            return;
+        }
+        // ========================
         // DASH INPUT
-        if (InputManager.Instance.DashInput && dashCooldownCounter <= 0f && !isDashing)
+        if (InputManager.Instance.LeftShiftInput && dashCooldownCounter <= 0f && !isDashing)
         {
             StartDash();
         }
@@ -138,30 +163,29 @@ public class CharMovement : MyMonoBehaviour
     protected virtual void HandleJump()
     {
         // Nếu có jump input và số lần nhảy chưa vượt quá giới hạn
-        if (jumpBufferCounter > 0f && jumpCount < maxJump)
-        {
+        if (jumpBufferCounter <= 0f) return;
+        if (jumpCount >= maxJump) return;
             // Cho phép nhảy nếu: đang đứng đất HOẶC còn trong coyoteTime
-            if (charCtrl.CharState.IsGrounded || coyoteTimeCounter > 0f)
-            {
-                charCtrl.RigidBody2D.linearVelocity = new Vector2(
-                    charCtrl.RigidBody2D.linearVelocity.x,
-                    jumpForce
-                );
+        if (charCtrl.CharState.IsGrounded || coyoteTimeCounter > 0f)
+        {
+            charCtrl.RigidBody2D.linearVelocity = new Vector2(
+                charCtrl.RigidBody2D.linearVelocity.x,
+                jumpForce
+            );
 
-                jumpCount++;
-                jumpBufferCounter = 0f; // reset buffer sau khi nhảy
-            }
-            // Nếu đang ở trên không nhưng vẫn còn lượt nhảy (double-jump)
-            else if (jumpCount < maxJump)
-            {
-                charCtrl.RigidBody2D.linearVelocity = new Vector2(
-                    charCtrl.RigidBody2D.linearVelocity.x,
-                    jumpForce
-                );
+            jumpCount++;
+            jumpBufferCounter = 0f; // reset buffer sau khi nhảy
+        }
+        // Nếu đang ở trên không nhưng vẫn còn lượt nhảy (double-jump)
+        else if (jumpCount < maxJump)
+        {
+            charCtrl.RigidBody2D.linearVelocity = new Vector2(
+                charCtrl.RigidBody2D.linearVelocity.x,
+                jumpForce
+            );
 
-                jumpCount++;
-                jumpBufferCounter = 0f;
-            }
+            jumpCount++;
+            jumpBufferCounter = 0f;
         }
     }
 
@@ -190,10 +214,10 @@ public class CharMovement : MyMonoBehaviour
 
     protected virtual void PerformDash()
     {
-        //    charCtrl.RigidBody2D.linearVelocity = new Vector2(dashDirection * dashSpeed, 0f);
         charCtrl.RigidBody2D.linearVelocity = new Vector2(dashDirection * dashSpeed, charCtrl.RigidBody2D.linearVelocity.y);
     }
 
+    // CHAR GRAVITY
     protected virtual void HandleGravityScaling()
     {
         // Nếu đang ở trên không và đang rơi
@@ -209,4 +233,29 @@ public class CharMovement : MyMonoBehaviour
 
         charCtrl.RigidBody2D.gravityScale = currentGravityScale;
     }
+
+
+    // CHAR DROP DOWN PLATFORM
+    protected IEnumerator DropThroughPlatform()
+    {
+        isDropping = true;
+
+        // Tạm thời disable va chạm giữa Player và DropDownPlatform
+        Physics2D.IgnoreLayerCollision(
+            LayerMask.NameToLayer("Player"),
+            LayerMask.NameToLayer("DropDownPlatform"),
+            true
+        );
+
+        yield return new WaitForSeconds(dropDownDuration);
+
+        Physics2D.IgnoreLayerCollision(
+            LayerMask.NameToLayer("Player"),
+            LayerMask.NameToLayer("DropDownPlatform"),
+            false
+        );
+
+        isDropping = false;
+    }
+
 }

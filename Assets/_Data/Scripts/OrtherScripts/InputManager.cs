@@ -14,11 +14,14 @@ public class InputManager : MyMonoBehaviour
     [SerializeField] protected float _moveInput;
     public float MoveInput { get => _moveInput; }
 
-    [SerializeField] protected bool jumpInput;
-    public bool JumpInput { get => jumpInput; }
+    [SerializeField] protected bool spaceInput;
+    public bool SpaceInput { get => spaceInput; }
 
-    [SerializeField] protected bool dashInput;
-    public bool DashInput { get => dashInput; }
+    [SerializeField] protected bool leftShiftInput;
+    public bool LeftShiftInput { get => leftShiftInput; }
+
+    [SerializeField] protected bool sInput;
+    public bool SInput { get => sInput; }
 
     [SerializeField] protected bool canControl = true;
     public bool CanControl => canControl;
@@ -39,8 +42,9 @@ public class InputManager : MyMonoBehaviour
             return;
         }
         this.CheckMoveInput();
-        this.CheckJumpInput();
-        this.CheckDashInput();
+        this.CheckSpacepInput();
+        this.CheckLeftShiftInput();
+        this.CheckSInput();
     }
 
     protected virtual void CheckMoveInput()
@@ -76,14 +80,18 @@ public class InputManager : MyMonoBehaviour
         _moveInput = 0;
     }
 
-    protected virtual void CheckJumpInput()
+    protected virtual void CheckSpacepInput()
     {
-        this.jumpInput = Input.GetKeyDown(KeyCode.Space);
+        this.spaceInput = Input.GetKeyDown(KeyCode.Space);
     }
 
-    protected virtual void CheckDashInput()
+    protected virtual void CheckLeftShiftInput()
     {
-        this.dashInput = Input.GetKeyDown(KeyCode.LeftShift);
+        this.leftShiftInput = Input.GetKeyDown(KeyCode.LeftShift);
+    }
+    protected virtual void CheckSInput()
+    {
+        this.sInput = Input.GetKey(KeyCode.S);
     }
 
 }
