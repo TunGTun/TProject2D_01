@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using Unity.VisualScripting;
-using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+﻿using UnityEngine;
 public class CharMovement : MyMonoBehaviour
 {
     [Header("CharMovement")]
@@ -9,25 +6,31 @@ public class CharMovement : MyMonoBehaviour
 
     [Header("Move Settings")]
     [SerializeField] protected float _moveSpeed = 3f;
-    protected float xDirection;
+    public float xDirection;
 
     [Header("Jump Settings")]
-    protected int jumpCount = 0;
-    protected int maxJump = 1;
     [SerializeField] protected float jumpForce = 6f;
     [SerializeField] protected float coyoteTime = 0.1f; //Jump sau khi roi khoi dat
     [SerializeField] protected float jumpBufferTime = 0.1f; //bam Jump trc khi cham dat
+    protected int jumpCount = 0;
+    protected int maxJump = 1;
     protected float coyoteTimeCounter;
     protected float jumpBufferCounter;
 
     [Header("Dash Settings")]
-    [SerializeField] protected float dashSpeed = 10f;
-    [SerializeField] protected float dashDuration = 0.2f;
-    [SerializeField] protected float dashCooldown = 0.2f;
+    [SerializeField] protected float dashSpeed = 7f;
+    [SerializeField] protected float dashDuration = 0.3f;
+    [SerializeField] protected float dashCooldown = 0.5f;
     protected bool isDashing = false;
     protected float dashTimeCounter;
     protected float dashCooldownCounter;
+    protected float dashDirection = 1f;
 
+    [Header("Gravity Settings")]
+    [SerializeField] private float baseGravityScale = 1f;
+    [SerializeField] private float maxGravityScale = 30f;
+    [SerializeField] private float gravityIncreaseRate = 3f;
+    private float currentGravityScale;
     //AUTO LOAD
     protected override void LoadComponents()
     {
@@ -83,6 +86,7 @@ public class CharMovement : MyMonoBehaviour
 
     private void FixedUpdate()
     {
+        this.HandleGravityScaling();
         if (isDashing)
         {
             PerformDash();
@@ -95,7 +99,6 @@ public class CharMovement : MyMonoBehaviour
 
     protected virtual void GetXDirection()
     {
-
         xDirection = InputManager.Instance.MoveInput;
     }
     protected virtual void Move()
@@ -162,8 +165,6 @@ public class CharMovement : MyMonoBehaviour
         }
     }
 
-
-
     //CHARACTER DASH
     protected virtual void StartDash()
     {
@@ -171,25 +172,41 @@ public class CharMovement : MyMonoBehaviour
         dashTimeCounter = dashDuration;
         dashCooldownCounter = dashCooldown;
 
-        // Tắt lực rơi
-        charCtrl.RigidBody2D.gravityScale = 0f;
+        // Xác định hướng dash
+        if (xDirection != 0)
+            dashDirection = Mathf.Sign(xDirection);
+        else
+            dashDirection = Mathf.Sign(charCtrl.transform.localScale.x); // nếu đứng yên, dash theo hướng đang facing
+
+        // Nếu vẫn không xác định được hướng (scale.x = 0), dùng hướng mặc định bên phải
+        if (dashDirection == 0)
+            dashDirection = 1f;
     }
 
     protected virtual void EndDash()
     {
         isDashing = false;
-
-        // Bật lại trọng lực
-        charCtrl.RigidBody2D.gravityScale = 1f;
     }
 
     protected virtual void PerformDash()
     {
-        float direction = Mathf.Sign(xDirection);
-        if (direction == 0) direction = charCtrl.transform.localScale.x; // nếu đứng yên, dash theo hướng đang facing
-
-        charCtrl.RigidBody2D.linearVelocity = new Vector2(direction * dashSpeed, 0f);
+        //    charCtrl.RigidBody2D.linearVelocity = new Vector2(dashDirection * dashSpeed, 0f);
+        charCtrl.RigidBody2D.linearVelocity = new Vector2(dashDirection * dashSpeed, charCtrl.RigidBody2D.linearVelocity.y);
     }
 
+    protected virtual void HandleGravityScaling()
+    {
+        // Nếu đang ở trên không và đang rơi
+        if (!charCtrl.CharState.IsGrounded && charCtrl.RigidBody2D.linearVelocity.y < 0 && !isDashing)
+        {
+            currentGravityScale += gravityIncreaseRate * Time.deltaTime;
+            currentGravityScale = Mathf.Min(currentGravityScale, maxGravityScale);
+        }
+        else
+        {
+            currentGravityScale = baseGravityScale;
+        }
 
+        charCtrl.RigidBody2D.gravityScale = currentGravityScale;
+    }
 }
