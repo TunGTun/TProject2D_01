@@ -22,7 +22,6 @@ public abstract class BossBaseState : BaseState<BossBaseState>
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.CreateState();
         this.LoadBossCtrl();
     }
 
@@ -33,7 +32,7 @@ public abstract class BossBaseState : BaseState<BossBaseState>
         Debug.LogWarning(transform.name + ": LoadBossCtrl", gameObject);
     }
 
-    protected virtual void CreateState()
+    protected override void CreateState()
     {
         idle = new BossIdleState();
         move = new BossMoveToTargetState();

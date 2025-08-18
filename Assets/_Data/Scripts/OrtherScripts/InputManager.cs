@@ -38,7 +38,6 @@ public class InputManager : MyMonoBehaviour
         if (!this.CanControl)
         {
             this._moveInput = 0;
-            //this._moveAccelInput = 0;
             return;
         }
         this.CheckMoveInput();

@@ -22,4 +22,12 @@
     {
         stateMachine.ChangeState(newState, this as T);
     }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.CreateState();
+    }
+
+    protected abstract void CreateState();
 }
