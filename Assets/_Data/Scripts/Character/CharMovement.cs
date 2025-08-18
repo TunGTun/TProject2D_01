@@ -16,7 +16,7 @@ public class CharMovement : MyMonoBehaviour
     protected int jumpCount = 0;
     protected int maxJump = 1;
     protected float coyoteTimeCounter;
-    protected float jumpBufferCounter;
+    protected float jumpBufferCounter = 0f;
 
     [Header("Dash Settings")]
     [SerializeField] protected float dashSpeed = 7f;
@@ -33,18 +33,12 @@ public class CharMovement : MyMonoBehaviour
     [SerializeField] private float gravityIncreaseRate = 3f;
     protected float currentGravityScale;
 
-    [Header("DropDownPlatform Settings")]
-    [SerializeField] private float dropDownDuration = 0.1f;
-    protected bool isDropping = false;
-
-
-    protected int playerLayer;
-    protected int dropPlatformLayer;
     //AUTO LOAD
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadCharCtrl();
+
     }
 
     protected virtual void LoadCharCtrl()
@@ -53,41 +47,21 @@ public class CharMovement : MyMonoBehaviour
         charCtrl = GetComponentInParent<CharCtrl>();
         Debug.LogWarning(transform.name + ": LoadCharCtrl", gameObject);
     }
-    protected virtual void LoadLayerMask()
-    {
-        playerLayer = LayerMask.NameToLayer("Player");
-        dropPlatformLayer = LayerMask.NameToLayer("DropDownPlatform");
-    }
-    
 
     private void Update()
     {
         this.GetXDirection();
 
-        // Coyote Time
-        if (charCtrl.CharState.IsGrounded)
-            coyoteTimeCounter = coyoteTime;
-        else
-            coyoteTimeCounter -= Time.deltaTime;
+        this.CoyoteTimeCounter();
+        
+        this.JumpBufferCounter();
 
-        // Jump Buffer
-        if (InputManager.Instance.SpaceInput)
-            jumpBufferCounter = jumpBufferTime;
-        else
-            jumpBufferCounter -= Time.deltaTime;
+        this.HandleJump();
 
+        this.ResetJumpCount();
 
-        // ========================
-        // NHẢY XUỐNG NỀN:
-        if (InputManager.Instance.SpaceInput && InputManager.Instance.SInput && !isDropping)
-        {
-            StartCoroutine(DropThroughPlatform());
-            jumpBufferCounter = 0f; // bỏ nhảy thường
-            return;
-        }
-        // ========================
         // DASH INPUT
-        if (InputManager.Instance.LeftShiftInput && dashCooldownCounter <= 0f && !isDashing)
+        if (InputManager.Instance.LeftShiftInput && dashCooldownCounter <= 0f && !isDashing )
         {
             StartDash();
         }
@@ -96,16 +70,10 @@ public class CharMovement : MyMonoBehaviour
         if (isDashing)
         {
             dashTimeCounter -= Time.deltaTime;
-            if (dashTimeCounter <= 0f)
-            {
-                EndDash();
-            }
+            if (dashTimeCounter <= 0f) EndDash();
         }
 
         dashCooldownCounter -= Time.deltaTime;
-
-        this.HandleJump();
-        this.ResetJumpCount();
     }
 
 
@@ -126,6 +94,7 @@ public class CharMovement : MyMonoBehaviour
     {
         xDirection = InputManager.Instance.MoveInput;
     }
+
     protected virtual void Move()
     {
         float _moveStep = xDirection * _moveSpeed;
@@ -144,22 +113,29 @@ public class CharMovement : MyMonoBehaviour
         }
     }
 
-    public float GetMoveSpeed()
+    //CHARACTER JUMP
+    protected virtual void CoyoteTimeCounter()
     {
-        return _moveSpeed;
-    }
-    public void SetMoveSpeed(float newSpeed)
-    {
-        _moveSpeed = newSpeed;
+        if (charCtrl.CharState.IsGrounded)
+            coyoteTimeCounter = coyoteTime;
+        else
+            coyoteTimeCounter -= Time.deltaTime;
     }
 
-    //CHARACTER JUMP
+    protected virtual void JumpBufferCounter()
+    {
+        if (InputManager.Instance.SpaceInput)
+            jumpBufferCounter = jumpBufferTime;
+        else
+            jumpBufferCounter -= Time.deltaTime;
+    }
 
     protected virtual void ResetJumpCount()
     {
         if (!charCtrl.CharState.IsGrounded) return;
         jumpCount = 0;
     }
+
     protected virtual void HandleJump()
     {
         // Nếu có jump input và số lần nhảy chưa vượt quá giới hạn
@@ -177,16 +153,18 @@ public class CharMovement : MyMonoBehaviour
             jumpBufferCounter = 0f; // reset buffer sau khi nhảy
         }
         // Nếu đang ở trên không nhưng vẫn còn lượt nhảy (double-jump)
-        else if (jumpCount < maxJump)
-        {
-            charCtrl.RigidBody2D.linearVelocity = new Vector2(
-                charCtrl.RigidBody2D.linearVelocity.x,
-                jumpForce
-            );
+        //else if (jumpCount < maxJump)
+        //{
+        //    charCtrl.RigidBody2D.linearVelocity = new Vector2(
+        //        charCtrl.RigidBody2D.linearVelocity.x,
+        //        jumpForce
+        //    );
 
-            jumpCount++;
-            jumpBufferCounter = 0f;
-        }
+        //    jumpCount++;
+        //    jumpBufferCounter = 0f;
+        //}
+
+        
     }
 
     //CHARACTER DASH
@@ -233,29 +211,4 @@ public class CharMovement : MyMonoBehaviour
 
         charCtrl.RigidBody2D.gravityScale = currentGravityScale;
     }
-
-
-    // CHAR DROP DOWN PLATFORM
-    protected IEnumerator DropThroughPlatform()
-    {
-        isDropping = true;
-
-        // Tạm thời disable va chạm giữa Player và DropDownPlatform
-        Physics2D.IgnoreLayerCollision(
-            LayerMask.NameToLayer("Player"),
-            LayerMask.NameToLayer("DropDownPlatform"),
-            true
-        );
-
-        yield return new WaitForSeconds(dropDownDuration);
-
-        Physics2D.IgnoreLayerCollision(
-            LayerMask.NameToLayer("Player"),
-            LayerMask.NameToLayer("DropDownPlatform"),
-            false
-        );
-
-        isDropping = false;
-    }
-
 }
