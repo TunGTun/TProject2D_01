@@ -9,6 +9,9 @@ public class InputManager : MyMonoBehaviour
 
     [Header("InputManager")]
 
+    [SerializeField] protected bool canControl = true;
+    public bool CanControl => canControl;
+
     protected KeyCode _lastKeyPressed;
 
     [SerializeField] protected float _moveInput;
@@ -20,11 +23,14 @@ public class InputManager : MyMonoBehaviour
     [SerializeField] protected bool leftShiftInput;
     public bool LeftShiftInput { get => leftShiftInput; }
 
+    [SerializeField] protected bool leftCtrlInput;
+    public bool LeftCtrlInput { get => leftCtrlInput; }
+
     [SerializeField] protected bool sInput;
     public bool SInput { get => sInput; }
 
-    [SerializeField] protected bool canControl = true;
-    public bool CanControl => canControl;
+    [SerializeField] protected bool leftMouseClick;
+    public bool LeftMouseClick { get => leftMouseClick; }
 
     protected override void Awake()
     {
@@ -43,7 +49,14 @@ public class InputManager : MyMonoBehaviour
         this.CheckMoveInput();
         this.CheckSpacepInput();
         this.CheckLeftShiftInput();
+        this.CheckLeftCtrlInput();
         this.CheckSInput();
+        this.CheckLeftMouseClick();
+    }
+
+    public void SetCanControl(bool canControl)
+    {
+        this.canControl = canControl;
     }
 
     protected virtual void CheckMoveInput()
@@ -88,9 +101,20 @@ public class InputManager : MyMonoBehaviour
     {
         this.leftShiftInput = Input.GetKeyDown(KeyCode.LeftShift);
     }
+
+    protected virtual void CheckLeftCtrlInput()
+    {
+        this.leftCtrlInput = Input.GetKeyDown(KeyCode.LeftControl);
+    }
+
     protected virtual void CheckSInput()
     {
         this.sInput = Input.GetKey(KeyCode.S);
+    }
+
+    protected virtual void CheckLeftMouseClick()
+    {
+        this.leftMouseClick = Input.GetMouseButtonDown(0);
     }
 
 }

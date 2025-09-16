@@ -1,0 +1,18 @@
+﻿		Tạo cooldown cho skill
+
+OK		Attack combo (2 kiểu)
+
+OK		Lưu lại input 1 khoảng (Buffer Input)
+
+		Buffer không hoạt động khi attack -> dash
+
+OK		Đang skill không flip
+
+		ScriptableObject cho player data
+
+		Modify
+
+		CharControl chưa dùng
+
+
+		
