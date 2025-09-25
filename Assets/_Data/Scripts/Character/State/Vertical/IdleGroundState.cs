@@ -9,6 +9,7 @@ public class IdleGroundState : ICharState<CharBaseState>
     public void OnEnter(CharBaseState context)
     {
         context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x, 0f);
+
         //Debug.Log("IdleGroundState Enter");
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
     }
@@ -21,7 +22,7 @@ public class IdleGroundState : ICharState<CharBaseState>
     public void OnFrameUpdate(CharBaseState context)
     {
         //context.CharCtrl.CharStateCtrl.VerticalState.jump.ResetJumpCount(context);
-        if (InputManager.Instance.SpaceInput)
+        if (InputManager.Instance.JumpInput)
         {
             context.CharCtrl.CharStateCtrl.VerticalState.ChangeState(context.CharCtrl.CharStateCtrl.VerticalState.jump);
         }

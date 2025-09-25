@@ -19,8 +19,7 @@ public class CharData : MyMonoBehaviour
     [SerializeField] protected float jumpForce = 12f;
     public float JumpForce => jumpForce;
 
-    [SerializeField] protected int maxJump = 2;
-    public float MaxJump => maxJump;
+    public int JumpCount { get; set; } = 0;
 
     [Header("Attack")]
 

@@ -13,7 +13,7 @@ public class BossEarthSkillFour : IBossEarthSkill
         bossCtrl.BossBaseState.ChangeState(((BossEarthState)(bossCtrl.BossBaseState)).earthSmash);
 
         yield return new WaitForSeconds(BossData.esAnimTime + 0.5f);
-        bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
+        //bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
 
         yield return new WaitForSeconds(BossData.delayAfterSkill);
         BossData.isExecutingSkill = false;

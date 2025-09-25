@@ -17,20 +17,23 @@ public class InputManager : MyMonoBehaviour
     [SerializeField] protected float _moveInput;
     public float MoveInput { get => _moveInput; }
 
-    [SerializeField] protected bool spaceInput;
-    public bool SpaceInput { get => spaceInput; }
+    [SerializeField] protected bool jumpInput;
+    public bool JumpInput { get => jumpInput; }
 
-    [SerializeField] protected bool leftShiftInput;
-    public bool LeftShiftInput { get => leftShiftInput; }
+    [SerializeField] protected bool dashInput;
+    public bool DashInput { get => dashInput; }
 
-    [SerializeField] protected bool leftCtrlInput;
-    public bool LeftCtrlInput { get => leftCtrlInput; }
+    //[SerializeField] protected bool leftCtrlInput;
+    //public bool LeftCtrlInput { get => leftCtrlInput; }
 
-    [SerializeField] protected bool sInput;
-    public bool SInput { get => sInput; }
+    [SerializeField] protected bool downInput;
+    public bool DownInput { get => downInput; }
 
-    [SerializeField] protected bool leftMouseClick;
-    public bool LeftMouseClick { get => leftMouseClick; }
+    [SerializeField] protected bool upInput;
+    public bool UpInput { get => upInput; }
+
+    [SerializeField] protected bool attackInput;
+    public bool AttackInput { get => attackInput; }
 
     protected override void Awake()
     {
@@ -47,11 +50,13 @@ public class InputManager : MyMonoBehaviour
             return;
         }
         this.CheckMoveInput();
-        this.CheckSpacepInput();
-        this.CheckLeftShiftInput();
-        this.CheckLeftCtrlInput();
-        this.CheckSInput();
-        this.CheckLeftMouseClick();
+        this.CheckJumpInput();
+        this.CheckDashInput();
+        //this.CheckLeftCtrlInput();
+        this.CheckDownInput();
+        this.CheckDownInput();
+        this.CheckUpInput();
+        this.CheckAttackClick();
     }
 
     public void SetCanControl(bool canControl)
@@ -92,29 +97,37 @@ public class InputManager : MyMonoBehaviour
         _moveInput = 0;
     }
 
-    protected virtual void CheckSpacepInput()
+    protected virtual void CheckJumpInput()
     {
-        this.spaceInput = Input.GetKeyDown(KeyCode.Space);
+        this.jumpInput = Input.GetKeyDown(KeyCode.Space);
     }
 
-    protected virtual void CheckLeftShiftInput()
+    protected virtual void CheckDashInput()
     {
-        this.leftShiftInput = Input.GetKeyDown(KeyCode.LeftShift);
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.LeftControl))
+            this.dashInput = true;
+        else
+            this.dashInput = false;
     }
 
-    protected virtual void CheckLeftCtrlInput()
+    //protected virtual void CheckLeftCtrlInput()
+    //{
+    //    this.leftCtrlInput = Input.GetKeyDown(KeyCode.LeftControl);
+    //}
+
+    protected virtual void CheckDownInput()
     {
-        this.leftCtrlInput = Input.GetKeyDown(KeyCode.LeftControl);
+        this.downInput = Input.GetKey(KeyCode.S);
     }
 
-    protected virtual void CheckSInput()
+    protected virtual void CheckUpInput()
     {
-        this.sInput = Input.GetKey(KeyCode.S);
+        this.upInput = Input.GetKey(KeyCode.W);
     }
 
-    protected virtual void CheckLeftMouseClick()
+    protected virtual void CheckAttackClick()
     {
-        this.leftMouseClick = Input.GetMouseButtonDown(0);
+        this.attackInput = Input.GetMouseButtonDown(0);
     }
 
 }

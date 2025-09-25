@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BossCtrl : MyMonoBehaviour
+public class BossCtrl : MyMonoBehaviour // Bỏ
 {
     [Header("BossEarthCtrl")]
     public Transform Target;

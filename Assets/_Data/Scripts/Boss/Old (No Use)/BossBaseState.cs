@@ -9,7 +9,7 @@ public abstract class BossBaseState : BaseState<BossBaseState>
 
     public BossIdleState idle;
     public BossMoveToTargetState move;
-    public BossAttackState attack;
+    //public BossAttackState attack;
     public BossChargeState charge;
     public BossHeavyJumpState heavyJump;
     public BossFastJumpState fastJump;
@@ -36,7 +36,7 @@ public abstract class BossBaseState : BaseState<BossBaseState>
     {
         idle = new BossIdleState();
         move = new BossMoveToTargetState();
-        attack = new BossAttackState();
+        //attack = new BossAttackState();
         charge = new BossChargeState();
         heavyJump = new BossHeavyJumpState();
         fastJump = new BossFastJumpState();

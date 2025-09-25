@@ -4,15 +4,26 @@ OK		Attack combo (2 kiểu)
 
 OK		Lưu lại input 1 khoảng (Buffer Input)
 
-		Buffer không hoạt động khi attack -> dash
+Fix		Buffer không hoạt động khi attack -> dash
 
 OK		Đang skill không flip
 
-		ScriptableObject cho player data
-
 		Modify
 
-		CharControl chưa dùng
+Del		CharControl chưa dùng
 
+		Thời gian các attack state phụ thuộc vào thời gian chạy animation
 
-		
+OK		Delay dame
+
+OK		Skill lock
+
+		Cân bằng các chỉ số nhân vật
+
+		Modify attack (1 và 2)
+
+OK		Lỗi tạo void rift khác hướng attack
+
+		Jump 2
+
+		Reset jump 2, dash khi tren mat dat hoac sau khi dich chuyen

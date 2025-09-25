@@ -9,12 +9,12 @@ public class BossEarthSkillThree : IBossEarthSkill
 
         bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.fastJump);
         yield return new WaitForSeconds(BossData.airTimeFast);
-        bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
+        //bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
 
         bossCtrl.BossBaseState.ChangeState(((BossEarthState)(bossCtrl.BossBaseState)).throwRock);
         yield return new WaitForSeconds(BossData.throwInterval * BossData.throwNumber + 1f); // cần tính lại tổng thời gian ném
 
-        bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
+        //bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
 
         yield return new WaitForSeconds(BossData.delayAfterSkill);
         BossData.isExecutingSkill = false;

@@ -44,7 +44,7 @@ public class BossEarthCombo : BaseCombo
 
     protected virtual void SetInitState()
     {
-        bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
+        //bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
     }
 
     protected override void OnDisable()
@@ -91,7 +91,7 @@ public class BossEarthCombo : BaseCombo
     {
         this.SkillTimer();
         if (BossData.isExecutingSkill) return;
-        bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.move);
+        //bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.move);
 
         this.TryCombo();
     }

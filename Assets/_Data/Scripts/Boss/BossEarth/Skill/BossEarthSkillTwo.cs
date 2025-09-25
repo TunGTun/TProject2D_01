@@ -13,7 +13,7 @@ public class BossEarthSkillTwo : IBossEarthSkill
         bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.heavyJump);
 
         yield return new WaitForSeconds(BossData.airTimeHeavy);
-        bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
+        //bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
 
         yield return new WaitForSeconds(BossData.delayAfterSkill);
         BossData.isExecutingSkill = false;

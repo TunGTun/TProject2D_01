@@ -16,9 +16,28 @@ public class DashState : ICharState<CharBaseState>
         //    return;
         //}
 
+        Transform voidRift = VoidRiftSpawner.Instance.currentRift;
+
+        if (voidRift != null)
+        {
+            context.CharCtrl.transform.position = voidRift.position;
+            VoidRiftSpawner.Instance.Despawn(voidRift);
+            context.CharCtrl.CharStateCtrl.SkillState.ChangeState(context.CharCtrl.CharStateCtrl.SkillState.idleSkill);
+            return;
+        }
+
+        if (!context.CharCtrl.CharStateCtrl.SkillLock.IsUnlocked(ESkill.Dash))
+        {
+            context.CharCtrl.CharStateCtrl.SkillState.ChangeState(
+                context.CharCtrl.CharStateCtrl.SkillState.idleSkill);
+            return;
+        }
+
         timer = context.CharCtrl.CharData.DashDuration;
 
         context.CharCtrl.RigidBody2D.gravityScale = 0;
+
+        context.CharCtrl.CharStateCtrl.FlipX();
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
     }
@@ -43,6 +62,8 @@ public class DashState : ICharState<CharBaseState>
 
     public void OnPhysicUpdate(CharBaseState context)
     {
+        //float direction = context.transform.parent.localScale.x;
+        //if (InputManager.Instance.MoveInput != 0) direction = InputManager.Instance.MoveInput;
         context.CharCtrl.RigidBody2D.linearVelocity
             = new Vector2(context.transform.parent.localScale.x * context.CharCtrl.CharData.DashForce, 0f);
     }

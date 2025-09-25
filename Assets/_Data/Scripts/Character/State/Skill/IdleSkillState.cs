@@ -38,7 +38,7 @@ public class IdleSkillState : ICharState<CharBaseState>
                 context.CharCtrl.CharStateCtrl.SkillState.ChangeState(context.CharCtrl.CharStateCtrl.SkillState.dash);
                 return;
             }
-            if (action == StateName.ATTACK_STATE)
+            if (action == StateName.ATTACK_ONE_STATE)
             {
                 context.CharCtrl.CharStateCtrl.SkillState.ChangeState(context.CharCtrl.CharStateCtrl.SkillState.attack);
                 return;

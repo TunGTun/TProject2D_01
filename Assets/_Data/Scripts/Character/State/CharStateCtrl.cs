@@ -18,6 +18,9 @@ public class CharStateCtrl : BaseChar
     [SerializeField] protected SkillState skillState;
     public SkillState SkillState => skillState;
 
+    [SerializeField] protected SkillLock skillLock;
+    public SkillLock SkillLock => skillLock;
+
     public InputBuffer InputBuffer { get; private set; } //Mới chỉ hoạt động cho attack và dash trong SkillState
 
     protected override void Start()
@@ -28,11 +31,11 @@ public class CharStateCtrl : BaseChar
 
     private void Update()
     {
-        if (InputManager.Instance.LeftShiftInput || InputManager.Instance.LeftCtrlInput)
+        if (InputManager.Instance.DashInput)
             InputBuffer.AddInput(StateName.DASH_STATE);
 
-        if (InputManager.Instance.LeftMouseClick)
-            InputBuffer.AddInput(StateName.ATTACK_STATE);
+        if (InputManager.Instance.AttackInput)
+            InputBuffer.AddInput(StateName.ATTACK_ONE_STATE);
     }
 
     protected virtual void Init()
@@ -50,6 +53,7 @@ public class CharStateCtrl : BaseChar
         this.LoadHorizontalState();
         this.LoadVerticalState();
         this.LoadSkillState();
+        this.LoadSkillLock();
     }
 
     protected virtual void LoadStatusState()
@@ -80,9 +84,15 @@ public class CharStateCtrl : BaseChar
         Debug.Log(transform.name + ": LoadSkillState", gameObject);
     }
 
+    protected virtual void LoadSkillLock()
+    {
+        if (skillLock != null) return;
+        this.skillLock = GetComponentInChildren<SkillLock>();
+        Debug.Log(transform.name + ": LoadSkillLock", gameObject);
+    }
+
     public virtual IState<CharBaseState> GetHighestPriorityState()
     {
-        //ICharState<CharBaseState> top;
 
         ICharState<CharBaseState> s1 = statusState?.StateMachine.CurrentState as ICharState<CharBaseState>;
         if (s1!= null && s1.FSMType != FSMType.Default) return s1;
@@ -95,12 +105,11 @@ public class CharStateCtrl : BaseChar
 
         ICharState<CharBaseState> s4 = horizontalState?.StateMachine.CurrentState as ICharState<CharBaseState>;
         return s4;
+    }
 
-        //if (s1 != null) top = s1;
-        //if (s2 != null && (top == null || s2.Priority > top.Priority)) top = s2;
-        //if (s3 != null && (top == null || s3.Priority > top.Priority)) top = s3;
-        //if (s4 != null && (top == null || s4.Priority > top.Priority)) top = s4;
-
-        //return top;
+    public virtual void FlipX()
+    {
+        if (InputManager.Instance.MoveInput == 1) this.transform.parent.localScale = new Vector3(1, 1, 1);
+        if (InputManager.Instance.MoveInput == -1) this.transform.parent.localScale = new Vector3(-1, 1, 1);
     }
 }

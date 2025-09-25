@@ -25,22 +25,23 @@ public class CharCtrl : MyMonoBehaviour
     [SerializeField] protected AnimationCtrl animationCtrl;
     public AnimationCtrl AnimationCtrl => animationCtrl;
 
+    [SerializeField] protected PointCtrl pointCtrl;
+    public PointCtrl PointCtrl => pointCtrl;
+
+    [SerializeField] protected CharDamageSender charDamageSender;
+    public CharDamageSender CharDamageSender => charDamageSender;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadCharData();
         this.LoadRigidbody2D();
         this.LoadCharBodyCollider();
+        this.LoadCharData();
         this.LoadCharStateCtrl();
         this.LoadEnvironmentChecker();
         this.LoadAnimationCtrl();
-    }
-
-    protected virtual void LoadCharData()
-    {
-        if (charData != null) return;
-        charData = GetComponentInChildren<CharData>();
-        Debug.LogWarning(transform.name + ": LoadCharData", gameObject);
+        this.LoadPointCtrl();
+        this.LoadCharDamageSender();
     }
 
     protected virtual void LoadRigidbody2D()
@@ -62,6 +63,13 @@ public class CharCtrl : MyMonoBehaviour
         Debug.Log(transform.name + ": LoadCharBodyCollider", gameObject);
     }
 
+    protected virtual void LoadCharData()
+    {
+        if (charData != null) return;
+        charData = GetComponentInChildren<CharData>();
+        Debug.LogWarning(transform.name + ": LoadCharData", gameObject);
+    }
+
     protected virtual void LoadCharStateCtrl()
     {
         if (charStateCtrl != null) return;
@@ -81,5 +89,19 @@ public class CharCtrl : MyMonoBehaviour
         if (animationCtrl != null) return;
         animationCtrl = GetComponentInChildren<AnimationCtrl>();
         Debug.LogWarning(transform.name + ": LoadAnimationCtrl", gameObject);
+    }
+
+    protected virtual void LoadPointCtrl()
+    {
+        if (pointCtrl != null) return;
+        pointCtrl = GetComponentInChildren<PointCtrl>();
+        Debug.LogWarning(transform.name + ": LoadPointCtrl", gameObject);
+    }
+
+    protected virtual void LoadCharDamageSender()
+    {
+        if (charDamageSender != null) return;
+        charDamageSender = GetComponentInChildren<CharDamageSender>();
+        Debug.LogWarning(transform.name + ": LoadCharDamageSender", gameObject);
     }
 }

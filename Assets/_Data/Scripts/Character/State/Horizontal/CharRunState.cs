@@ -31,7 +31,6 @@ public class CharRunState : ICharState<CharBaseState>
 
     public void OnPhysicUpdate(CharBaseState context)
     {
-        if ((context.CharCtrl.CharStateCtrl.SkillState.StateMachine.CurrentState as ICharState<CharBaseState>).FSMType != FSMType.Default) return;
 
         this.FlipX(context);
 
@@ -42,7 +41,7 @@ public class CharRunState : ICharState<CharBaseState>
 
     protected virtual void FlipX(CharBaseState context)
     {
-        if (InputManager.Instance.MoveInput == 1) context.transform.parent.localScale = new Vector3(1, 1, 1);
-        if (InputManager.Instance.MoveInput == -1) context.transform.parent.localScale = new Vector3(-1, 1, 1);
+        if ((context.CharCtrl.CharStateCtrl.SkillState.StateMachine.CurrentState as ICharState<CharBaseState>).FSMType != FSMType.Default) return;
+        context.CharCtrl.CharStateCtrl.FlipX();
     }
 }

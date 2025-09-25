@@ -1,0 +1,36 @@
+using UnityEngine;
+
+public class BossMinotaurAttackTwoState : IBossState<BaseBossState>
+{
+    public string Name => "Attack_1";
+
+    private float attackTime = 1f;
+    private float attackTimer;
+
+    public void OnEnter(BaseBossState boss)
+    {
+        attackTimer = 0;
+
+        boss.BaseBossCtrl.BossAnimationCtrl.ChangeAnimationState(this.Name);
+    }
+
+    public void OnExit(BaseBossState context)
+    {
+
+    }
+
+    public void OnFrameUpdate(BaseBossState context)
+    {
+        attackTimer += Time.deltaTime;
+
+        if (attackTimer >= this.attackTime)
+        {
+            context.BaseBossCtrl.BaseBossState.ChangeState(context.BaseBossCtrl.BaseBossState.idle);
+        }
+    }
+
+    public void OnPhysicUpdate(BaseBossState boss)
+    {
+
+    }
+}

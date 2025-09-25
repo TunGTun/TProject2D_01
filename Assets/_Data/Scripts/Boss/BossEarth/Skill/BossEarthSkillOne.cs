@@ -16,11 +16,11 @@ public class BossEarthSkillOne : IBossEarthSkill
         //bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
         //yield return new WaitForSeconds(BossData.waitDuration);
 
-        bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.attack);
+        //bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.attack);
         float totalAttackDuration = BossData.attackSpeed + BossData.waitDuration;
         yield return new WaitForSeconds(totalAttackDuration);
 
-        bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
+        //bossCtrl.BossBaseState.ChangeState(bossCtrl.BossBaseState.idle);
 
         yield return new WaitForSeconds(BossData.delayAfterSkill);
         BossData.isExecutingSkill = false;

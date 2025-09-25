@@ -14,6 +14,17 @@ public class JumpState : ICharState<CharBaseState>
         //this.jumpCount++;
         //if (this.jumpCount > context.CharCtrl.CharData.MaxJump) return;
 
+        //if (context.CharCtrl.CharData.JumpCount >= SCharStaticData.MaxJump)
+        //    return;
+
+        //if (context.CharCtrl.CharData.JumpCount >= 1)
+        //{
+        //    if (!context.CharCtrl.CharStateCtrl.SkillLock.IsUnlocked(ESkill.DoubleJump))
+        //        return;
+        //}
+
+        //context.CharCtrl.CharData.JumpCount++;
+
         context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x, 0);
         context.CharCtrl.RigidBody2D.AddForce(Vector2.up * context.CharCtrl.CharData.JumpForce, ForceMode2D.Impulse);
 

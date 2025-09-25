@@ -29,3 +29,8 @@ public interface ICharState<T> : IState<T>
     //public InterruptType InterruptType { get; }
 
 }
+
+public interface IBossState<T> : IState<T>
+{
+
+}
