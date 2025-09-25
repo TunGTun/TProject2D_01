@@ -27,3 +27,9 @@ OK		Lỗi tạo void rift khác hướng attack
 		Jump 2
 
 		Reset jump 2, dash khi tren mat dat hoac sau khi dich chuyen
+
+
+
+		SANG NAY
+		- Cân bằng các chỉ số nhân vật
+		- Vẽ ok map đầu

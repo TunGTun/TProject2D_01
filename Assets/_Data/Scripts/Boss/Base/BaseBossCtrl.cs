@@ -18,6 +18,9 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
     [SerializeField] protected BossAnimationCtrl bossAnimationCtrl;
     public BossAnimationCtrl BossAnimationCtrl => bossAnimationCtrl;
 
+    [SerializeField] protected BaseBossData baseBossData;
+    public BaseBossData BaseBossData => baseBossData;
+
     [SerializeField] protected BossTarget bossTarget;
     public BossTarget BossTarget => bossTarget;
 
@@ -27,6 +30,9 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
     [SerializeField] protected BaseBossControl baseBossControl;
     public BaseBossControl BaseBossControl => baseBossControl;
 
+    [SerializeField] protected BaseBossPointCtrl baseBossPointCtrl;
+    public BaseBossPointCtrl BaseBossPointCtrl => baseBossPointCtrl;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -34,9 +40,11 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
         this.LoadCollider2D();
         //this.LoadBossStaticDataSO();
         this.LoadBossAnimationCtrl();
+        this.LoadBaseBossData();
         this.LoadBossTarget();
         this.LoadBaseBossState();
         this.LoadBaseBossControl();
+        this.LoadBaseBossPointCtrl();
     }
 
     protected virtual void LoadRigidbody2D()
@@ -68,6 +76,13 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
         Debug.LogWarning(transform.name + ": LoadBossAnimationCtrl", gameObject);
     }
 
+    protected virtual void LoadBaseBossData()
+    {
+        if (baseBossData != null) return;
+        baseBossData = GetComponentInChildren<BaseBossData>();
+        Debug.LogWarning(transform.name + ": LoadBaseBossData", gameObject);
+    }
+
     protected virtual void LoadBossTarget()
     {
         if (bossTarget != null) return;
@@ -87,6 +102,13 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
         if (baseBossControl != null) return;
         baseBossControl = GetComponentInChildren<BaseBossControl>();
         Debug.LogWarning(transform.name + ": LoadBaseBossControl", gameObject);
+    }
+
+    protected virtual void LoadBaseBossPointCtrl()
+    {
+        if (baseBossPointCtrl != null) return;
+        baseBossPointCtrl = GetComponentInChildren<BaseBossPointCtrl>();
+        Debug.LogWarning(transform.name + ": LoadBaseBossPointCtrl", gameObject);
     }
 
     //protected abstract string GetObjectTypeString();

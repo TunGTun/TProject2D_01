@@ -19,17 +19,11 @@ public class IdleSkillState : ICharState<CharBaseState>
 
     public void OnFrameUpdate(CharBaseState context)
     {
-        //if (InputManager.Instance.LeftShiftInput || InputManager.Instance.LeftCtrlInput)
-        //{
-        //    context.CharCtrl.CharStateCtrl.SkillState.ChangeState(context.CharCtrl.CharStateCtrl.SkillState.dash);
-        //    return;
-        //}
-
-        //if (InputManager.Instance.LeftMouseClick)
-        //{
-        //    context.CharCtrl.CharStateCtrl.SkillState.ChangeState(context.CharCtrl.CharStateCtrl.SkillState.attack);
-        //    return;
-        //}
+        if (InputManager.Instance.JumpInputDown)
+        {
+            if (context.CharCtrl.EnvironmentChecker.IsGrounded) return;
+            context.CharCtrl.CharStateCtrl.SkillState.ChangeState(context.CharCtrl.CharStateCtrl.SkillState.doubleJump);
+        }
 
         if (context.CharCtrl.CharStateCtrl.InputBuffer.TryConsume(out string action))
         {

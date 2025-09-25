@@ -26,6 +26,9 @@ public class CharData : MyMonoBehaviour
     [SerializeField] protected float attackDuration = 0.5f;
     public float AttackDuration => attackDuration;
 
+    [SerializeField] protected int attackDamage = 1;
+    public int AttackDamage => attackDamage;
+
     [Header("Dash")]
 
     [SerializeField] protected float dashDuration = 0.1f;

@@ -21,5 +21,5 @@ public abstract class ADamageReceiver : MyMonoBehaviour
         Debug.Log(transform.name + ": LoadHitBoxCollider", gameObject);
     }
 
-    public abstract void OnDamageReceived();
+    public abstract void OnDamageReceived(int damage);
 }

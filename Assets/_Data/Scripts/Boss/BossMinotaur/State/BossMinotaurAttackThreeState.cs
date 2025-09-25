@@ -4,7 +4,6 @@ public class BossMinotaurAttackThreeState : IBossState<BaseBossState>
 {
     public string Name => "Attack_3";
 
-    private float attackTime = 1f;
     private float attackTimer;
 
     public void OnEnter(BaseBossState boss)
@@ -23,7 +22,7 @@ public class BossMinotaurAttackThreeState : IBossState<BaseBossState>
     {
         attackTimer += Time.deltaTime;
 
-        if (attackTimer >= this.attackTime)
+        if (attackTimer >= SBossMinotaurStaticData.AttackThreeTime)
         {
             context.BaseBossCtrl.BaseBossState.ChangeState(context.BaseBossCtrl.BaseBossState.idle);
         }

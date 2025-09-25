@@ -17,4 +17,7 @@ public static class SBossMinotaurStaticData
     //Skill Two
     public static readonly float AttackFourTime = 1f;
     public static readonly float AttackFourRange = 2f;
+
+    //Skill Three
+    public static readonly float AttackThreeTime = 1f;
 }

@@ -84,7 +84,7 @@ public class AttackTwoState : ICharState<CharBaseState>
             }
         }
 
-        context.CharCtrl.CharDamageSender.NotifyObservers();
+        context.CharCtrl.CharDamageSender.NotifyObservers(context.CharCtrl.CharData.AttackDamage);
         context.CharCtrl.CharDamageSender.ClearObservers();
     }
 }

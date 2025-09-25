@@ -17,12 +17,12 @@ public abstract class ADamageSender : MyMonoBehaviour
             observers.Remove(receiver);
     }
 
-    public void NotifyObservers()
+    public void NotifyObservers(int damage)
     {
         if (observers.Count == 0) return;
         foreach (ADamageReceiver receiver in observers)
         {
-            receiver.OnDamageReceived();
+            receiver.OnDamageReceived(damage);
         }
     }
 

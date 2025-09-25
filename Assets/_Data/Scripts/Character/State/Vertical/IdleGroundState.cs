@@ -22,7 +22,7 @@ public class IdleGroundState : ICharState<CharBaseState>
     public void OnFrameUpdate(CharBaseState context)
     {
         //context.CharCtrl.CharStateCtrl.VerticalState.jump.ResetJumpCount(context);
-        if (InputManager.Instance.JumpInput)
+        if (InputManager.Instance.JumpInputDown)
         {
             context.CharCtrl.CharStateCtrl.VerticalState.ChangeState(context.CharCtrl.CharStateCtrl.VerticalState.jump);
         }

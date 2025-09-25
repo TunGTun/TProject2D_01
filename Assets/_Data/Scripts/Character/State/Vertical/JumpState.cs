@@ -38,9 +38,16 @@ public class JumpState : ICharState<CharBaseState>
 
     public void OnFrameUpdate(CharBaseState context)
     {
+        if (InputManager.Instance.JumpInputUp)
+        {
+            if (context.CharCtrl.RigidBody2D.linearVelocityY < 0f) return;
+            context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x,
+                                                                context.CharCtrl.RigidBody2D.linearVelocity.y / 3f);
+        }
+
         if (context.CharCtrl.RigidBody2D.linearVelocityY <= 0)
         {
-            context.CharCtrl.CharStateCtrl.VerticalState.ChangeState(context.CharCtrl.CharStateCtrl.VerticalState.idleGround);
+            context.CharCtrl.CharStateCtrl.VerticalState.ChangeState(context.CharCtrl.CharStateCtrl.VerticalState.fall);
         }
     }
 

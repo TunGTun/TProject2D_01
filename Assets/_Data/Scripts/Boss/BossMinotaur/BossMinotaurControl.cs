@@ -4,6 +4,7 @@ public class BossMinotaurControl : BaseBossControl
 {
     protected BossMinotaurSkillOne skillOne;
     protected BossMinotaurSkillTwo skillTwo;
+    protected BossMinotaurSkillThree skillThree;
 
     private int currentSkillIndex = 0; // 0 = skillOne, 1 = skillTwo
 
@@ -17,8 +18,11 @@ public class BossMinotaurControl : BaseBossControl
     {
         skillOne = new BossMinotaurSkillOne();
         skillTwo = new BossMinotaurSkillTwo();
+        skillThree = new BossMinotaurSkillThree();
 
         this.baseBossCtrl.BaseBossState.ChangeState(this.baseBossCtrl.BaseBossState.idle);
+
+        skillThree.Execute(this.baseBossCtrl);
     }
 
     private void Update()
@@ -34,10 +38,15 @@ public class BossMinotaurControl : BaseBossControl
             skillTwo.Tick(this.baseBossCtrl);
         }
 
-        if (!this.IsExecutingSkill)
+        if (skillThree != null && skillThree.IsRunning())
         {
-            ExecuteNextSkill();
+            skillThree.Tick(this.baseBossCtrl);
         }
+
+        //if (!this.IsExecutingSkill)
+        //{
+        //    ExecuteNextSkill();
+        //}
     }
 
     private void ExecuteNextSkill()

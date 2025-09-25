@@ -17,8 +17,11 @@ public class InputManager : MyMonoBehaviour
     [SerializeField] protected float _moveInput;
     public float MoveInput { get => _moveInput; }
 
-    [SerializeField] protected bool jumpInput;
-    public bool JumpInput { get => jumpInput; }
+    [SerializeField] protected bool jumpInputDown;
+    public bool JumpInputDown { get => jumpInputDown; }
+
+    [SerializeField] protected bool jumpInputUp;
+    public bool JumpInputUp { get => jumpInputUp; }
 
     [SerializeField] protected bool dashInput;
     public bool DashInput { get => dashInput; }
@@ -50,7 +53,8 @@ public class InputManager : MyMonoBehaviour
             return;
         }
         this.CheckMoveInput();
-        this.CheckJumpInput();
+        this.CheckJumpInputDown();
+        this.CheckJumpInputUp();
         this.CheckDashInput();
         //this.CheckLeftCtrlInput();
         this.CheckDownInput();
@@ -97,9 +101,14 @@ public class InputManager : MyMonoBehaviour
         _moveInput = 0;
     }
 
-    protected virtual void CheckJumpInput()
+    protected virtual void CheckJumpInputDown()
     {
-        this.jumpInput = Input.GetKeyDown(KeyCode.Space);
+        this.jumpInputDown = Input.GetKeyDown(KeyCode.Space);
+    }
+
+    protected virtual void CheckJumpInputUp()
+    {
+        this.jumpInputUp = Input.GetKeyUp(KeyCode.Space);
     }
 
     protected virtual void CheckDashInput()

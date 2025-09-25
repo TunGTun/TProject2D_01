@@ -6,7 +6,10 @@ public enum EBossMinotaurState
     MoveToTarget,
     Run,
     AttackOne,
+    AttackThree,
     AttackFour,
+
+    SeismicWave,
 
     Finish,
 }
