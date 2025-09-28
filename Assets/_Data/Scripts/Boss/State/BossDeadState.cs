@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class BossRunState : IBossState<BaseBossState>
+public class BossDeadState : IBossState<BaseBossState>
 {
-    public string Name => "Attack_1";
+    public string Name => "Dead";
 
     public void OnEnter(BaseBossState boss)
     {

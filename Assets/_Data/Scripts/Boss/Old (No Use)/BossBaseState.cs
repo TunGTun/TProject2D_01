@@ -8,7 +8,7 @@ public abstract class BossBaseState : BaseState<BossBaseState>
     public BossCtrl BossCtrl => bossCtrl;
 
     public BossIdleState idle;
-    public BossMoveToTargetState move;
+    public BossMinotaurMoveToTargetState move;
     //public BossAttackState attack;
     public BossChargeState charge;
     public BossHeavyJumpState heavyJump;
@@ -35,7 +35,7 @@ public abstract class BossBaseState : BaseState<BossBaseState>
     protected override void CreateState()
     {
         idle = new BossIdleState();
-        move = new BossMoveToTargetState();
+        move = new BossMinotaurMoveToTargetState();
         //attack = new BossAttackState();
         charge = new BossChargeState();
         heavyJump = new BossHeavyJumpState();

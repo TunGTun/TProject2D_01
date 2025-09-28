@@ -10,7 +10,7 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
     public Rigidbody2D BossRigidbody2D => bossRigidbody2D;
 
     [SerializeField] protected CapsuleCollider2D bossCollider2D;
-    public CapsuleCollider2D Collider2D => bossCollider2D;
+    public CapsuleCollider2D CapsuleCollider2D => bossCollider2D;
 
     //[SerializeField] protected BossStaticDataSO bossStaticDataSO;
     //public BossStaticDataSO BossStaticDataSO => bossStaticDataSO;
@@ -18,6 +18,7 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
     [SerializeField] protected BossAnimationCtrl bossAnimationCtrl;
     public BossAnimationCtrl BossAnimationCtrl => bossAnimationCtrl;
 
+    //Nen de ben boss cu the
     [SerializeField] protected BaseBossData baseBossData;
     public BaseBossData BaseBossData => baseBossData;
 
@@ -33,6 +34,9 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
     [SerializeField] protected BaseBossPointCtrl baseBossPointCtrl;
     public BaseBossPointCtrl BaseBossPointCtrl => baseBossPointCtrl;
 
+    [SerializeField] protected BaseBossEnvironmentChecker baseBossEnvironmentChecker;
+    public BaseBossEnvironmentChecker BaseBossEnvironmentChecker => baseBossEnvironmentChecker;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -45,6 +49,7 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
         this.LoadBaseBossState();
         this.LoadBaseBossControl();
         this.LoadBaseBossPointCtrl();
+        this.LoadBaseBossEnvironmentChecker();
     }
 
     protected virtual void LoadRigidbody2D()
@@ -109,6 +114,13 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
         if (baseBossPointCtrl != null) return;
         baseBossPointCtrl = GetComponentInChildren<BaseBossPointCtrl>();
         Debug.LogWarning(transform.name + ": LoadBaseBossPointCtrl", gameObject);
+    }
+
+    protected virtual void LoadBaseBossEnvironmentChecker()
+    {
+        if (baseBossEnvironmentChecker != null) return;
+        baseBossEnvironmentChecker = GetComponentInChildren<BaseBossEnvironmentChecker>();
+        Debug.LogWarning(transform.name + ": LoadBaseBossEnvironmentChecker", gameObject);
     }
 
     //protected abstract string GetObjectTypeString();

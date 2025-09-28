@@ -1,7 +1,7 @@
 public static class SBossMinotaurStaticData
 {
-    public static readonly int MaxHP;
-    public static readonly float MoveSpeed;
+    public static readonly int MaxHP = 100;
+    public static readonly float MoveSpeed = 3f;
     public static readonly int Damage;
 
     public static readonly float StopDistance = 0.1f;
@@ -20,4 +20,7 @@ public static class SBossMinotaurStaticData
 
     //Skill Three
     public static readonly float AttackThreeTime = 1f;
+
+    //Skill Four
+    public static readonly float TauntTime = 2f;
 }

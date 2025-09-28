@@ -8,8 +8,10 @@ public enum EBossMinotaurState
     AttackOne,
     AttackThree,
     AttackFour,
+    Taunt,
 
     SeismicWave,
+    FallingRock,
 
     Finish,
 }

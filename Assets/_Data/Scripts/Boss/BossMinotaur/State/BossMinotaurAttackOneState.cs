@@ -1,5 +1,3 @@
-using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossMinotaurAttackOneState : IBossState<BaseBossState>
@@ -8,9 +6,13 @@ public class BossMinotaurAttackOneState : IBossState<BaseBossState>
 
     private float attackTimer;
 
+    private bool hasSpawned;
+
     public void OnEnter(BaseBossState boss)
     {
         attackTimer = 0;
+
+        hasSpawned = false;
 
         boss.BaseBossCtrl.BossAnimationCtrl.ChangeAnimationState(this.Name);
     }
@@ -23,6 +25,16 @@ public class BossMinotaurAttackOneState : IBossState<BaseBossState>
     public void OnFrameUpdate(BaseBossState context)
     {
         attackTimer += Time.deltaTime;
+
+        if (!hasSpawned && attackTimer >= 0.6f)
+        {
+            hasSpawned = true;
+            BossMinotaurSkillSpawner.Instance.Spawn(
+                BossMinotaurSkillSpawner.Instance.AttackOneHitBox,
+                (context.BaseBossCtrl.BaseBossPointCtrl as BossMinotaurPointCtrl).AttackOneHitBox.transform.position,
+                Quaternion.identity
+            );
+        }
 
         if (attackTimer >= SBossMinotaurStaticData.AttackOneTime)
         {

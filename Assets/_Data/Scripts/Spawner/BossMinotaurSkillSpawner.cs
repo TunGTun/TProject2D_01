@@ -6,6 +6,9 @@ public class BossMinotaurSkillSpawner : ABaseSpawner
     public static BossMinotaurSkillSpawner Instance { get => instance; }
 
     public string SeismicWave = "SeismicWave";
+    public string Rock = "Rock";
+    public string AttackOneHitBox = "AttackOneHitBox";
+    public string AttackFourHitBox = "AttackFourHitBox";
 
     protected override void Awake()
     {

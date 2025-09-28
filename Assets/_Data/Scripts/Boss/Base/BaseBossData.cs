@@ -6,6 +6,6 @@ public abstract class BaseBossData : MyMonoBehaviour
 
     //public int CurrentHealth { get; set; } = 5;
 
-    [SerializeField] protected int currentHealth = 5;
+    [SerializeField] protected int currentHealth;
     public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
 }

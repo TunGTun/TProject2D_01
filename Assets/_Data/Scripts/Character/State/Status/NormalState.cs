@@ -8,12 +8,12 @@ public class NormalState : ICharState<CharBaseState>
 
     public void OnEnter(CharBaseState context)
     {
-        Debug.Log("NormalState Enter");
+        context.CharCtrl.AnimationCtrl.UpdateAnimation();
     }
 
     public void OnExit(CharBaseState context)
     {
-        Debug.Log("NormalState Exit");
+        //Debug.Log("NormalState Exit");
     }
 
     public void OnFrameUpdate(CharBaseState context)

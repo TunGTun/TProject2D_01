@@ -11,7 +11,7 @@ public class AttackTwoState : ICharState<CharBaseState>
     private float damageDelayTimer;
     private bool hasDealtDamage = false;
 
-    protected static readonly int enemyMask = LayerMask.GetMask("Enemy");
+    protected static readonly int enemyMask = LayerMask.GetMask("Enemy", "Enemy2");
     protected static readonly Collider2D[] hitBuffer = new Collider2D[10];
 
     public void OnEnter(CharBaseState context)
@@ -63,7 +63,7 @@ public class AttackTwoState : ICharState<CharBaseState>
         Vector2 hitboxCenter = attackPoint.position;
         float hitboxRadius = SCharStaticData.AttackRange / 4f;
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(hitboxCenter, hitboxRadius, LayerMask.GetMask("Enemy"));
+        Collider2D[] hits = Physics2D.OverlapCircleAll(hitboxCenter, hitboxRadius, enemyMask);
         foreach (Collider2D hit in hits)
         {
             var receiver = hit.GetComponent<ADamageReceiver>();

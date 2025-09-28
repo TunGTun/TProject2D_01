@@ -8,7 +8,7 @@ public class BaseBossState : BaseState<BaseBossState>
     public BaseBossCtrl BaseBossCtrl => baseBossCtrl;
 
     public BossIdleState idle;
-    public BossMoveToTargetState moveToTarget;
+    public BossDeadState dead;
 
     protected override void LoadComponents()
     {
@@ -26,6 +26,6 @@ public class BaseBossState : BaseState<BaseBossState>
     protected override void CreateState()
     {
         idle = new BossIdleState();
-        moveToTarget = new BossMoveToTargetState();
+        dead = new BossDeadState();
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class BossMinotaurSkillThree
+public class BossMinotaurSkillThree : IBossSkill
 {
     protected EBossMinotaurState phase = EBossMinotaurState.None;
 
@@ -40,7 +40,7 @@ public class BossMinotaurSkillThree
         }
     }
 
-    private void Cancel(BaseBossCtrl bossCtrl)
+    public void Cancel(BaseBossCtrl bossCtrl)
     {
         phase = EBossMinotaurState.None;
         bossCtrl.BaseBossControl.IsExecutingSkill = false;

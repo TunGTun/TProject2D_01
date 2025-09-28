@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class BossMinotaurSkillTwo
+public class BossMinotaurSkillTwo : IBossSkill
 {
     protected EBossMinotaurState phase = EBossMinotaurState.None;
 
@@ -20,7 +20,7 @@ public class BossMinotaurSkillTwo
         
         phase = EBossMinotaurState.MoveToTarget;
         moveTimer = 0f;
-        bossCtrl.BaseBossState.ChangeState(bossCtrl.BaseBossState.moveToTarget);
+        bossCtrl.BaseBossState.ChangeState((bossCtrl.BaseBossState as BossMinotaurState).moveToTarget);
     }
 
     public void Tick(BaseBossCtrl bossCtrl) // ?? update
@@ -52,7 +52,7 @@ public class BossMinotaurSkillTwo
         }
     }
 
-    private void Cancel(BaseBossCtrl bossCtrl)
+    public void Cancel(BaseBossCtrl bossCtrl)
     {
         phase = EBossMinotaurState.None;
         bossCtrl.BaseBossControl.IsExecutingSkill = false;

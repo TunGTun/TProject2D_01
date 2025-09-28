@@ -4,6 +4,9 @@ public class AnimationCtrl : BaseChar
 {
     [Header("AnimationCtrl")]
 
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+    public SpriteRenderer SpriteRenderer => spriteRenderer;
+
     [SerializeField] protected Animator animator;
     public Animator Animator => animator;
 
@@ -12,7 +15,15 @@ public class AnimationCtrl : BaseChar
     protected override void LoadComponents()
     {
         base.LoadComponents();
+        this.LoadSpriteRenderer();
         this.LoadAnimator();
+    }
+
+    protected virtual void LoadSpriteRenderer()
+    {
+        if (spriteRenderer != null) return;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        Debug.LogWarning(transform.name + ": LoadSpriteRenderer", gameObject);
     }
 
     protected virtual void LoadAnimator()

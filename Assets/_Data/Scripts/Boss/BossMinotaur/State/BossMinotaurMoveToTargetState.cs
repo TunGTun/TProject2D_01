@@ -1,7 +1,6 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BossMoveToTargetState : IBossState<BaseBossState>
+public class BossMinotaurMoveToTargetState : IBossState<BaseBossState>
 {
     public string Name => "Walk";
 
@@ -18,7 +17,7 @@ public class BossMoveToTargetState : IBossState<BaseBossState>
 
     public void OnExit(BaseBossState boss)
     {
-        //Debug.Log("BossMoveToTargetState Exit");
+        boss.BaseBossCtrl.BossRigidbody2D.linearVelocity = Vector2.zero;
     }
 
     public void OnFrameUpdate(BaseBossState boss)
@@ -48,7 +47,7 @@ public class BossMoveToTargetState : IBossState<BaseBossState>
 
         Vector3 direction = new Vector3(dirX, 0f, 0f).normalized;
 
-        bossTransform.position += direction * BossData.moveSpeed * Time.fixedDeltaTime;
+        boss.BaseBossCtrl.BossRigidbody2D.linearVelocity = direction * SBossMinotaurStaticData.MoveSpeed;
 
         Vector3 originalScale = bossTransform.localScale;
         if (direction.x > 0) bossTransform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);

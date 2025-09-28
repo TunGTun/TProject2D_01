@@ -24,11 +24,17 @@ OK		Skill lock
 
 OK		Lỗi tạo void rift khác hướng attack
 
-		Jump 2
+OK		Jump 2
 
 		Reset jump 2, dash khi tren mat dat hoac sau khi dich chuyen
 
+		Giu data nhan vat khi chuyen scene
 
+OK		Sử lý spawn rock (có thể từ collider boss chạm vào)
+
+		Không mở cổng dịch chuyển trong tường
+
+		AI boss chưa ok
 
 		SANG NAY
 		- Cân bằng các chỉ số nhân vật
