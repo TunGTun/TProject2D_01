@@ -80,7 +80,7 @@ public class AttackTwoState : ICharState<CharBaseState>
                 float spawnX = targetCenter.x + sideX * offsetX;
                 Vector2 spawnPos = new Vector2(spawnX, targetCenter.y);
 
-                VoidRiftSpawner.Instance.Spawn("VoidRift", spawnPos, Quaternion.identity);
+                VoidRiftSpawner.Instance.Spawn(VoidRiftSpawner.Instance.VoidRift, spawnPos, Quaternion.identity, true);
             }
         }
 

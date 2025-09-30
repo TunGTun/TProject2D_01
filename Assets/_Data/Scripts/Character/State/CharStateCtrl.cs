@@ -29,6 +29,15 @@ public class CharStateCtrl : BaseChar
         this.Init();
     }
 
+    protected virtual void Init()
+    {
+        this.horizontalState.ChangeState(this.horizontalState.idleX);
+        this.verticalState.ChangeState(this.verticalState.idleGround);
+        this.skillState.ChangeState(this.skillState.idleSkill);
+        this.statusState.ChangeState(this.statusState.normal);
+        InputBuffer = new InputBuffer(this.charCtrl.CharData.BufferWindow);
+    }
+
     private void Update()
     {
         if (InputManager.Instance.DashInput)
@@ -36,14 +45,11 @@ public class CharStateCtrl : BaseChar
 
         if (InputManager.Instance.AttackInput)
             InputBuffer.AddInput(StateName.ATTACK_ONE_STATE);
-    }
 
-    protected virtual void Init()
-    {
-        this.charCtrl.CharStateCtrl.HorizontalState.ChangeState(this.charCtrl.CharStateCtrl.HorizontalState.idleX);
-        this.charCtrl.CharStateCtrl.VerticalState.ChangeState(this.charCtrl.CharStateCtrl.VerticalState.idleGround);
-        this.charCtrl.CharStateCtrl.SkillState.ChangeState(this.charCtrl.CharStateCtrl.SkillState.idleSkill);
-        InputBuffer = new InputBuffer(this.charCtrl.CharData.BufferWindow);
+        //Debug.Log(this.statusState.StateMachine.CurrentState + " / "
+        //        + this.skillState.StateMachine.CurrentState + " / "
+        //        + this.verticalState.StateMachine.CurrentState + " / "
+        //        + this.horizontalState.StateMachine.CurrentState);
     }
 
     protected override void LoadComponents()
