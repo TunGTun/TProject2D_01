@@ -50,6 +50,8 @@ public class CharStateCtrl : BaseChar
         //        + this.skillState.StateMachine.CurrentState + " / "
         //        + this.verticalState.StateMachine.CurrentState + " / "
         //        + this.horizontalState.StateMachine.CurrentState);
+
+        //Debug.Log(this.charCtrl.RigidBody2D.linearVelocityY);
     }
 
     protected override void LoadComponents()
