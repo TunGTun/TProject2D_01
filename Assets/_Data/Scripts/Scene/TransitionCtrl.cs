@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent (typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D))]
 public class TransitionCtrl : MyMonoBehaviour
 {
     [SerializeField] protected EScene currentScene = EScene.None;
@@ -18,16 +18,16 @@ public class TransitionCtrl : MyMonoBehaviour
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        //this.LoadPlayerSpawnPoint();
+        this.LoadPlayerSpawnPoint();
         this.LoadPlayerTransform();
     }
 
-    //protected virtual void LoadPlayerSpawnPoint()
-    //{
-    //    if (playerSpawnPoint != null) return;
-    //    this.playerSpawnPoint = this.GetComponentInChildren<Transform>();
-    //    Debug.Log(transform.name + ": LoadPlayerSpawnPoint", gameObject);
-    //}
+    protected virtual void LoadPlayerSpawnPoint()
+    {
+        if (playerSpawnPoint != null) return;
+        this.playerSpawnPoint = GameObject.Find("PlayerSpawnPoint").GetComponent<Transform>();
+        Debug.Log(transform.name + ": LoadPlayerSpawnPoint", gameObject);
+    }
 
     protected virtual void LoadPlayerTransform()
     {

@@ -48,6 +48,8 @@ public class AttackState : ICharState<CharBaseState>
                 context.CharCtrl.AnimationCtrl.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
         }
 
+        context.CharCtrl.CharStateCtrl.FlipX();
+
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
     }
 

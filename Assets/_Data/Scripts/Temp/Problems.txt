@@ -44,4 +44,6 @@ OK		Không mở cổng dịch chuyển trong tường
 
 OK		Khi status state machine chay cac state machine khac phai dung lai
 
-		Nhan vat dinh vao tuong
+OK		Nhan vat dinh vao tuong
+
+		Di chuyển, nhảy, attack
