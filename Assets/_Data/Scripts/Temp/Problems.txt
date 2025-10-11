@@ -32,10 +32,18 @@ OK		Jump 2
 
 OK		Sử lý spawn rock (có thể từ collider boss chạm vào)
 
-		Không mở cổng dịch chuyển trong tường
+OK		Không mở cổng dịch chuyển trong tường
 
 		AI boss chưa ok
 
 		SANG NAY
 		- Cân bằng các chỉ số nhân vật
 		- Vẽ ok map đầu
+
+		Sửa voidrift phải sửa spawner
+
+OK		Khi status state machine chay cac state machine khac phai dung lai
+
+OK		Nhan vat dinh vao tuong
+
+		Di chuyển, nhảy, attack

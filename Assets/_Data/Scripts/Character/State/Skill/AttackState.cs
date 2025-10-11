@@ -48,6 +48,8 @@ public class AttackState : ICharState<CharBaseState>
                 context.CharCtrl.AnimationCtrl.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
         }
 
+        context.CharCtrl.CharStateCtrl.FlipX();
+
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
     }
 
@@ -129,6 +131,7 @@ public class AttackState : ICharState<CharBaseState>
                     float offsetY = targetExtents.y + SCharStaticData.RiftExtraOffset;
                     float spawnY = targetCenter.y + sideY * offsetY;
                     spawnPos = new Vector2(targetCenter.x, spawnY);
+                    VoidRiftSpawner.Instance.Spawn(VoidRiftSpawner.Instance.VoidRift, spawnPos, Quaternion.identity, false);
                 }
                 else
                 {
@@ -136,9 +139,8 @@ public class AttackState : ICharState<CharBaseState>
                     float offsetX = targetExtents.x + SCharStaticData.RiftExtraOffset;
                     float spawnX = targetCenter.x + sideX * offsetX;
                     spawnPos = new Vector2(spawnX, targetCenter.y);
+                    VoidRiftSpawner.Instance.Spawn(VoidRiftSpawner.Instance.VoidRift, spawnPos, Quaternion.identity, true);
                 }
-
-                VoidRiftSpawner.Instance.Spawn("VoidRift", spawnPos, Quaternion.identity);
             }
         }
 

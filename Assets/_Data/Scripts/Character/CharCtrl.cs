@@ -34,9 +34,9 @@ public class CharCtrl : MyMonoBehaviour
     protected override void LoadComponents()
     {
         base.LoadComponents();
+        this.LoadCharData();
         this.LoadRigidbody2D();
         this.LoadCharBodyCollider();
-        this.LoadCharData();
         this.LoadCharStateCtrl();
         this.LoadEnvironmentChecker();
         this.LoadAnimationCtrl();

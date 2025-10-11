@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MyMonoBehaviour
+public class InputManager : MySingleton<InputManager>
 {
-    private static InputManager _instance;
-    public static InputManager Instance { get => _instance; }
-
     [Header("InputManager")]
 
     [SerializeField] protected bool canControl = true;
@@ -37,13 +34,6 @@ public class InputManager : MyMonoBehaviour
 
     [SerializeField] protected bool attackInput;
     public bool AttackInput { get => attackInput; }
-
-    protected override void Awake()
-    {
-        base.Awake();
-        if (InputManager._instance != null) Debug.LogError("Only 1 InputManager allow to exist");
-        InputManager._instance = this;
-    }
 
     void Update()
     {

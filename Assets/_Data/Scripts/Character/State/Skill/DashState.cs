@@ -16,7 +16,7 @@ public class DashState : ICharState<CharBaseState>
         //    return;
         //}
 
-        Transform voidRift = VoidRiftSpawner.Instance.currentRift;
+        Transform voidRift = VoidRiftSpawner.Instance.CurrentRift;
 
         if (voidRift != null)
         {
