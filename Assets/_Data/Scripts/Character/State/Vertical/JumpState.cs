@@ -42,7 +42,7 @@ public class JumpState : ICharState<CharBaseState>
         {
             if (context.CharCtrl.RigidBody2D.linearVelocityY < 0f) return;
             context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x,
-                                                                context.CharCtrl.RigidBody2D.linearVelocity.y / 3f);
+                                                                context.CharCtrl.RigidBody2D.linearVelocity.y / 4f);
         }
 
         if (context.CharCtrl.RigidBody2D.linearVelocityY <= 0)

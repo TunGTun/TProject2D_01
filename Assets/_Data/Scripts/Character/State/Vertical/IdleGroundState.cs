@@ -8,7 +8,7 @@ public class IdleGroundState : ICharState<CharBaseState>
 
     public void OnEnter(CharBaseState context)
     {
-        context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x, 0f);
+        context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(0f, 0f);
 
         //Debug.Log("IdleGroundState Enter");
         context.CharCtrl.AnimationCtrl.UpdateAnimation();

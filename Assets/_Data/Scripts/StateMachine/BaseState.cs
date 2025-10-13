@@ -13,15 +13,25 @@ public abstract class BaseState<T> : MyMonoBehaviour where T : BaseState<T>
 
     private void Update()
     {
-        stateMachine.FrameUpdate(this as T);
+        this.FrameUpdate();
     }
 
     private void FixedUpdate()
     {
+        this.PhysicUpdate();
+    }
+
+    protected virtual void FrameUpdate()
+    {
+        stateMachine.FrameUpdate(this as T);
+    }
+
+    protected virtual void PhysicUpdate()
+    {
         stateMachine.PhysicUpdate(this as T);
     }
 
-    public void ChangeState(IState<T> newState)
+    public virtual void ChangeState(IState<T> newState)
     {
         stateMachine.ChangeState(newState, this as T);
     }

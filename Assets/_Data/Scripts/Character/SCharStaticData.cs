@@ -7,5 +7,7 @@ public static class SCharStaticData
     public static readonly float AttackRange = 2f;
 
     //VoidRify
+    public static readonly float RiftOffset = 0.5f;
     public static readonly float RiftExtraOffset = 3.0f;
+    public static readonly float RiftDespawnTime = 2.0f;
 }
