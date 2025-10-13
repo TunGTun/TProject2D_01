@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CharData : MyMonoBehaviour
 {
-    [SerializeField] protected float gravityScale = 3f;
+    [SerializeField] protected float gravityScale = 2.5f;
     public float GravityScale => gravityScale;
 
     [SerializeField] protected float bufferWindow = 0.2f;
@@ -24,7 +24,7 @@ public class CharData : MyMonoBehaviour
     public float MoveSpeed => moveSpeed;
 
     [Header("Jump")]
-    [SerializeField] protected float jumpForce = 12f;
+    [SerializeField] protected float jumpForce = 13f;
     public float JumpForce => jumpForce;
 
     public int JumpCount { get; set; } = 0;

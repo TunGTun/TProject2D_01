@@ -4,7 +4,7 @@ public class SkillGizmo : BaseChar
 {
     void OnDrawGizmosSelected()
     {
-        // Tâm hitbox
+        // Tï¿½m hitbox
         Vector2 hitboxCenter1 = this.charCtrl.PointCtrl.AttackPointFront.position;
         float hitboxRadius1 = SCharStaticData.AttackRange / 4f;
 

@@ -77,7 +77,7 @@ public class CharDamageReceiver : MyMonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy1"))
         {
             this.OnDamageReceived(1, collision.transform);
         }

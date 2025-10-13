@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class FallState : ICharState<CharBaseState>
 {
     public string Name => StateName.FALL_STATE;

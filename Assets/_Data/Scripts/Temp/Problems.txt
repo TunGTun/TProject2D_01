@@ -46,4 +46,4 @@ OK		Khi status state machine chay cac state machine khac phai dung lai
 
 OK		Nhan vat dinh vao tuong
 
-		Di chuyển, nhảy, attack
+OK		Di chuyển, nhảy, attack, Outline

@@ -21,7 +21,9 @@ public class EnvironmentChecker : BaseChar
     {
         if (groundCheckPoint != null) return;
         groundCheckPoint = this.transform.Find("GroundCheckPoint");
-        groundCheckSize = new Vector2(this.charCtrl.CharBodyCollider.size.x, 0.1f);
+        groundCheckPoint.localPosition = new Vector2(0, -0.55f); 
+        // groundCheckSize = new Vector2(this.charCtrl.CharBodyCollider.size.x - 0.3f, 0.05f);
+        groundCheckSize = new Vector2(0.01f, 0.05f);
         groundLayer = LayerMask.GetMask("Ground");
         Debug.LogWarning(transform.name + ": LoadCharCtrl", gameObject);
     }
