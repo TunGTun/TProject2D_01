@@ -8,7 +8,7 @@ public class DeadState : ICharState<CharBaseState>
 
     public void OnEnter(CharBaseState context)
     {
-        InputManager.Instance.SetCanControl(false);
+        context.CharCtrl.RigidBody2D.linearVelocity = Vector2.zero;
 
         context.CharCtrl.RigidBody2D.gravityScale = 0;
 
@@ -17,8 +17,6 @@ public class DeadState : ICharState<CharBaseState>
 
     public void OnExit(CharBaseState context)
     {
-        InputManager.Instance.SetCanControl(true);
-
         context.CharCtrl.RigidBody2D.gravityScale = context.CharCtrl.CharData.GravityScale;
     }
 

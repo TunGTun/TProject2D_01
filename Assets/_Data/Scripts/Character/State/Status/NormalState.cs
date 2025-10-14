@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NormalState : ICharState<CharBaseState>
 {
-    public string Name => "";
+    public string Name => StateName.IDLE_STATE;
 
     public FSMType FSMType => FSMType.Default;
 
