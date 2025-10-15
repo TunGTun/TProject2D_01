@@ -51,6 +51,9 @@ public class CharStateCtrl : BaseChar
 
     private void Update()
     {
+        if (InputManager.Instance.JumpInputDown)
+            InputBuffer.AddInput(StateName.DOUBLE_JUMP_STATE);
+        
         if (InputManager.Instance.DashInput)
             InputBuffer.AddInput(StateName.DASH_STATE);
 
