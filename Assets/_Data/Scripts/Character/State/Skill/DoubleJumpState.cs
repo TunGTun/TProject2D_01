@@ -16,9 +16,18 @@ public class DoubleJumpState : ICharState<CharBaseState>
                 context.CharCtrl.CharStateCtrl.SkillState.idleSkill);
             return;
         }
+        
+        if (!context.CharCtrl.CharStateCtrl.canDoubleJump)
+        {
+            context.CharCtrl.CharStateCtrl.SkillState.ChangeState(
+                context.CharCtrl.CharStateCtrl.SkillState.idleSkill);
+            return;
+        }
+        
+        context.CharCtrl.CharStateCtrl.canDoubleJump = false;
 
         context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x, 0);
-        context.CharCtrl.RigidBody2D.AddForce(Vector2.up * context.CharCtrl.CharData.JumpForce, ForceMode2D.Impulse);
+        context.CharCtrl.RigidBody2D.AddForce(Vector2.up * context.CharCtrl.CharData.DoubleJumpForce, ForceMode2D.Impulse);
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
     }

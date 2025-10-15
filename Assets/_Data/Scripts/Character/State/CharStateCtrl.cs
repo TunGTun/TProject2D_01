@@ -1,6 +1,7 @@
 ﻿using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using FixedUpdate = UnityEngine.PlayerLoop.FixedUpdate;
 
 public class CharStateCtrl : BaseChar
 {
@@ -21,8 +22,16 @@ public class CharStateCtrl : BaseChar
     [SerializeField] protected SkillLock skillLock;
     public SkillLock SkillLock => skillLock;
 
+    public VelocityHandle VelocityHandle { get; private set; }
+    protected Vector2 targetVelocity;
+    protected bool hasSetter = false;
+    protected int currentPriority = 0;
+    
     public InputBuffer InputBuffer { get; private set; } //Mới chỉ hoạt động cho attack và dash trong SkillState
-
+    
+    public bool canDoubleJump = true;
+    public bool canDash = true;
+    
     protected override void Start()
     {
         base.Start();
@@ -31,6 +40,8 @@ public class CharStateCtrl : BaseChar
 
     protected virtual void Init()
     {
+        VelocityHandle = new VelocityHandle(this.charCtrl.RigidBody2D);
+        
         this.horizontalState.ChangeState(this.horizontalState.idleX);
         this.verticalState.ChangeState(this.verticalState.idleGround);
         this.skillState.ChangeState(this.skillState.idleSkill);
@@ -52,6 +63,11 @@ public class CharStateCtrl : BaseChar
         //        + this.horizontalState.StateMachine.CurrentState);
 
         //Debug.Log(this.charCtrl.RigidBody2D.linearVelocityY);
+    }
+
+    private void FixedUpdate()
+    {
+        this.VelocityHandle.Apply();
     }
 
     protected override void LoadComponents()
@@ -119,5 +135,11 @@ public class CharStateCtrl : BaseChar
     {
         if (InputManager.Instance.MoveInput == 1) this.transform.parent.localScale = new Vector3(1, 1, 1);
         if (InputManager.Instance.MoveInput == -1) this.transform.parent.localScale = new Vector3(-1, 1, 1);
+    }
+    
+    public void ResetSkill()
+    {
+        if(!canDoubleJump) canDoubleJump = true;
+        if(!canDash) canDash = true;
     }
 }

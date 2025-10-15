@@ -8,7 +8,7 @@ public class CharIdleXState : ICharState<CharBaseState>
 
     public void OnEnter(CharBaseState context)
     {
-        context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(0f, context.CharCtrl.RigidBody2D.linearVelocity.y);
+        context.CharCtrl.CharStateCtrl.VelocityHandle.RequestX(0f, 10);
         //Debug.Log("CharIdleXState Enter");
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();

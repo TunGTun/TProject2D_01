@@ -9,8 +9,7 @@ public class IdleGroundState : ICharState<CharBaseState>
     public void OnEnter(CharBaseState context)
     {
         context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(0f, 0f);
-
-        //Debug.Log("IdleGroundState Enter");
+        
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
     }
 
@@ -31,6 +30,8 @@ public class IdleGroundState : ICharState<CharBaseState>
         {
             context.CharCtrl.CharStateCtrl.VerticalState.ChangeState(context.CharCtrl.CharStateCtrl.VerticalState.fall);
         }
+
+        context.CharCtrl.CharStateCtrl.ResetSkill();
     }
 
     public void OnPhysicUpdate(CharBaseState context)

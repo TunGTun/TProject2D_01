@@ -6,14 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="685debdf-6f98-4218-945b-af3600150674" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TProject2D_01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TProject2D_01/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Anim/Boss/Minotaur/MinotaurAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Anim/Boss/Minotaur/MinotaurAnimator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/SCharStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/SCharStaticData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Spawner/VoidRiftSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Spawner/VoidRiftSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/ShaderGraph/PixelOutline.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/ShaderGraph/PixelOutline.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/ShaderGraph/PixelOutlineLitShader.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/ShaderGraph/PixelOutlineLitShader.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/CharData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/CharData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/CharStateCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/CharStateCtrl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Horizontal/CharIdleXState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Horizontal/CharIdleXState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Horizontal/CharRunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Horizontal/CharRunState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DashState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DashState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DoubleJumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DoubleJumpState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/IdleGroundState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/IdleGroundState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Temp/Problems.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Temp/Problems.txt.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scene/West_Scene_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene/West_Scene_1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +134,9 @@
       <workItem from="1760277469014" duration="4178000" />
       <workItem from="1760324423599" duration="6158000" />
       <workItem from="1760351238023" duration="503000" />
+      <workItem from="1760446788369" duration="8527000" />
+      <workItem from="1760500659117" duration="1556000" />
+      <workItem from="1760522264101" duration="3927000" />
     </task>
     <servers />
   </component>
