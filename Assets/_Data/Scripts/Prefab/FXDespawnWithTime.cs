@@ -5,7 +5,7 @@ public class FXDespawnWithTime : AAutoDespawnWithTime
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.DespawnTime = 1f;
+        this.despawnTime = 1f;
     }
 
     protected override void Despawn()

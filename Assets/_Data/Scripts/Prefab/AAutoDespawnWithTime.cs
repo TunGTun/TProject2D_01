@@ -1,13 +1,15 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class AAutoDespawnWithTime : MyMonoBehaviour
 {
-    [SerializeField] protected float DespawnTime = 0f;
+    [SerializeField] protected float despawnTime = 0f;
     private float timer = 0f;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         timer = 0f;
     }
 
@@ -15,7 +17,7 @@ public abstract class AAutoDespawnWithTime : MyMonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= this.DespawnTime)
+        if (timer >= this.despawnTime)
         {
             this.Despawn();
         }

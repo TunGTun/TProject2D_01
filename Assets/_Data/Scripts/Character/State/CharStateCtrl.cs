@@ -51,8 +51,11 @@ public class CharStateCtrl : BaseChar
 
     private void Update()
     {
-        if (InputManager.Instance.JumpInputDown)
+        if (InputManager.Instance.JumpInputDown && !this.charCtrl.EnvironmentChecker.IsGrounded)
+        {
+            Debug.Log("DoubleJump");
             InputBuffer.AddInput(StateName.DOUBLE_JUMP_STATE);
+        }
         
         if (InputManager.Instance.DashInput)
             InputBuffer.AddInput(StateName.DASH_STATE);
@@ -60,12 +63,12 @@ public class CharStateCtrl : BaseChar
         if (InputManager.Instance.AttackInput)
             InputBuffer.AddInput(StateName.ATTACK_ONE_STATE);
 
-        //Debug.Log(this.statusState.StateMachine.CurrentState + " / "
-        //        + this.skillState.StateMachine.CurrentState + " / "
-        //        + this.verticalState.StateMachine.CurrentState + " / "
-        //        + this.horizontalState.StateMachine.CurrentState);
+        // Debug.Log(this.statusState.StateMachine.CurrentState + " / "
+        //         + this.skillState.StateMachine.CurrentState + " / "
+        //         + this.verticalState.StateMachine.CurrentState + " / "
+        //         + this.horizontalState.StateMachine.CurrentState);
 
-        //Debug.Log(this.charCtrl.RigidBody2D.linearVelocityY);
+        // Debug.Log(this.charCtrl.RigidBody2D.linearVelocityY);
     }
 
     private void FixedUpdate()

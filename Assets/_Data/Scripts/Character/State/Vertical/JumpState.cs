@@ -6,25 +6,8 @@ public class JumpState : ICharState<CharBaseState>
 
     public FSMType FSMType => FSMType.Vertical;
 
-    //protected int jumpCount = 0;
-
     public void OnEnter(CharBaseState context)
     {
-        //Debug.Log("JumpState Enter");
-        //this.jumpCount++;
-        //if (this.jumpCount > context.CharCtrl.CharData.MaxJump) return;
-
-        //if (context.CharCtrl.CharData.JumpCount >= SCharStaticData.MaxJump)
-        //    return;
-
-        //if (context.CharCtrl.CharData.JumpCount >= 1)
-        //{
-        //    if (!context.CharCtrl.CharStateCtrl.SkillLock.IsUnlocked(ESkill.DoubleJump))
-        //        return;
-        //}
-
-        //context.CharCtrl.CharData.JumpCount++;
-
         context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x, 0);
         context.CharCtrl.RigidBody2D.AddForce(Vector2.up * context.CharCtrl.CharData.JumpForce, ForceMode2D.Impulse);
 
@@ -36,7 +19,7 @@ public class JumpState : ICharState<CharBaseState>
 
     public void OnExit(CharBaseState context)
     {
-        //Debug.Log("JumpState Exit");
+        
     }
 
     public void OnFrameUpdate(CharBaseState context)
@@ -44,11 +27,13 @@ public class JumpState : ICharState<CharBaseState>
         if (InputManager.Instance.JumpInputUp)
         {
             if (context.CharCtrl.RigidBody2D.linearVelocityY < 0f) return;
+            if (context.CharCtrl.CharStateCtrl.SkillState.StateMachine.CurrentState == context.CharCtrl.CharStateCtrl.SkillState.doubleJump) return;
+            Debug.Log("JumpEnd");
             context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x,
                                                                 context.CharCtrl.RigidBody2D.linearVelocity.y / 4f);
         }
 
-        if (context.CharCtrl.RigidBody2D.linearVelocityY <= 0)
+        if (context.CharCtrl.RigidBody2D.linearVelocityY <= 0f)
         {
             context.CharCtrl.CharStateCtrl.VerticalState.ChangeState(context.CharCtrl.CharStateCtrl.VerticalState.fall);
         }
@@ -58,10 +43,4 @@ public class JumpState : ICharState<CharBaseState>
     {
 
     }
-
-    //public virtual void ResetJumpCount(CharBaseState context)
-    //{
-    //    if (context.CharCtrl.CharStateCtrl.VerticalState.StateMachine.CurrentState != context.CharCtrl.CharStateCtrl.VerticalState.idleGround) return;
-    //    jumpCount = 0;
-    //}
 }

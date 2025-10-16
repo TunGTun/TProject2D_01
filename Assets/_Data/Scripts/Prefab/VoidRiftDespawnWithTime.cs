@@ -5,7 +5,7 @@ public class VoidRiftDespawnWithTime : AAutoDespawnWithTime
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.DespawnTime = SCharStaticData.RiftDespawnTime;
+        this.despawnTime = SCharStaticData.RiftDespawnTime;
     }
 
     protected override void Despawn()
