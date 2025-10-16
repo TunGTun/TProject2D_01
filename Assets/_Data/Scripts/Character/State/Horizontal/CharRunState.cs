@@ -29,7 +29,8 @@ public class CharRunState : ICharState<CharBaseState>
 
     public void OnPhysicUpdate(CharBaseState context)
     {
-        context.CharCtrl.CharStateCtrl.FlipX();
+        if (context.CharCtrl.CharStateCtrl.SkillState.StateMachine.CurrentState != context.CharCtrl.CharStateCtrl.SkillState.attack)
+            context.CharCtrl.CharStateCtrl.FlipX();
 
         float moveInput = InputManager.Instance.MoveInput;
         float moveSpeed = context.CharCtrl.CharData.MoveSpeed;

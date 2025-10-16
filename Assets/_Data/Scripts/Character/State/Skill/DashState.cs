@@ -43,9 +43,13 @@ public class DashState : ICharState<CharBaseState>
         
         context.CharCtrl.CharStateCtrl.VelocityHandle.Request(0f, 0f, 100);
 
-        // context.CharCtrl.CharStateCtrl.FlipX();
+        context.CharCtrl.CharStateCtrl.FlipX();
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
+        
+        Vector3 spawnPos = context.CharCtrl.CharBodyCollider.bounds.center - new Vector3(0, context.CharCtrl.CharBodyCollider.bounds.extents.y, 0);
+        Quaternion spawnRot = Mathf.Approximately(context.CharCtrl.transform.localScale.x, 1) ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+        FXSpawner.Instance.Spawn(FXSpawner.Instance.DASH_AIR, spawnPos, spawnRot);
     }
 
     public void OnExit(CharBaseState context)

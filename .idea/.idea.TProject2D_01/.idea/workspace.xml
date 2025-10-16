@@ -5,9 +5,78 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="685debdf-6f98-4218-945b-af3600150674" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/CharStateCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/CharStateCtrl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/IdleSkillState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/IdleSkillState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/StateName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/StateName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TProject2D_01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TProject2D_01/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_001_Problems.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_001_Problems.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/Mecha-stone Golem 0.1/PNG sheet/Character_sheet.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/Mecha-stone Golem 0.1/PNG sheet/Character_sheet.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/464.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/464.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/465.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/465.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/466.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/466.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/467.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/467.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/474.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/474.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/475.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/475.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/476.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/476.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/477.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/477.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/484.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/484.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/485.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/485.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/486.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/486.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/487.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 10/487.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/62.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/62.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/63.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/63.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/64.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/64.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/65.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/65.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/69.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/69.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/70.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/70.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/71.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/71.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/72.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/72.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/76.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/76.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/77.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/77.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/78.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/78.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/79.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 2/79.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/113.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/113.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/114.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/114.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/115.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/115.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/116.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/116.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/123.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/123.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/124.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/124.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/125.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/125.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/126.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/126.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/133.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/133.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/134.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/134.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/135.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/135.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/136.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 3/136.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/273.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/273.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/274.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/274.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/275.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/275.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/276.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/276.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/283.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/283.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/284.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/284.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/285.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/285.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/286.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/286.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/293.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/293.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/294.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/294.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/295.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/295.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/296.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 6/296.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/426.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/426.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/427.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/427.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/428.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/428.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/429.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/429.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/436.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/436.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/437.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/437.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/438.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/438.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/439.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/439.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/446.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/446.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/447.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/447.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/448.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/448.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/449.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Asset/VFX/Part 9/449.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Horizontal/CharIdleXState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Horizontal/CharIdleXState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Horizontal/CharRunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Horizontal/CharRunState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DashState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DashState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DoubleJumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DoubleJumpState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/JumpState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Enemy/Dummy/DummyDamageReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Enemy/Dummy/DummyDamageReceiver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/AutoDespawnWithTime.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/AAutoDespawnWithTime.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/AutoDespawnWithTime.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/AAutoDespawnWithTime.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scene/West_Scene_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene/West_Scene_1.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +90,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/Combat/ABossDamageReceiver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/Combat/ADamageReceiver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/Enemy/Dummy/DummyAnimCtrl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/UnityProject/TProject2D_01/Assets/_Data/Scripts/Prefab/AutoDespawnWithTime.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/Spawner/FXSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@87d5294b44e1/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/34acedee88484f038744f9417e7254f12f200/05/9266cb03/RaycastHit2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0d49742031a45e5b07072b052aa140831800/f4/bb5be7a4/GUIUtility.cs" root0="FORCE_HIGHLIGHTING" />
@@ -128,7 +199,10 @@
       <workItem from="1760351238023" duration="503000" />
       <workItem from="1760446788369" duration="8527000" />
       <workItem from="1760500659117" duration="1556000" />
-      <workItem from="1760522264101" duration="4290000" />
+      <workItem from="1760522264101" duration="5422000" />
+      <workItem from="1760531876875" duration="9629000" />
+      <workItem from="1760587867029" duration="1241000" />
+      <workItem from="1760590601006" duration="1392000" />
     </task>
     <servers />
   </component>
@@ -142,6 +216,17 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

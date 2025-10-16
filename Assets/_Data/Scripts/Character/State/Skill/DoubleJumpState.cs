@@ -6,6 +6,8 @@ public class DoubleJumpState : ICharState<CharBaseState>
 
     public FSMType FSMType => FSMType.Skill;
 
+    private Transform fx;
+
     //protected int jumpCount = 0;
 
     public void OnEnter(CharBaseState context)
@@ -30,6 +32,10 @@ public class DoubleJumpState : ICharState<CharBaseState>
         context.CharCtrl.RigidBody2D.AddForce(Vector2.up * context.CharCtrl.CharData.DoubleJumpForce, ForceMode2D.Impulse);
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
+
+        Vector3 spawnPos = context.CharCtrl.AnimationCtrl.transform.position;
+        Quaternion spawnRot = Mathf.Approximately(context.CharCtrl.transform.localScale.x, 1) ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+        fx = FXSpawner.Instance.Spawn(FXSpawner.Instance.DOUBLE_JUMP, spawnPos, spawnRot);
     }
 
     public void OnExit(CharBaseState context)
@@ -43,6 +49,9 @@ public class DoubleJumpState : ICharState<CharBaseState>
         {
             context.CharCtrl.CharStateCtrl.SkillState.ChangeState(context.CharCtrl.CharStateCtrl.SkillState.idleSkill);
         }
+        
+        fx.position = context.CharCtrl.AnimationCtrl.transform.position;
+        fx.rotation = Mathf.Approximately(context.CharCtrl.transform.localScale.x, 1) ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
     }
 
     public void OnPhysicUpdate(CharBaseState context)

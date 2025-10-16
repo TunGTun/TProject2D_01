@@ -22,7 +22,6 @@ public class CharIdleXState : ICharState<CharBaseState>
 
     public void OnFrameUpdate(CharBaseState context)
     {
-
         if (InputManager.Instance.MoveInput != 0)
         {
             context.CharCtrl.CharStateCtrl.HorizontalState.ChangeState(context.CharCtrl.CharStateCtrl.HorizontalState.run);

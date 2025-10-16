@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 
-public class AutoDespawnWithTime : MonoBehaviour
+public abstract class AAutoDespawnWithTime : MyMonoBehaviour
 {
+    [SerializeField] protected float DespawnTime = 0f;
     private float timer = 0f;
 
     private void OnEnable()
@@ -14,14 +15,11 @@ public class AutoDespawnWithTime : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= SCharStaticData.RiftDespawnTime)
+        if (timer >= this.DespawnTime)
         {
             this.Despawn();
         }
     }
 
-    protected virtual void Despawn()
-    {
-        VoidRiftSpawner.Instance.Despawn(VoidRiftSpawner.Instance.CurrentRift);
-    }
+    protected abstract void Despawn();
 }
