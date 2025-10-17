@@ -6,22 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="685debdf-6f98-4218-945b-af3600150674" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TProject2D_01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TProject2D_01/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Anim/Effect/FX/HitEffectAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Anim/Effect/FX/HitEffectAnimator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/Base/BaseBossEnvironmentChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/Base/BaseBossEnvironmentChecker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/BossMinotaurCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/BossMinotaurCtrl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/BossMinotaurEnvironmentChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/BossMinotaurEnvironmentChecker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/Skill/BossMinotaurSkillFour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/Skill/BossMinotaurSkillFour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/CharStateCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/CharStateCtrl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DoubleJumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DoubleJumpState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/IdleGroundState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/IdleGroundState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/JumpState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/OrtherScripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/OrtherScripts/DontDestroyOnLoad.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/OrtherScripts/GameManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/OrtherScripts/DontDestroyOnLoad.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Spawner/VoidRiftSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Spawner/VoidRiftSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Tileset/Dungeon_2/Dungeon_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Tileset/Dungeon_2/Dungeon_2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scene/West_Scene_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene/West_Scene_1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scene/West_Scene_6.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene/West_Scene_6.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +137,7 @@
       <workItem from="1760587867029" duration="1241000" />
       <workItem from="1760590601006" duration="3403000" />
       <workItem from="1760608488601" duration="7991000" />
-      <workItem from="1760663817602" duration="9529000" />
+      <workItem from="1760663817602" duration="10686000" />
     </task>
     <servers />
   </component>
