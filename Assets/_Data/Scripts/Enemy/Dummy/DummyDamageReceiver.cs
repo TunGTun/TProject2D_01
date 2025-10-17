@@ -5,8 +5,7 @@ public class DummyDamageReceiver : ADamageReceiver
     [Header("DummyDamageReceiver")]
 
     [SerializeField] protected DummyCtrl dummyCtrl;
-    
-    [Header("Flash Effect")]
+    [SerializeField] protected Collider2D damageReceiverCollider;
     //Tam
     [SerializeField] protected Material originalMat;
     [SerializeField] protected Material hitMat;
@@ -19,6 +18,7 @@ public class DummyDamageReceiver : ADamageReceiver
     {
         base.LoadComponents();
         this.LoadDummyCtrl();
+        this.LoadDamageReceiverCollider();
         
         originalMat = this.dummyCtrl.DummyAnimCtrl.SpriteRenderer.material;
     }
@@ -30,6 +30,13 @@ public class DummyDamageReceiver : ADamageReceiver
         Debug.LogWarning(transform.name + ": LoadDummyCtrl", gameObject);
     }
     
+    protected virtual void LoadDamageReceiverCollider()
+    {
+        if (damageReceiverCollider != null) return;
+        damageReceiverCollider = GetComponent<Collider2D>();
+        Debug.LogWarning(transform.name + ": LoadDamageReceiverCollider", gameObject);
+    }
+    
     private void Update()
     {
         this.HandleFlash();
@@ -38,6 +45,7 @@ public class DummyDamageReceiver : ADamageReceiver
     public override void OnDamageReceived(int damage)
     {
         this.Flash();
+        this.HitEffect();
     }
 
     protected virtual void Flash()
@@ -57,4 +65,12 @@ public class DummyDamageReceiver : ADamageReceiver
             isFlashing = false;
         }
     }
+
+    protected virtual void HitEffect()
+    {
+        Vector3 spawnPos = this.damageReceiverCollider.bounds.center;
+        Quaternion spawnRot = Quaternion.identity;
+        FXSpawner.Instance.Spawn(FXSpawner.Instance.HIT, spawnPos, spawnRot);
+    }
+    
 }

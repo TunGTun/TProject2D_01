@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BaseBossEnvironmentChecker : MyMonoBehaviour
 {
@@ -11,8 +12,8 @@ public class BaseBossEnvironmentChecker : MyMonoBehaviour
     [SerializeField] protected bool isBlocked; //Dap vao tuong
     public bool IsBlocked => isBlocked;
 
-    [SerializeField] protected BoxCollider2D wallBoxCollider;
-    public BoxCollider2D WallBoxCollider => wallBoxCollider;
+    [SerializeField] protected Collider2D wallCollider;
+    public Collider2D WallCollider => wallCollider;
 
     [SerializeField] protected float wallCheckDistance = 0.2f;
     [SerializeField] protected LayerMask wallLayer;
@@ -50,8 +51,8 @@ public class BaseBossEnvironmentChecker : MyMonoBehaviour
 
         if (hit.collider == null) return;
          
-        if (hit.collider == this.wallBoxCollider) return;
+        if (hit.collider == this.wallCollider) return;
 
-        this.wallBoxCollider = hit.collider as BoxCollider2D;
+        this.wallCollider = hit.collider;
     }
 }

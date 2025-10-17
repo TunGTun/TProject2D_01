@@ -35,7 +35,12 @@ public class VoidRiftSpawner : ABaseSpawner
 
     public Transform Spawn(string prefabName, Vector3 spawnPos, Quaternion rotation, bool isHorizontal)
     {
-        Collider2D envCollider = Physics2D.OverlapPoint(spawnPos, environmentMask);
+        //Kiem tra spawn ben trong hay ben ngoai
+        bool isSpawnInCol = false;
+        Collider2D envCol = Physics2D.OverlapPoint(spawnPos, environmentMask);
+        if (envCol != null) isSpawnInCol = true;
+        
+        Collider2D envCollider = Physics2D.OverlapCircle(spawnPos, SCharStaticData.RiftOffset, environmentMask);
         if (envCollider == null)
             return this.Spawn(prefabName, spawnPos, rotation);
 
@@ -71,9 +76,15 @@ public class VoidRiftSpawner : ABaseSpawner
         }
 
         if (isHorizontal)
-            spawnPos.x = edgePoint.x - Mathf.Sign(spawnPos.x - edgePoint.x) * SCharStaticData.RiftOffset;
+            if (isSpawnInCol) 
+                spawnPos.x = edgePoint.x - Mathf.Sign(spawnPos.x - edgePoint.x) * SCharStaticData.RiftOffset;
+            else
+                spawnPos.x = edgePoint.x + Mathf.Sign(spawnPos.x - edgePoint.x) * SCharStaticData.RiftOffset;
         else
-            spawnPos.y = edgePoint.y - Mathf.Sign(spawnPos.y - edgePoint.y) * SCharStaticData.RiftOffset;
+            if (isSpawnInCol)
+                spawnPos.y = edgePoint.y - Mathf.Sign(spawnPos.y - edgePoint.y) * SCharStaticData.RiftOffset;
+            else
+                spawnPos.y = edgePoint.y + Mathf.Sign(spawnPos.y - edgePoint.y) * SCharStaticData.RiftOffset;
 
         return this.Spawn(prefabName, spawnPos, rotation);
     }

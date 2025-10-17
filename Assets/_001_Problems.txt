@@ -1,4 +1,4 @@
-﻿		Tạo cooldown cho skill
+﻿Del		Tạo cooldown cho skill
 
 OK		Attack combo (2 kiểu)
 
@@ -10,7 +10,7 @@ OK		Đang skill không flip
 
 		Modify
 
-Del		CharControl chưa dùng
+		CharControl chưa dùng
 
 		Thời gian các attack state phụ thuộc vào thời gian chạy animation
 
@@ -18,15 +18,17 @@ OK		Delay dame
 
 OK		Skill lock
 
-		Cân bằng các chỉ số nhân vật
+OK		Cân bằng các chỉ số nhân vật
 
-		Modify attack (1 và 2)
+OK		Modify attack (1 và 2)
 
 OK		Lỗi tạo void rift khác hướng attack
 
 OK		Jump 2
 
-		Reset jump 2, dash khi tren mat dat hoac sau khi dich chuyen
+OK		Reset jump 2, dash khi tren mat dat hoac sau khi dich chuyen
+		
+OK		BufferInput cho doublejump
 
 		Giu data nhan vat khi chuyen scene
 
@@ -47,3 +49,7 @@ OK		Khi status state machine chay cac state machine khac phai dung lai
 OK		Nhan vat dinh vao tuong
 
 OK		Di chuyển, nhảy, attack, Outline
+
+OK      Animation cho jump, ground dash, air dash, doublejump, hit
+        
+        Fix double jump khi đang jump (velocity bị set lại khi end jump)
