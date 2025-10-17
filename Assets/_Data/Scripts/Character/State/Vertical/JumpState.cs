@@ -28,7 +28,6 @@ public class JumpState : ICharState<CharBaseState>
         {
             if (context.CharCtrl.RigidBody2D.linearVelocityY < 0f) return;
             if (context.CharCtrl.CharStateCtrl.SkillState.StateMachine.CurrentState == context.CharCtrl.CharStateCtrl.SkillState.doubleJump) return;
-            Debug.Log("JumpEnd");
             context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x,
                                                                 context.CharCtrl.RigidBody2D.linearVelocity.y / 4f);
         }

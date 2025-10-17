@@ -23,7 +23,6 @@ public class IdleGroundState : ICharState<CharBaseState>
         //context.CharCtrl.CharStateCtrl.VerticalState.jump.ResetJumpCount(context);
         if (InputManager.Instance.JumpInputDown && context.CharCtrl.EnvironmentChecker.IsGrounded)
         {
-            Debug.Log("Jump");
             context.CharCtrl.CharStateCtrl.VerticalState.ChangeState(context.CharCtrl.CharStateCtrl.VerticalState.jump);
         }
 
