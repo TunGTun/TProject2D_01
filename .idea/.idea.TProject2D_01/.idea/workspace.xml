@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="685debdf-6f98-4218-945b-af3600150674" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TProject2D_01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TProject2D_01/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scene/West_Scene_6.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene/West_Scene_6.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +137,7 @@
       <workItem from="1760587867029" duration="1241000" />
       <workItem from="1760590601006" duration="3403000" />
       <workItem from="1760608488601" duration="7991000" />
-      <workItem from="1760663817602" duration="10686000" />
+      <workItem from="1760663817602" duration="11285000" />
     </task>
     <servers />
   </component>
