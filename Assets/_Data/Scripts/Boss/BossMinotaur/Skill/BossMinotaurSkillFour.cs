@@ -7,7 +7,7 @@ public class BossMinotaurSkillFour : IBossSkill
     private float delayTimer;
     private float cancelDelay = 2f;
 
-    protected BoxCollider2D ceilingBoxCol;
+    protected Collider2D ceilingCol;
 
     public void Execute(BaseBossCtrl bossCtrl)
     {
@@ -48,7 +48,7 @@ public class BossMinotaurSkillFour : IBossSkill
                 bossCtrl.BossRigidbody2D.linearVelocity = Vector2.zero;
                 bossCtrl.BossRigidbody2D.AddForce(knockback, ForceMode2D.Impulse);
 
-                ceilingBoxCol = (bossCtrl.BaseBossEnvironmentChecker as BossMinotaurEnvironmentChecker).CeilingBoxCol;
+                ceilingCol = (bossCtrl.BaseBossEnvironmentChecker as BossMinotaurEnvironmentChecker).CeilingCol;
                 this.SpawnRocks(bossCtrl);
 
                 break;
@@ -78,7 +78,7 @@ public class BossMinotaurSkillFour : IBossSkill
 
     private void SpawnRocks(BaseBossCtrl bossCtrl)
     {
-        Bounds ceilingBounds = this.ceilingBoxCol.bounds;
+        Bounds ceilingBounds = this.ceilingCol.bounds;
 
         Transform rockPrefab = BossMinotaurSkillSpawner.Instance.GetPrefabByName(BossMinotaurSkillSpawner.Instance.Rock).transform;
 

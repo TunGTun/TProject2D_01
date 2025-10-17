@@ -10,12 +10,6 @@ public class DashState : ICharState<CharBaseState>
 
     public void OnEnter(CharBaseState context)
     {
-        //if (Time.time < context.CharCtrl.CharData.DashCoolDown)
-        //{
-        //    context.CharCtrl.CharStateCtrl.HorizontalState.ChangeState(context.CharCtrl.CharStateCtrl.HorizontalState.idleX);
-        //    return;
-        //}
-
         Transform voidRift = VoidRiftSpawner.Instance.CurrentRift;
 
         if (voidRift != null)
@@ -23,6 +17,7 @@ public class DashState : ICharState<CharBaseState>
             context.CharCtrl.transform.position = voidRift.position;
             VoidRiftSpawner.Instance.Despawn(voidRift);
             context.CharCtrl.CharStateCtrl.SkillState.ChangeState(context.CharCtrl.CharStateCtrl.SkillState.idleSkill);
+            context.CharCtrl.CharStateCtrl.ResetSkill();
             return;
         }
 
@@ -32,20 +27,33 @@ public class DashState : ICharState<CharBaseState>
                 context.CharCtrl.CharStateCtrl.SkillState.idleSkill);
             return;
         }
+        
+        if (!context.CharCtrl.CharStateCtrl.canDash)
+        {
+            context.CharCtrl.CharStateCtrl.SkillState.ChangeState(
+                context.CharCtrl.CharStateCtrl.SkillState.idleSkill);
+            return;
+        }
 
         timer = context.CharCtrl.CharData.DashDuration;
+        
+        context.CharCtrl.CharStateCtrl.canDash = false;
 
         context.CharCtrl.RigidBody2D.gravityScale = 0;
+        
+        context.CharCtrl.CharStateCtrl.VelocityHandle.Request(0f, 0f, 100);
 
         context.CharCtrl.CharStateCtrl.FlipX();
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
+        
+        Vector3 spawnPos = context.CharCtrl.CharBodyCollider.bounds.center - new Vector3(0, context.CharCtrl.CharBodyCollider.bounds.extents.y, 0);
+        Quaternion spawnRot = Mathf.Approximately(context.CharCtrl.transform.localScale.x, 1) ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+        FXSpawner.Instance.Spawn(FXSpawner.Instance.DASH_AIR, spawnPos, spawnRot);
     }
 
     public void OnExit(CharBaseState context)
     {
-        context.CharCtrl.RigidBody2D.linearVelocity = Vector2.zero;
-
         context.CharCtrl.RigidBody2D.gravityScale = context.CharCtrl.CharData.GravityScale;
 
         //context.CharCtrl.NextDashTime = Time.time + context.CharCtrl.CharData.DashCooldown;
@@ -56,15 +64,16 @@ public class DashState : ICharState<CharBaseState>
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
+            context.CharCtrl.CharStateCtrl.VelocityHandle.Request(0f, 0f, 100);
             context.CharCtrl.CharStateCtrl.SkillState.ChangeState(context.CharCtrl.CharStateCtrl.SkillState.idleSkill);
         }
     }
 
     public void OnPhysicUpdate(CharBaseState context)
     {
-        //float direction = context.transform.parent.localScale.x;
-        //if (InputManager.Instance.MoveInput != 0) direction = InputManager.Instance.MoveInput;
-        context.CharCtrl.RigidBody2D.linearVelocity
-            = new Vector2(context.transform.parent.localScale.x * context.CharCtrl.CharData.DashForce, 0f);
+        float dir = context.transform.parent.localScale.x;
+        float dashSpeed = context.CharCtrl.CharData.DashForce;
+
+        context.CharCtrl.CharStateCtrl.VelocityHandle.RequestX(dir * dashSpeed, 100);
     }
 }

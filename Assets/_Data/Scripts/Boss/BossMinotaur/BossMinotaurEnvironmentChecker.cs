@@ -3,8 +3,8 @@ using UnityEngine;
 public class BossMinotaurEnvironmentChecker : BaseBossEnvironmentChecker
 {
     [Header("CeilingCheck")]
-    [SerializeField] protected BoxCollider2D ceilingBoxCol;
-    public BoxCollider2D CeilingBoxCol => ceilingBoxCol;
+    [SerializeField] protected Collider2D ceilingCol;
+    public Collider2D CeilingCol => ceilingCol;
 
     [SerializeField] protected LayerMask ceilingLayer;
 
@@ -34,20 +34,20 @@ public class BossMinotaurEnvironmentChecker : BaseBossEnvironmentChecker
 
         Vector2 origin = new Vector2(bounds.center.x, bounds.max.y);
 
-        float rayLength = this.wallBoxCollider.size.y * this.wallBoxCollider.transform.localScale.y;
+        // float rayLength = this.wallBoxCollider.size.y * this.wallBoxCollider.transform.localScale.y;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.up, rayLength, ceilingLayer);
+        // RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.up, rayLength, ceilingLayer);
+        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.up, 100f, ceilingLayer);
 
         if (hit.collider == null) return;
 
-        if (hit.collider == this.ceilingBoxCol) return;
+        if (hit.collider == this.ceilingCol) return;
 
-        this.ceilingBoxCol = hit.collider as BoxCollider2D;
+        this.ceilingCol = hit.collider;
     }
 
     private void OnDrawGizmosSelected()
     {
-
         float direction = Mathf.Sign(this.BaseBossCtrl.transform.localScale.x);
         Vector2 origin = (Vector2)this.baseBossCtrl.CapsuleCollider2D.bounds.center
                          + new Vector2(direction * this.baseBossCtrl.CapsuleCollider2D.bounds.extents.x, 0);
@@ -55,7 +55,7 @@ public class BossMinotaurEnvironmentChecker : BaseBossEnvironmentChecker
         Gizmos.color = isBlocked ? Color.red : Color.green;
         Gizmos.DrawLine(origin, origin + Vector2.right * direction * wallCheckDistance);
 
-        if (wallBoxCollider == null) return;
+        if (wallCollider == null) return;
 
         if (this.baseBossCtrl == null || this.baseBossCtrl.CapsuleCollider2D == null) return;
 
@@ -63,9 +63,9 @@ public class BossMinotaurEnvironmentChecker : BaseBossEnvironmentChecker
 
         Vector2 origin1 = new Vector2(bounds.center.x, bounds.max.y);
 
-        float rayLength = this.wallBoxCollider.size.y * this.wallBoxCollider.transform.localScale.y;
+        // float rayLength = this.wallCollider.size.y * this.wallCollider.transform.localScale.y;
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(origin1, origin1 + Vector2.up * rayLength);
+        Gizmos.DrawLine(origin1, origin1 + Vector2.up * 50f);
     }
 }
