@@ -58,12 +58,10 @@ public class AttackTwoState : ICharState<CharBaseState>
 
     private void DoDamage(CharBaseState context)
     {
-        Transform attackPoint = context.CharCtrl.PointCtrl.AttackPointFront;
+        Vector2 hitboxCenter = context.CharCtrl.PointCtrl.AttackTwoPoint.transform.position;
+        Vector2 hitboxSize = new Vector2(SCharStaticData.AttackTwoSize[0], SCharStaticData.AttackTwoSize[1]);
 
-        Vector2 hitboxCenter = attackPoint.position;
-        float hitboxRadius = SCharStaticData.AttackRange / 4f;
-
-        Collider2D[] hits = Physics2D.OverlapCircleAll(hitboxCenter, hitboxRadius, enemyMask);
+        Collider2D[] hits = Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, 0, enemyMask);
         foreach (Collider2D hit in hits)
         {
             var receiver = hit.GetComponent<ADamageReceiver>();

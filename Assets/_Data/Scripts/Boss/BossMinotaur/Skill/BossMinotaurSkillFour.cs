@@ -34,6 +34,8 @@ public class BossMinotaurSkillFour : IBossSkill
 
                 phase = EBossMinotaurState.Run;
 
+                bossCtrl.ABossDamageReceiver.gameObject.layer = LayerMask.NameToLayer("Enemy2");
+
                 break;
 
             case EBossMinotaurState.Run:
@@ -51,6 +53,8 @@ public class BossMinotaurSkillFour : IBossSkill
                 ceilingCol = (bossCtrl.BaseBossEnvironmentChecker as BossMinotaurEnvironmentChecker).CeilingCol;
                 this.SpawnRocks(bossCtrl);
 
+                bossCtrl.ABossDamageReceiver.gameObject.layer = LayerMask.NameToLayer("Enemy");
+                
                 break;
 
             case EBossMinotaurState.FallingRock:
@@ -69,6 +73,7 @@ public class BossMinotaurSkillFour : IBossSkill
     {
         phase = EBossMinotaurState.None;
         bossCtrl.BaseBossControl.IsExecutingSkill = false;
+        bossCtrl.gameObject.layer = LayerMask.NameToLayer("Enemy");
     }
 
     public bool IsRunning()
@@ -80,7 +85,7 @@ public class BossMinotaurSkillFour : IBossSkill
     {
         Bounds ceilingBounds = this.ceilingCol.bounds;
 
-        Transform rockPrefab = BossMinotaurSkillSpawner.Instance.GetPrefabByName(BossMinotaurSkillSpawner.Instance.Rock).transform;
+        Transform rockPrefab = BossMinotaurSkillSpawner.Instance.GetPrefabByName(BossMinotaurSkillSpawner.Instance.FallingRock).transform;
 
         float minX = ceilingBounds.min.x + rockPrefab.localScale.x / 2 + 1f;
         float maxX = ceilingBounds.max.x - rockPrefab.localScale.x / 2 - 1f;
@@ -91,13 +96,13 @@ public class BossMinotaurSkillFour : IBossSkill
         float randX1 = Random.Range(minX, midX - rockPrefab.localScale.x / 2 - 1f);
         Vector3 pos1 = new Vector3(randX1, spawnY, 0);
         BossMinotaurSkillSpawner.Instance.Spawn(
-            BossMinotaurSkillSpawner.Instance.Rock, pos1, Quaternion.identity
+            BossMinotaurSkillSpawner.Instance.FallingRock, pos1, Quaternion.identity
         );
 
         float randX2 = Random.Range(midX, maxX + rockPrefab.localScale.x / 2 + 1f);
         Vector3 pos2 = new Vector3(randX2, spawnY, 0);
         BossMinotaurSkillSpawner.Instance.Spawn(
-            BossMinotaurSkillSpawner.Instance.Rock, pos2, Quaternion.identity
+            BossMinotaurSkillSpawner.Instance.FallingRock, pos2, Quaternion.identity
         );
     }
 }

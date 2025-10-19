@@ -2,25 +2,54 @@ using UnityEngine;
 
 public class SkillGizmo : BaseChar
 {
-    void OnDrawGizmosSelected()
+    [Header("Gizmo Settings")]
+    public bool showAttackOne = true;
+    public bool showAttackTwo = true;
+    public Color attackOneColor = Color.red;
+    public Color attackUpColor = Color.green;
+    public Color attackDownColor = Color.blue;
+    public Color attackTwoColor = Color.yellow;
+
+    private void OnDrawGizmos()
     {
-        // T�m hitbox
-        Vector2 hitboxCenter1 = this.charCtrl.PointCtrl.AttackPointFront.position;
-        float hitboxRadius1 = SCharStaticData.AttackRange / 4f;
+        if (CharCtrl == null || CharCtrl.PointCtrl == null)
+            return;
 
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(hitboxCenter1, hitboxRadius1);
+        // --- Attack One ---
+        if (showAttackOne)
+        {
+            // Front
+            DrawHitbox(CharCtrl.PointCtrl.AttackPointFront.transform.position,
+                new Vector2(SCharStaticData.AttackOneSize[0], SCharStaticData.AttackOneSize[1]),
+                0f, attackOneColor);
 
-        Vector2 hitboxCenter2 = this.charCtrl.PointCtrl.AttackPointUp.position;
-        float hitboxRadius2 = SCharStaticData.AttackRange / 4f;
+            // Up
+            float upAngle = Mathf.Approximately(CharCtrl.transform.localScale.x, -1) ? -90f : 90f;
+            DrawHitbox(CharCtrl.PointCtrl.AttackPointUp.transform.position,
+                new Vector2(SCharStaticData.AttackOneSize[0], SCharStaticData.AttackOneSize[1]),
+                upAngle, attackUpColor);
 
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(hitboxCenter2, hitboxRadius2);
+            // Down
+            float downAngle = Mathf.Approximately(CharCtrl.transform.localScale.x, -1) ? 90f : -90f;
+            DrawHitbox(CharCtrl.PointCtrl.AttackPointDown.transform.position,
+                new Vector2(SCharStaticData.AttackOneSize[0], SCharStaticData.AttackOneSize[1]),
+                downAngle, attackDownColor);
+        }
 
-        Vector2 hitboxCenter3 = this.charCtrl.PointCtrl.AttackPointDown.position;
-        float hitboxRadius3 = SCharStaticData.AttackRange / 4f;
+        // --- Attack Two ---
+        if (showAttackTwo)
+        {
+            DrawHitbox(CharCtrl.PointCtrl.AttackTwoPoint.transform.position,
+                new Vector2(SCharStaticData.AttackTwoSize[0], SCharStaticData.AttackTwoSize[1]),
+                0f, attackTwoColor);
+        }
+    }
 
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(hitboxCenter3, hitboxRadius3);
+    private void DrawHitbox(Vector2 center, Vector2 size, float angle, Color color)
+    {
+        Gizmos.color = color;
+        Matrix4x4 rotationMatrix = Matrix4x4.TRS(center, Quaternion.Euler(0, 0, angle), Vector3.one);
+        Gizmos.matrix = rotationMatrix;
+        Gizmos.DrawWireCube(Vector3.zero, size);
     }
 }

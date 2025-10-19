@@ -6,22 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="685debdf-6f98-4218-945b-af3600150674" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TProject2D_01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TProject2D_01/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Anim/Effect/FX/HitEffectAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Anim/Effect/FX/HitEffectAnimator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/Base/BaseBossEnvironmentChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/Base/BaseBossEnvironmentChecker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/BossMinotaurCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/BossMinotaurCtrl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/BossMinotaurEnvironmentChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/BossMinotaurEnvironmentChecker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/Base/BaseBossCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/Base/BaseBossCtrl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/BossMinotaurControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/BossMinotaurControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/Combat/BossMinotaurBossDamageReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/Combat/BossMinotaurBossDamageReceiver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/SBossMinotaurStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/SBossMinotaurStaticData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/Skill/BossMinotaurSkillFour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/Skill/BossMinotaurSkillFour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/CharStateCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/CharStateCtrl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/Skill/BossMinotaurSkillThree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/Skill/BossMinotaurSkillThree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/State/BossMinotaurRunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/State/BossMinotaurRunState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/CharData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/CharData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/Combat/SkillGizmo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/Combat/SkillGizmo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/Point/PointCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/Point/PointCtrl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/Point/SPointName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/Point/SPointName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/SCharStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/SCharStaticData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/SkillLock/SkillLock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/SkillLock/SkillLock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/AttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/AttackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/AttackTwoState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/AttackTwoState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DoubleJumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DoubleJumpState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/IdleGroundState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/IdleGroundState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/JumpState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/OrtherScripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/OrtherScripts/DontDestroyOnLoad.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/OrtherScripts/GameManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/OrtherScripts/DontDestroyOnLoad.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Spawner/VoidRiftSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Spawner/VoidRiftSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Data/Tileset/Dungeon_2/Dungeon_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Tileset/Dungeon_2/Dungeon_2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scene/West_Scene_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene/West_Scene_1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/HitBoxDespawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/HitBoxDespawn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/RockCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/FallingRock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/RockCtrl.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/FallingRock.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/SeismicWaveCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/SeismicWaveCol.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/SeismicWaveCtrl.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/SeismicWaveCol.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Spawner/BossMinotaurSkillSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Spawner/BossMinotaurSkillSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scene/West_Scene_5.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene/West_Scene_5.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scene/West_Scene_6.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene/West_Scene_6.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +45,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/Combat/ADamageReceiver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/Enemy/Dummy/DummyAnimCtrl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/OrtherScripts/MergeCompositeToPolygon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/BossMinotaurSkillDespawnWithTime.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/Spawner/FXSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@87d5294b44e1/Runtime/2D/Light2DManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@87d5294b44e1/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
@@ -76,7 +86,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.48f1-x86_64\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.48f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\UnityProject\TProject2D_01 -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\UnityProject\TProject2D_01" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -88,7 +98,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.48f1-x86_64\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.48f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\UnityProject\TProject2D_01 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\UnityProject\TProject2D_01" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -152,7 +162,12 @@
       <workItem from="1760587867029" duration="1241000" />
       <workItem from="1760590601006" duration="3403000" />
       <workItem from="1760608488601" duration="7991000" />
-      <workItem from="1760663817602" duration="9529000" />
+      <workItem from="1760663817602" duration="11285000" />
+      <workItem from="1760690635491" duration="6181000" />
+      <workItem from="1760720949552" duration="4538000" />
+      <workItem from="1760760867840" duration="7154000" />
+      <workItem from="1760791241027" duration="7288000" />
+      <workItem from="1760849600304" duration="6352000" />
     </task>
     <servers />
   </component>
