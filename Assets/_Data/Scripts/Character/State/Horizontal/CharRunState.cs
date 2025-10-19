@@ -35,6 +35,6 @@ public class CharRunState : ICharState<CharBaseState>
         float moveInput = InputManager.Instance.MoveInput;
         float moveSpeed = context.CharCtrl.CharData.MoveSpeed;
 
-        context.CharCtrl.CharStateCtrl.VelocityHandle.RequestX(moveInput * moveSpeed, 10);
+        context.CharCtrl.CharStateCtrl.VelocityHandle.RequestX(moveInput * moveSpeed, SVelocityPriority.Horizontal);
     }
 }

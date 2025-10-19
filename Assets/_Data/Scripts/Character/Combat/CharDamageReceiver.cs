@@ -127,7 +127,8 @@ public class CharDamageReceiver : MyMonoBehaviour
 
         Vector2 knockback = new Vector2(direction.x * knockbackForce, knockbackUpForce);
 
-        this.charCtrl.RigidBody2D.linearVelocity = Vector2.zero;
+        // this.charCtrl.RigidBody2D.linearVelocity = Vector2.zero;
+        this.charCtrl.CharStateCtrl.VelocityHandle.Request(0f, 0f, SVelocityPriority.State);
         this.charCtrl.RigidBody2D.AddForce(knockback, ForceMode2D.Impulse);
     }
 

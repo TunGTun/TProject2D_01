@@ -41,15 +41,8 @@ public class VelocityHandle
 
     public void Request(float velX, float velY, int priority = 0)
     {
-        if (!hasSetX || !hasSetY || priority >= priorityX)
-        {
-            targetVelX = velX;
-            targetVelY = velY;
-            priorityX = priority;
-            priorityY = priority;
-            hasSetX = true;
-            hasSetY = true;
-        }
+        RequestX(velX, priority);
+        RequestY(velY, priority);
     }
 
     public void Apply()

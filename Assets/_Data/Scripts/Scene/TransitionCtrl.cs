@@ -12,14 +12,15 @@ public class TransitionCtrl : MyMonoBehaviour
     [SerializeField] protected Transform playerSpawnPoint;
     public Transform PlayerSpawnPoint => playerSpawnPoint;
 
-    [SerializeField] protected Transform playerTransform;
-    public Transform PlayerTransform => playerTransform;
+    [SerializeField] protected CharCtrl charCtrl;
+    public CharCtrl CharCtrl => charCtrl;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadPlayerSpawnPoint();
-        this.LoadPlayerTransform();
+        this.LoadCharCtrl();
+        this.SetPlayerTransform();
     }
 
     protected virtual void LoadPlayerSpawnPoint()
@@ -28,19 +29,23 @@ public class TransitionCtrl : MyMonoBehaviour
         this.playerSpawnPoint = GameObject.Find("PlayerSpawnPoint").GetComponent<Transform>();
         Debug.Log(transform.name + ": LoadPlayerSpawnPoint", gameObject);
     }
-
-    protected virtual void LoadPlayerTransform()
+    
+    protected virtual void LoadCharCtrl()
     {
-        if (playerTransform != null) return;
-        this.playerTransform = GameObject.Find("Character").transform;
+        if (charCtrl != null) return;
+        this.charCtrl = GameObject.Find("Character").GetComponent<CharCtrl>();
+        Debug.Log(transform.name + ": LoadCharCtrl", gameObject);
+    }
+
+    protected virtual void SetPlayerTransform()
+    {
         if (this.nextScene != MySceneManager.Instance.LastScene) return;
-        this.playerTransform.position = this.playerSpawnPoint.position;
-        Debug.Log(transform.name + ": LoadPlayerTransform", gameObject);
+        this.charCtrl.transform.position = this.playerSpawnPoint.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collision.CompareTag("Player"))
         {
             MySceneManager.Instance.LastScene = this.currentScene;
             MySceneManager.Instance.LoadScene(this.nextScene.ToString());

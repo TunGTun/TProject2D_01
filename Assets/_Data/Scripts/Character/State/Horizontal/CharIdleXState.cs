@@ -8,7 +8,7 @@ public class CharIdleXState : ICharState<CharBaseState>
 
     public void OnEnter(CharBaseState context)
     {
-        context.CharCtrl.CharStateCtrl.VelocityHandle.RequestX(0f, 10);
+        context.CharCtrl.CharStateCtrl.VelocityHandle.RequestX(0f, SVelocityPriority.Horizontal);
         //Debug.Log("CharIdleXState Enter");
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
@@ -31,5 +31,6 @@ public class CharIdleXState : ICharState<CharBaseState>
 
     public void OnPhysicUpdate(CharBaseState context)
     {
+        context.CharCtrl.CharStateCtrl.VelocityHandle.RequestX(0f, SVelocityPriority.Horizontal);
     }
 }
