@@ -36,6 +36,9 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
 
     [SerializeField] protected BaseBossEnvironmentChecker baseBossEnvironmentChecker;
     public BaseBossEnvironmentChecker BaseBossEnvironmentChecker => baseBossEnvironmentChecker;
+    
+    [SerializeField] protected ABossDamageReceiver aBossDamageReceiver;
+    public ABossDamageReceiver ABossDamageReceiver => aBossDamageReceiver;
 
     protected override void LoadComponents()
     {
@@ -50,6 +53,7 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
         this.LoadBaseBossControl();
         this.LoadBaseBossPointCtrl();
         this.LoadBaseBossEnvironmentChecker();
+        this.LoadABossDamageReceiver();
     }
 
     protected virtual void LoadRigidbody2D()
@@ -121,6 +125,13 @@ public abstract class BaseBossCtrl : MyMonoBehaviour
         if (baseBossEnvironmentChecker != null) return;
         baseBossEnvironmentChecker = GetComponentInChildren<BaseBossEnvironmentChecker>();
         Debug.LogWarning(transform.name + ": LoadBaseBossEnvironmentChecker", gameObject);
+    }
+    
+    protected virtual void LoadABossDamageReceiver()
+    {
+        if (aBossDamageReceiver != null) return;
+        aBossDamageReceiver = GetComponentInChildren<ABossDamageReceiver>();
+        Debug.LogWarning(transform.name + ": LoadABossDamageReceiver", gameObject);
     }
 
     //protected abstract string GetObjectTypeString();

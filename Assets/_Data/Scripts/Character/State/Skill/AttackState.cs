@@ -33,18 +33,14 @@ public class AttackState : ICharState<CharBaseState>
 
         if (upAttack)
         {
-            if (context.CharCtrl.transform.localScale.x == -1)
-                context.CharCtrl.AnimationCtrl.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
-            else
-                context.CharCtrl.AnimationCtrl.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+            context.CharCtrl.AnimationCtrl.transform.rotation = Mathf.Approximately(context.CharCtrl.transform.localScale.x, -1) ? 
+                Quaternion.Euler(0f, 0f, -90f) : Quaternion.Euler(0f, 0f, 90f);
         }
 
         if (downAttack)
         {
-            if (context.CharCtrl.transform.localScale.x == -1)
-                context.CharCtrl.AnimationCtrl.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-            else
-                context.CharCtrl.AnimationCtrl.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
+            context.CharCtrl.AnimationCtrl.transform.rotation = Mathf.Approximately(context.CharCtrl.transform.localScale.x, -1) ? 
+                Quaternion.Euler(0f, 0f, 90f) : Quaternion.Euler(0f, 0f, -90f);
         }
 
         context.CharCtrl.CharStateCtrl.FlipX();
@@ -95,22 +91,24 @@ public class AttackState : ICharState<CharBaseState>
 
     private void DoDamage(CharBaseState context)
     {
-        Transform attackPoint = context.CharCtrl.PointCtrl.AttackPointFront;
-
+        Vector2 hitboxCenter = context.CharCtrl.PointCtrl.AttackPointFront.transform.position;
+        Vector2 hitboxSize = new Vector2(SCharStaticData.AttackOneSize[0], SCharStaticData.AttackOneSize[1]);
+        float hitboxAngle = 0f;
+        
         if (upAttack)
         {
-            attackPoint = context.CharCtrl.PointCtrl.AttackPointUp;
+            hitboxCenter = context.CharCtrl.PointCtrl.AttackPointUp.transform.position;
+            hitboxAngle = Mathf.Approximately(context.CharCtrl.transform.localScale.x, -1) ? -90f : 90f;
         }
 
         if (downAttack)
         {
-            attackPoint = context.CharCtrl.PointCtrl.AttackPointDown;
+            hitboxCenter = context.CharCtrl.PointCtrl.AttackPointDown.transform.position;
+            hitboxAngle = Mathf.Approximately(context.CharCtrl.transform.localScale.x, -1) ? 90f : -90f;
         }
-
-        Vector2 hitboxCenter = attackPoint.position;
-        float hitboxRadius = SCharStaticData.AttackRange / 4f;
-
-        Collider2D[] hits = Physics2D.OverlapCircleAll(hitboxCenter, hitboxRadius, enemyMask);
+        
+        Collider2D[] hits = Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, hitboxAngle, enemyMask);
+        
         foreach (Collider2D hit in hits)
         {
             var receiver = hit.GetComponent<ADamageReceiver>();

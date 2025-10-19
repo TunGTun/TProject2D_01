@@ -40,7 +40,8 @@ public class DoubleJumpState : ICharState<CharBaseState>
 
     public void OnExit(CharBaseState context)
     {
-        FXSpawner.Instance.Despawn(fx);
+        if (fx != null)
+            FXSpawner.Instance.Despawn(fx);
     }
 
     public void OnFrameUpdate(CharBaseState context)
