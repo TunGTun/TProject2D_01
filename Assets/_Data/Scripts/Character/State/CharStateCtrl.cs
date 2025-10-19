@@ -52,10 +52,7 @@ public class CharStateCtrl : BaseChar
     private void Update()
     {
         if (InputManager.Instance.JumpInputDown && !this.charCtrl.EnvironmentChecker.IsGrounded)
-        {
-            Debug.Log("DoubleJump");
             InputBuffer.AddInput(StateName.DOUBLE_JUMP_STATE);
-        }
         
         if (InputManager.Instance.DashInput)
             InputBuffer.AddInput(StateName.DASH_STATE);
