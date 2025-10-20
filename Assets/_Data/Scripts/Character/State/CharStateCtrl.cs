@@ -68,10 +68,10 @@ public class CharStateCtrl : BaseChar
         // Debug.Log(this.charCtrl.RigidBody2D.linearVelocityY);
     }
 
-    private void FixedUpdate()
-    {
-        this.VelocityHandle.Apply();
-    }
+    //private void FixedUpdate()
+    //{
+    //    this.VelocityHandle.Apply();
+    //}
 
     protected override void LoadComponents()
     {

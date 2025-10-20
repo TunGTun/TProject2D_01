@@ -25,6 +25,6 @@ public class BossMinotaurRunState : IBossState<BaseBossState>
     {
         Vector3 direction = new Vector3(boss.BaseBossCtrl.transform.localScale.x, 0f, 0f).normalized;
 
-        boss.BaseBossCtrl.BossRigidbody2D.linearVelocity = direction * SBossMinotaurStaticData.MoveSpeed * 2;
+        boss.BaseBossCtrl.BossRigidbody2D.linearVelocity = direction * SBossMinotaurStaticData.MoveSpeed * 1.5f;
     }
 }

@@ -12,7 +12,7 @@ public class CharData : MyMonoBehaviour
     [SerializeField] protected int maxHP = 5;
     public int MaxHP => maxHP;
 
-    [SerializeField] protected int attackDamage = 5;
+    [SerializeField] protected int attackDamage = 10;
     public int AttackDamage => attackDamage;
 
     [Header("Current Stats")]

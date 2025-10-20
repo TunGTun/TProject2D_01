@@ -32,9 +32,11 @@ public class CharRunState : ICharState<CharBaseState>
         if (context.CharCtrl.CharStateCtrl.SkillState.StateMachine.CurrentState != context.CharCtrl.CharStateCtrl.SkillState.attack)
             context.CharCtrl.CharStateCtrl.FlipX();
 
+        if (context.CharCtrl.CharStateCtrl.SkillState.StateMachine.CurrentState == context.CharCtrl.CharStateCtrl.SkillState.dash) return;
+
         float moveInput = InputManager.Instance.MoveInput;
         float moveSpeed = context.CharCtrl.CharData.MoveSpeed;
 
-        context.CharCtrl.CharStateCtrl.VelocityHandle.RequestX(moveInput * moveSpeed, 10);
+        context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(moveInput * moveSpeed, context.CharCtrl.RigidBody2D.linearVelocity.y);
     }
 }

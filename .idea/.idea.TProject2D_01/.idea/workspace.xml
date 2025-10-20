@@ -6,6 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="685debdf-6f98-4218-945b-af3600150674" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TProject2D_01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TProject2D_01/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/SBossMinotaurStaticData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Boss/BossMinotaur/SBossMinotaurStaticData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/Combat/CharDamageReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/Combat/CharDamageReceiver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/SCharStaticData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/SCharStaticData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/SkillLock/SkillLock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/SkillLock/SkillLock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Horizontal/CharIdleXState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Horizontal/CharIdleXState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Horizontal/CharRunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Horizontal/CharRunState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DashState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DashState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DoubleJumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Skill/DoubleJumpState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Status/DeadState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Status/DeadState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/IdleGroundState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/IdleGroundState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Character/State/Vertical/JumpState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/OrtherScripts/VelocityHandle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/OrtherScripts/VelocityHandle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Scene/MySceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Scene/MySceneManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Scene/PlayerSpawnPoint.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Scene/PlayerSpawnPoint.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Data/Scripts/Scene/TransitionCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Data/Scripts/Scene/TransitionCtrl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scene/West_Scene_5.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene/West_Scene_5.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scene/West_Scene_6.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene/West_Scene_6.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +41,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/Combat/ADamageReceiver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/Enemy/Dummy/DummyAnimCtrl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/OrtherScripts/MergeCompositeToPolygon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/Prefab/BossMinotaurSkillDespawnWithTime.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Data/Scripts/Spawner/FXSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@87d5294b44e1/Runtime/2D/Light2DManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@87d5294b44e1/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
@@ -61,7 +82,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.48f1-x86_64\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.48f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\UnityProject\TProject2D_01 -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\UnityProject\TProject2D_01" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -73,7 +94,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.48f1-x86_64\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.48f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\UnityProject\TProject2D_01 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\UnityProject\TProject2D_01" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -137,7 +158,13 @@
       <workItem from="1760587867029" duration="1241000" />
       <workItem from="1760590601006" duration="3403000" />
       <workItem from="1760608488601" duration="7991000" />
-      <workItem from="1760663817602" duration="10686000" />
+      <workItem from="1760663817602" duration="11285000" />
+      <workItem from="1760690635491" duration="6181000" />
+      <workItem from="1760720949552" duration="4538000" />
+      <workItem from="1760760867840" duration="7154000" />
+      <workItem from="1760791241027" duration="7288000" />
+      <workItem from="1760849600304" duration="6352000" />
+      <workItem from="1760876153501" duration="14562000" />
     </task>
     <servers />
   </component>
