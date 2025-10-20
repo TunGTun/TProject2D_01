@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BossMinotaurSkillSpawner : ABaseSpawner
 {
     private static BossMinotaurSkillSpawner instance;
     public static BossMinotaurSkillSpawner Instance { get => instance; }
 
-    public string SeismicWave = "SeismicWave";
-    public string Rock = "Rock";
+    public  string SeismicWave = "SeismicWave";
+    public string FallingRock = "FallingRock";
     public string AttackOneHitBox = "AttackOneHitBox";
     public string AttackFourHitBox = "AttackFourHitBox";
 

@@ -55,10 +55,7 @@ public class BossMinotaurSkillThree : IBossSkill
     {
         Vector3 spawnPos = (bossCtrl.BaseBossPointCtrl as BossMinotaurPointCtrl).SkillThreeSpawn.transform.position;
 
-        Quaternion rotation = (bossCtrl.transform.localScale.x == 1)
-            ? Quaternion.identity
-            : Quaternion.Euler(0, 180f, 0);
-
-        Transform wave = BossMinotaurSkillSpawner.Instance.Spawn(BossMinotaurSkillSpawner.Instance.SeismicWave, spawnPos, rotation);
+        Transform wave = BossMinotaurSkillSpawner.Instance.Spawn(BossMinotaurSkillSpawner.Instance.SeismicWave, spawnPos, Quaternion.identity);
+        wave.localScale = new Vector3(bossCtrl.transform.localScale.x * 1, 1, 1);
     }
 }

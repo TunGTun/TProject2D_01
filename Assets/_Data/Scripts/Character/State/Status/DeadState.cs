@@ -8,8 +8,8 @@ public class DeadState : ICharState<CharBaseState>
 
     public void OnEnter(CharBaseState context)
     {
-        context.CharCtrl.RigidBody2D.linearVelocity = Vector2.zero;
-
+         context.CharCtrl.RigidBody2D.linearVelocity = Vector2.zero;
+        
         context.CharCtrl.RigidBody2D.gravityScale = 0;
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();

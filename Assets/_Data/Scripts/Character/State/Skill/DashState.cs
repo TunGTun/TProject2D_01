@@ -41,7 +41,7 @@ public class DashState : ICharState<CharBaseState>
 
         context.CharCtrl.RigidBody2D.gravityScale = 0;
         
-        context.CharCtrl.CharStateCtrl.VelocityHandle.Request(0f, 0f, 100);
+        context.CharCtrl.RigidBody2D.linearVelocity = Vector2.zero;
 
         context.CharCtrl.CharStateCtrl.FlipX();
 
@@ -64,7 +64,7 @@ public class DashState : ICharState<CharBaseState>
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            context.CharCtrl.CharStateCtrl.VelocityHandle.Request(0f, 0f, 100);
+            context.CharCtrl.RigidBody2D.linearVelocity = Vector2.zero;
             context.CharCtrl.CharStateCtrl.SkillState.ChangeState(context.CharCtrl.CharStateCtrl.SkillState.idleSkill);
         }
     }
@@ -74,6 +74,6 @@ public class DashState : ICharState<CharBaseState>
         float dir = context.transform.parent.localScale.x;
         float dashSpeed = context.CharCtrl.CharData.DashForce;
 
-        context.CharCtrl.CharStateCtrl.VelocityHandle.RequestX(dir * dashSpeed, 100);
+        context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(dir * dashSpeed, context.CharCtrl.RigidBody2D.linearVelocity.y);
     }
 }
