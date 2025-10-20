@@ -8,8 +8,7 @@ public class JumpState : ICharState<CharBaseState>
 
     public void OnEnter(CharBaseState context)
     {
-        // context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x, 0);
-        context.CharCtrl.CharStateCtrl.VelocityHandle.RequestY(0f, SVelocityPriority.Vertical);
+         context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x, 0);
         context.CharCtrl.RigidBody2D.AddForce(Vector2.up * context.CharCtrl.CharData.JumpForce, ForceMode2D.Impulse);
         // context.CharCtrl.CharStateCtrl.VelocityHandle.LockYOneFrame();
 
@@ -30,9 +29,8 @@ public class JumpState : ICharState<CharBaseState>
         {
             if (context.CharCtrl.RigidBody2D.linearVelocityY < 0f) return;
             if (context.CharCtrl.CharStateCtrl.SkillState.StateMachine.CurrentState == context.CharCtrl.CharStateCtrl.SkillState.doubleJump) return;
-            // context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x,
-            //                                                     context.CharCtrl.RigidBody2D.linearVelocity.y / 4f);
-            context.CharCtrl.CharStateCtrl.VelocityHandle.RequestY(context.CharCtrl.RigidBody2D.linearVelocity.y / 4f, SVelocityPriority.Vertical);
+            context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x,
+                                                                context.CharCtrl.RigidBody2D.linearVelocity.y / 4f);
         }
 
         if (context.CharCtrl.RigidBody2D.linearVelocityY <= 0f)
