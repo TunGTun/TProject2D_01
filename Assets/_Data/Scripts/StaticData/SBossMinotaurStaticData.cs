@@ -1,6 +1,6 @@
 public static class SBossMinotaurStaticData
 {
-    public static readonly int MaxHP = 400;
+    public static readonly int MaxHP = 300;
     public static readonly float MoveSpeed = 3f;
     // public static readonly int Damage;
     //
