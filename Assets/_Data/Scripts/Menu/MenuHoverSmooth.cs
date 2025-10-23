@@ -13,21 +13,26 @@ public class MenuHoverSmooth : MyMonoBehaviour, IPointerEnterHandler, IPointerEx
 	public float duration = 0.12f;
 
 	private Coroutine running;
+
 	protected override void LoadComponents()
 	{
 		base.LoadComponents();
 		this.LoadTextMesh();
 	}
-	void Start()
-	{
-		if (text != null) text.color = normalColor;
-	}
+
+    protected override void Start()
+    {
+        base.Start();
+        if (text != null) text.color = normalColor;
+    }
+
 	protected virtual void LoadTextMesh()
 	{
 		if (text != null) return;
 		text = GetComponentInChildren<TextMeshProUGUI>();
 		Debug.LogWarning(transform.name + ": LoadTextMesh", gameObject);
 	}
+
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		StartColorTween(hoverColor);
