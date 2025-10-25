@@ -3,7 +3,7 @@
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
 
-public class CharCtrl : MyMonoBehaviour
+public class CharCtrl : MySingleton<CharCtrl> //Singleton chi dung ben ngoai character
 {
     [Header("CharacterCtrl")]
 

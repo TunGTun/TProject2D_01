@@ -31,6 +31,7 @@ public static class SCharStaticData
     public static readonly float HealDuration = 2f;
     public static readonly int HealHP = 2;
     public static readonly int HealMP = 100;
+    public static readonly int AttackNeedToHeal = 10; // HealMP chia het cho AttackNeedToHeal
 
     //VoidRify
     public static readonly float RiftOffset = 0.5f;
