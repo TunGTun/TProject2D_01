@@ -1,10 +1,6 @@
 public static class SCharStaticData
 {
-    //Jump
-    public static readonly int MaxJump = 2;
-
     //Attack
-    // public static readonly float AttackRange = 2f;
         //Hitbox
         public static readonly float[] AttackOneSize = {2.2f, 0.8f};
         public static readonly float[] AttackOnePos = {1.4f, -0.08f - 0.06f};
@@ -14,5 +10,5 @@ public static class SCharStaticData
     //VoidRify
     public static readonly float RiftOffset = 0.5f;
     public static readonly float RiftExtraOffset = 3.0f;
-    public static readonly float RiftDespawnTime = 5.0f;
+    public static readonly float RiftDespawnTime = 3.0f;
 }
