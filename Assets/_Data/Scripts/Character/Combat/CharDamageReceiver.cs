@@ -13,7 +13,6 @@ public class CharDamageReceiver : MyMonoBehaviour
     public CapsuleCollider2D HitBoxCollider => hitBoxCollider;
 
     //[Header("Flash Effect")]
-    ////Tam
     //[SerializeField] protected Material originalMat;
     //[SerializeField] protected Material hitMat;
 
@@ -54,22 +53,6 @@ public class CharDamageReceiver : MyMonoBehaviour
         Debug.Log(transform.name + ": LoadHitBoxCollider", gameObject);
     }
 
-    public virtual void AddHP(int hp)
-    {
-        this.charCtrl.CharData.CurrentHP += hp;
-        if (this.charCtrl.CharData.CurrentHP > this.charCtrl.CharData.MaxHP)
-            this.charCtrl.CharData.CurrentHP = this.charCtrl.CharData.MaxHP;
-    }
-
-    public virtual void SubHP(int damage)
-    {
-        this.charCtrl.CharData.CurrentHP -= damage;
-        if (this.charCtrl.CharData.CurrentHP < 0)
-            this.charCtrl.CharData.CurrentHP = 0;
-    }
-
-    //public abstract void OnDamageReceived(int damage);
-
     private void Update()
     {
         //this.HandleFlash();
@@ -90,7 +73,7 @@ public class CharDamageReceiver : MyMonoBehaviour
 
     protected virtual void OnDamageReceived(int damage, Transform attacker)
     {
-        this.SubHP(damage);
+        this.charCtrl.CharData.SubHP(damage);
         //this.Flash();
         if (this.CheckIsDead())
         {
@@ -121,8 +104,6 @@ public class CharDamageReceiver : MyMonoBehaviour
 
     public virtual void Knockback(Transform attacker)
     {
-        //if (rb == null || attacker == null) return;
-
         Vector2 direction = (transform.position - attacker.position).normalized;
 
         Vector2 knockback = new Vector2(direction.x * knockbackForce, knockbackUpForce);
@@ -133,7 +114,7 @@ public class CharDamageReceiver : MyMonoBehaviour
 
     protected virtual bool CheckIsDead()
     {
-        if (this.charCtrl.CharData.CurrentHP <= 0)
+        if (this.charCtrl.CharData.CurrentHP == 0)
             this.isDead = true;
         else
             this.isDead = false;

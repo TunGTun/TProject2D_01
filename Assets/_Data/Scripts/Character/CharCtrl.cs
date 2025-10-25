@@ -48,7 +48,7 @@ public class CharCtrl : MyMonoBehaviour
     {
         if (rigidBody2D != null) return;
         this.rigidBody2D = GetComponent<Rigidbody2D>();
-        this.rigidBody2D.gravityScale = this.charData.GravityScale;
+        this.rigidBody2D.gravityScale = SCharStaticData.GravityScale;
         this.rigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         Debug.Log(transform.name + ": LoadRigidbody2D", gameObject);
