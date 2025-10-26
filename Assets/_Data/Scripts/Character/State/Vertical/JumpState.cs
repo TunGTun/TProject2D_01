@@ -9,7 +9,7 @@ public class JumpState : ICharState<CharBaseState>
     public void OnEnter(CharBaseState context)
     {
          context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x, 0);
-        context.CharCtrl.RigidBody2D.AddForce(Vector2.up * context.CharCtrl.CharData.JumpForce, ForceMode2D.Impulse);
+        context.CharCtrl.RigidBody2D.AddForce(Vector2.up * SCharStaticData.JumpForce, ForceMode2D.Impulse);
         // context.CharCtrl.CharStateCtrl.VelocityHandle.LockYOneFrame();
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();

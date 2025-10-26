@@ -26,9 +26,9 @@ public class AttackState : ICharState<CharBaseState>
             context.CharCtrl.CharStateCtrl.VerticalState.StateMachine.CurrentState
             != context.CharCtrl.CharStateCtrl.VerticalState.idleGround;
 
-        timer = context.CharCtrl.CharData.AttackDuration;
+        timer = SCharStaticData.AttackDuration;
 
-        damageDelayTimer = context.CharCtrl.CharData.AttackDuration / 3f;
+        damageDelayTimer = SCharStaticData.AttackDuration / 3f;
         hasDealtDamage = false;
 
         if (upAttack)
@@ -67,7 +67,7 @@ public class AttackState : ICharState<CharBaseState>
             }
         }
 
-        if (!bufferedNext && timer <= context.CharCtrl.CharData.BufferWindow)
+        if (!bufferedNext && timer <= SCharStaticData.BufferWindow)
         {
             if (InputManager.Instance.AttackInput)
             {

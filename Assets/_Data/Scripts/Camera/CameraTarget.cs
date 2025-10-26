@@ -1,4 +1,3 @@
-using Unity.Cinemachine;
 using UnityEngine;
 
 public class CameraTarget : MyMonoBehaviour
@@ -17,7 +16,7 @@ public class CameraTarget : MyMonoBehaviour
     protected virtual void LoadTarget()
     {
         if (target != null) return;
-        this.target = GameObject.FindWithTag("Player").transform;
+        this.target = CharCtrl.Instance.transform;
         Debug.Log(transform.name + ": LoadTarget", gameObject);
     }
 }

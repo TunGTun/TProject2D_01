@@ -46,7 +46,7 @@ public class CharStateCtrl : BaseChar
         this.verticalState.ChangeState(this.verticalState.idleGround);
         this.skillState.ChangeState(this.skillState.idleSkill);
         this.statusState.ChangeState(this.statusState.normal);
-        InputBuffer = new InputBuffer(this.charCtrl.CharData.BufferWindow);
+        InputBuffer = new InputBuffer(SCharStaticData.BufferWindow);
     }
 
     private void Update()

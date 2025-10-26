@@ -12,7 +12,7 @@ public class HurtState : ICharState<CharBaseState>
     {
         //InputManager.Instance.SetCanControl(false);
 
-        timer = context.CharCtrl.CharData.HurtTime;
+        timer = SCharStaticData.HurtTime;
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
     }

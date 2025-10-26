@@ -6,9 +6,10 @@ public class VoidRiftSpawner : ABaseSpawner
     private static VoidRiftSpawner instance;
     public static VoidRiftSpawner Instance { get => instance; }
 
-    public string VoidRift = "VoidRift";
+    [SerializeField] protected string voidRift = "VoidRift";
+    public string VoidRift => voidRift;
 
-    public Transform CurrentRift;
+    public Transform CurrentRift { get; private set; }
 
     [SerializeField] protected LayerMask environmentMask;
 
@@ -26,6 +27,7 @@ public class VoidRiftSpawner : ABaseSpawner
         if (CurrentRift != null)
         {
             this.Despawn(CurrentRift);
+            CharCtrl.Instance.CharData.AddMP(SCharStaticData.HealMP / SCharStaticData.AttackNeedToHeal);
         }
 
         CurrentRift = base.Spawn(prefab, spawnPos, rotation);

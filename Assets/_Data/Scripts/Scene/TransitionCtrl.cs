@@ -12,14 +12,10 @@ public class TransitionCtrl : MyMonoBehaviour
     [SerializeField] protected Transform playerSpawnPoint;
     public Transform PlayerSpawnPoint => playerSpawnPoint;
 
-    [SerializeField] protected CharCtrl charCtrl;
-    public CharCtrl CharCtrl => charCtrl;
-
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadPlayerSpawnPoint();
-        this.LoadCharCtrl();
         this.SetPlayerTransform();
     }
 
@@ -29,18 +25,11 @@ public class TransitionCtrl : MyMonoBehaviour
         this.playerSpawnPoint = GameObject.Find("PlayerSpawnPoint").GetComponent<Transform>();
         Debug.Log(transform.name + ": LoadPlayerSpawnPoint", gameObject);
     }
-    
-    protected virtual void LoadCharCtrl()
-    {
-        if (charCtrl != null) return;
-        this.charCtrl = GameObject.Find("Character").GetComponent<CharCtrl>();
-        Debug.Log(transform.name + ": LoadCharCtrl", gameObject);
-    }
 
     protected virtual void SetPlayerTransform()
     {
         if (this.nextScene != MySceneManager.Instance.LastScene) return;
-        this.charCtrl.transform.position = this.playerSpawnPoint.position;
+        CharCtrl.Instance.transform.position = this.playerSpawnPoint.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

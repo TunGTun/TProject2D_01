@@ -35,7 +35,7 @@ public class DashState : ICharState<CharBaseState>
             return;
         }
 
-        timer = context.CharCtrl.CharData.DashDuration;
+        timer = SCharStaticData.DashDuration;
         
         context.CharCtrl.CharStateCtrl.canDash = false;
 
@@ -54,7 +54,7 @@ public class DashState : ICharState<CharBaseState>
 
     public void OnExit(CharBaseState context)
     {
-        context.CharCtrl.RigidBody2D.gravityScale = context.CharCtrl.CharData.GravityScale;
+        context.CharCtrl.RigidBody2D.gravityScale = SCharStaticData.GravityScale;
 
         //context.CharCtrl.NextDashTime = Time.time + context.CharCtrl.CharData.DashCooldown;
     }
@@ -72,7 +72,7 @@ public class DashState : ICharState<CharBaseState>
     public void OnPhysicUpdate(CharBaseState context)
     {
         float dir = context.transform.parent.localScale.x;
-        float dashSpeed = context.CharCtrl.CharData.DashForce;
+        float dashSpeed = SCharStaticData.DashForce;
 
         context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(dir * dashSpeed, context.CharCtrl.RigidBody2D.linearVelocity.y);
     }

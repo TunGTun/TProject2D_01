@@ -31,7 +31,7 @@ public class MySceneManager : MySingleton<MySceneManager>
     protected virtual IEnumerator SceneTransitionRoutine(string sceneName)
     {
         this.sceneTransitionAnimator.SetTrigger(SSceneTransitionData.ANIMATION_END_TRIGGER);
-        yield return new WaitForSeconds(SSceneTransitionData.DelayEndTime);
+        yield return new WaitForSeconds(SSceneTransitionData.AnimationDuration);
         SceneManager.LoadSceneAsync(sceneName);
         this.sceneTransitionAnimator.SetTrigger(SSceneTransitionData.ANIMATION_START_TRIGGER);
     }

@@ -8,7 +8,7 @@ public class DeadState : ICharState<CharBaseState>
 
     public void OnEnter(CharBaseState context)
     {
-         context.CharCtrl.RigidBody2D.linearVelocity = Vector2.zero;
+        context.CharCtrl.RigidBody2D.linearVelocity = Vector2.zero;
         
         context.CharCtrl.RigidBody2D.gravityScale = 0;
 
@@ -17,7 +17,7 @@ public class DeadState : ICharState<CharBaseState>
 
     public void OnExit(CharBaseState context)
     {
-        context.CharCtrl.RigidBody2D.gravityScale = context.CharCtrl.CharData.GravityScale;
+        context.CharCtrl.RigidBody2D.gravityScale = SCharStaticData.GravityScale;
     }
 
     public void OnFrameUpdate(CharBaseState context)
