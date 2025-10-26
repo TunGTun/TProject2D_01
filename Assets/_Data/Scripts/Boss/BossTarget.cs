@@ -28,6 +28,6 @@ public class BossTarget : MyMonoBehaviour
     {
         if (target != null) return;
         target = CharCtrl.Instance.transform;
-        Debug.LogWarning(transform.name + ": LoadTarget", gameObject);
+        Debug.Log(transform.name + ": LoadTarget", gameObject);
     }
 }

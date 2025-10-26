@@ -16,15 +16,30 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
             Directory.CreateDirectory(rootPath);
     }
 
-    protected override void Start()
-    {
-        base.Start();
-        //this.LoadGame();
-    }
-
+    //Test
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.L)) this.SaveGame();
+        if (Input.GetKeyDown(KeyCode.P)) this.SavePlayer();
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadSceneData loadSceneData = GameObject.Find("LoadSceneData").GetComponent<LoadSceneData>();
+
+            bool bossDefeated = true;
+            if (loadSceneData.Boss != null)
+            {
+                BaseBossCtrl baseBossCtrl = loadSceneData.Boss.GetComponent<BaseBossCtrl>();
+                if (baseBossCtrl.BaseBossState.StateMachine.CurrentState != baseBossCtrl.BaseBossState.dead)
+                    bossDefeated = false;
+            }
+
+            SceneData sceneData = new SceneData
+            {
+                SceneName = MySceneManager.Instance.GetCurrentSceneName(),
+                BossDefeated = bossDefeated,
+            };
+
+            this.SaveScene(MySceneManager.Instance.GetCurrentSceneName(), sceneData);
+        }
     }
 
     public void SetSaveSlot(int slot)
@@ -120,52 +135,4 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
         if (Directory.Exists(path))
             Directory.Delete(path, true);
     }
-
-    //public virtual void SaveGame()
-    //{
-    //    PlayerData saveLoadData = new PlayerData
-    //    {
-    //        SceneName = MySceneManager.Instance.GetCurrentSceneName(),
-    //        Position = CharCtrl.Instance.transform.position
-    //    };
-
-    //    File.WriteAllText(saveLocation, JsonUtility.ToJson(saveLoadData));
-    //}
-
-    //// Chua toi uu
-    //public virtual void CreateNewSave()
-    //{
-    //    PlayerData saveLoadData = new PlayerData
-    //    {
-    //        SceneName = EScene.West_Scene_5.ToString(),
-    //        Position = new Vector3(-8.5f, -1.2f, 0)
-    //    };
-
-    //    File.WriteAllText(saveLocation, JsonUtility.ToJson(saveLoadData));
-    //}
-
-    //public virtual bool HasSavedFile()
-    //{
-    //    return File.Exists(saveLocation);
-    //}
-
-    //public virtual void LoadGame()
-    //{
-    //    if (this.HasSavedFile())
-    //    {
-    //        PlayerData saveLoadData = JsonUtility.FromJson<PlayerData>(File.ReadAllText(saveLocation));
-    //        StartCoroutine(LoadGameRoutine(saveLoadData));
-    //    }
-    //    else
-    //    {
-    //        this.CreateNewSave();
-    //        this.LoadGame();
-    //    }
-    //}
-
-    //public virtual void DeleteSaveData()
-    //{
-    //    if (!this.HasSavedFile()) return;
-    //    File.Delete(saveLocation);
-    //}
 }

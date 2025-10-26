@@ -3,6 +3,7 @@ using UnityEngine;
 public class LoadSceneData : MyMonoBehaviour
 {
     [SerializeField] protected GameObject boss;
+    public GameObject Boss => boss;
 
     protected override void LoadComponents()
     {
@@ -29,7 +30,14 @@ public class LoadSceneData : MyMonoBehaviour
         {
             SceneData sceneData = SaveLoadManager.Instance.LoadScene(MySceneManager.Instance.GetCurrentSceneName());
             if (this.boss != null)
-                this.boss.SetActive(!sceneData.BossDefeated);
+            {
+                if (sceneData.BossDefeated)
+                {
+                    this.boss.SetActive(!sceneData.BossDefeated);
+                    this.boss = null;
+                }
+            }
+
         }
         else
         {
