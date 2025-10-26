@@ -35,4 +35,19 @@ public class MySceneManager : MySingleton<MySceneManager>
         SceneManager.LoadSceneAsync(sceneName);
         this.sceneTransitionAnimator.SetTrigger(SSceneTransitionData.ANIMATION_START_TRIGGER);
     }
+
+    public virtual string GetCurrentSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
+    //public virtual EScene GetCurrentSceneEnum()
+    //{
+    //    string currentName = SceneManager.GetActiveScene().name;
+    //    if (System.Enum.TryParse(currentName, out EScene sceneEnum))
+    //        return sceneEnum;
+
+    //    Debug.LogWarning("Scene name not found in EScene enum: " + currentName);
+    //    return EScene.None; // ho?c giá tr? m?c ??nh b?n mu?n
+    //}
 }
