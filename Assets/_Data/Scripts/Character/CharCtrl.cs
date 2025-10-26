@@ -3,7 +3,7 @@
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
 
-public class CharCtrl : MyMonoBehaviour
+public class CharCtrl : MySingleton<CharCtrl> //Singleton chi dung ben ngoai character
 {
     [Header("CharacterCtrl")]
 
@@ -48,7 +48,7 @@ public class CharCtrl : MyMonoBehaviour
     {
         if (rigidBody2D != null) return;
         this.rigidBody2D = GetComponent<Rigidbody2D>();
-        this.rigidBody2D.gravityScale = this.charData.GravityScale;
+        this.rigidBody2D.gravityScale = SCharStaticData.GravityScale;
         this.rigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         Debug.Log(transform.name + ": LoadRigidbody2D", gameObject);

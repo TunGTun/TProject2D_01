@@ -35,7 +35,7 @@ public class CharRunState : ICharState<CharBaseState>
         if (context.CharCtrl.CharStateCtrl.SkillState.StateMachine.CurrentState == context.CharCtrl.CharStateCtrl.SkillState.dash) return;
 
         float moveInput = InputManager.Instance.MoveInput;
-        float moveSpeed = context.CharCtrl.CharData.MoveSpeed;
+        float moveSpeed = SCharStaticData.MoveSpeed;
 
         context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(moveInput * moveSpeed, context.CharCtrl.RigidBody2D.linearVelocity.y);
     }

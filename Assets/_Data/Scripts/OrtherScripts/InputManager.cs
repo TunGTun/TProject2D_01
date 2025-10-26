@@ -35,6 +35,9 @@ public class InputManager : MySingleton<InputManager>
     [SerializeField] protected bool attackInput;
     public bool AttackInput { get => attackInput; }
 
+    [SerializeField] protected bool healInput;
+    public bool HealInput { get => healInput; }
+
     void Update()
     {
         if (!this.CanControl)
@@ -51,6 +54,7 @@ public class InputManager : MySingleton<InputManager>
         this.CheckDownInput();
         this.CheckUpInput();
         this.CheckAttackClick();
+        this.CheckHealInput();
     }
 
     public void SetCanControl(bool canControl)
@@ -129,4 +133,8 @@ public class InputManager : MySingleton<InputManager>
         this.attackInput = Input.GetMouseButtonDown(0);
     }
 
+    protected virtual void CheckHealInput()
+    {
+        this.healInput = Input.GetKeyDown(KeyCode.F);
+    }
 }

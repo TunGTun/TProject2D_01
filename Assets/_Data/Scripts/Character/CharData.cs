@@ -2,15 +2,12 @@ using UnityEngine;
 
 public class CharData : MyMonoBehaviour
 {
-    [SerializeField] protected float gravityScale = 2.5f;
-    public float GravityScale => gravityScale;
-
-    [SerializeField] protected float bufferWindow = 0.2f;
-    public float BufferWindow => bufferWindow;
-
     [Header("Stats")]
     [SerializeField] protected int maxHP = 5;
     public int MaxHP => maxHP;
+
+    [SerializeField] protected int maxMP = 100;
+    public int MaxMP => maxMP;
 
     [SerializeField] protected int attackDamage = 10;
     public int AttackDamage => attackDamage;
@@ -19,37 +16,8 @@ public class CharData : MyMonoBehaviour
     [SerializeField] protected int currentHP;
     public int CurrentHP { get => currentHP; set => currentHP = value; }
 
-    [Header("Move")]
-    [SerializeField] protected float moveSpeed = 4f;
-    public float MoveSpeed => moveSpeed;
-
-    [Header("Jump")]
-    [SerializeField] protected float jumpForce = 13f;
-    public float JumpForce => jumpForce;
-    
-    [Header("DoubleJump")]
-    [SerializeField] protected float doubleJumpForce = 8f;
-    public float DoubleJumpForce => doubleJumpForce;
-
-    [Header("Attack")]
-
-    [SerializeField] protected float attackDuration = 0.5f;
-    public float AttackDuration => attackDuration;
-
-    [Header("Dash")]
-
-    [SerializeField] protected float dashDuration = 0.1f;
-    public float DashDuration => dashDuration;
-
-    [SerializeField] protected float dashForce = 30f;
-    public float DashForce => dashForce;
-
-    [SerializeField] protected float dashCoolDown = 1f;
-    public float DashCoolDown => dashCoolDown;
-
-    [Header("Combat")]
-    [SerializeField] protected float hurtTime = 0.25f;
-    public float HurtTime => hurtTime;
+    [SerializeField] protected int currentMP;
+    public int CurrentMP { get => currentMP; set => currentMP = value; }
 
     protected override void Start()
     {
@@ -60,5 +28,39 @@ public class CharData : MyMonoBehaviour
     protected virtual void Init()
     {
         this.currentHP = this.maxHP;
+        this.currentMP = this.maxMP;
+    }
+
+    public virtual void AddHP(int hp)
+    {
+        this.currentHP += hp;
+        if (this.currentHP > this.maxHP)
+            this.currentHP = this.maxHP;
+    }
+
+    public virtual void SubHP(int damage)
+    {
+        this.currentHP -= damage;
+        if (this.currentHP < 0)
+            this.currentHP = 0;
+    }
+
+    public virtual void AddMP(int mp)
+    {
+        if (this.currentMP == this.maxMP) return;
+        this.currentMP += mp;
+        if (this.currentMP > this.maxMP) this.currentMP = this.maxMP;
+    }
+
+    public virtual void SubMP(int mp)
+    {
+        this.currentMP -= mp;
+    }
+
+    public virtual bool UseMP(int mp)
+    {
+        if (this.currentMP < mp) return false;
+        this.SubMP(mp);
+        return true;
     }
 }

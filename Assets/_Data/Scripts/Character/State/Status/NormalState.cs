@@ -18,6 +18,15 @@ public class NormalState : ICharState<CharBaseState>
 
     public void OnFrameUpdate(CharBaseState context)
     {
+        if (InputManager.Instance.HealInput)
+        {
+            if (!context.CharCtrl.CharData.UseMP(SCharStaticData.HealMP))
+            {
+                Debug.Log("Khong du nang luong hoi mau");
+                return;
+            }
+            context.CharCtrl.CharStateCtrl.StatusState.ChangeState(context.CharCtrl.CharStateCtrl.StatusState.heal);
+        }
     }
 
     public void OnPhysicUpdate(CharBaseState context)
