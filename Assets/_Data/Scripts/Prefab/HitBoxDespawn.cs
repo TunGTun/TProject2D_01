@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HitBoxDespawn : MyMonoBehaviour
 {
-    private float lifeTime = 0.3f;
+    private float lifeTime = 0.2f;
     private float timer;
 
     protected override void OnEnable()

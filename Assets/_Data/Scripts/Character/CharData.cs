@@ -12,7 +12,7 @@ public class CharData : MyMonoBehaviour
     [SerializeField] protected int maxHP = 5;
     public int MaxHP => maxHP;
 
-    [SerializeField] protected int attackDamage = 5;
+    [SerializeField] protected int attackDamage = 10;
     public int AttackDamage => attackDamage;
 
     [Header("Current Stats")]
@@ -26,8 +26,10 @@ public class CharData : MyMonoBehaviour
     [Header("Jump")]
     [SerializeField] protected float jumpForce = 13f;
     public float JumpForce => jumpForce;
-
-    public int JumpCount { get; set; } = 0;
+    
+    [Header("DoubleJump")]
+    [SerializeField] protected float doubleJumpForce = 8f;
+    public float DoubleJumpForce => doubleJumpForce;
 
     [Header("Attack")]
 

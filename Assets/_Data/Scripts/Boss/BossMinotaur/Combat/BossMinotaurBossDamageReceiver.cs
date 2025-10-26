@@ -38,7 +38,8 @@ public class BossMinotaurBossDamageReceiver : ABossDamageReceiver
     {
         base.LoadHitBoxCollider();
         this.hitBoxCollider.isTrigger = true;
-        this.hitBoxCollider.size = new Vector2(1.2f, 2.5f);
+        this.hitBoxCollider.size = new Vector2(1.8f, 3.5f);
+        this.hitBoxCollider.offset = new Vector2(0f, 0.1f);
     }
 
     private void Update()
