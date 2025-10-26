@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SaveSlotPlay : ABaseButton
+public class SaveSlotDelete : ABaseButton
 {
     [SerializeField] protected int slotIndex;
 
@@ -26,12 +26,11 @@ public class SaveSlotPlay : ABaseButton
 
     protected override void OnClick()
     {
-        this.Play();
+        this.Delete();
     }
 
-    protected virtual void Play()
+    protected virtual void Delete()
     {
-        SaveLoadManager.Instance.SetSaveSlot(slotIndex);
-        MySceneManager.Instance.LoadScene(EScene.IntermediaryScene.ToString());
+        SaveLoadManager.Instance.DeleteSlot(slotIndex);
     }
 }
