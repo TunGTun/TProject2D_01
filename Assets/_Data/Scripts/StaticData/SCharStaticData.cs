@@ -5,13 +5,16 @@ public static class SCharStaticData
     public static readonly float GravityScale = 2.5f;
     public static readonly float BufferWindow = 0.2f;
 
+    //Stat
+    public static readonly int MaxMP_MPSlot = 100;
+
     //Move
     public static readonly float MoveSpeed = 4f;
 
     //Jump
     public static readonly float JumpForce = 13f;
 
-    //DoubleJump"
+    //DoubleJump
     public static readonly float DoubleJumpForce = 8f;
 
     //Attack

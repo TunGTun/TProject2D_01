@@ -3,10 +3,10 @@ using UnityEngine;
 public class CharData : MyMonoBehaviour
 {
     [Header("Stats")]
-    [SerializeField] protected int maxHP = 5;
+    [SerializeField] protected int maxHP = 5; //toi da 15
     public int MaxHP => maxHP;
 
-    [SerializeField] protected int maxMP = 100;
+    [SerializeField] protected int maxMP = 100; // toi da 300
     public int MaxMP => maxMP;
 
     [SerializeField] protected int attackDamage = 10;
@@ -28,7 +28,9 @@ public class CharData : MyMonoBehaviour
     protected virtual void Init()
     {
         this.currentHP = this.maxHP;
+        CurrentHPCtrl.Instance.UpdateCurrentHP(this.currentHP);
         this.currentMP = this.maxMP;
+        MPSlotCtrl.Instance.UpdateCurrentMPSlot(this.currentMP);
     }
 
     public virtual void AddHP(int hp)
@@ -36,6 +38,7 @@ public class CharData : MyMonoBehaviour
         this.currentHP += hp;
         if (this.currentHP > this.maxHP)
             this.currentHP = this.maxHP;
+        CurrentHPCtrl.Instance.UpdateCurrentHP(this.currentHP);
     }
 
     public virtual void SubHP(int damage)
@@ -43,6 +46,7 @@ public class CharData : MyMonoBehaviour
         this.currentHP -= damage;
         if (this.currentHP < 0)
             this.currentHP = 0;
+        CurrentHPCtrl.Instance.UpdateCurrentHP(this.currentHP);
     }
 
     public virtual void AddMP(int mp)
@@ -50,11 +54,13 @@ public class CharData : MyMonoBehaviour
         if (this.currentMP == this.maxMP) return;
         this.currentMP += mp;
         if (this.currentMP > this.maxMP) this.currentMP = this.maxMP;
+        MPSlotCtrl.Instance.UpdateCurrentMPSlot(this.currentMP);
     }
 
     public virtual void SubMP(int mp)
     {
         this.currentMP -= mp;
+        MPSlotCtrl.Instance.UpdateCurrentMPSlot(this.currentMP);
     }
 
     public virtual bool UseMP(int mp)
