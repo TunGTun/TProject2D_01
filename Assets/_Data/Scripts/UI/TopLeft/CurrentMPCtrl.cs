@@ -38,8 +38,6 @@ public class CurrentMPCtrl : MyMonoBehaviour
         int mpThisSlot = currentMP - SCharStaticData.MaxMP_MPSlot * slot;
         int currentMPEnable = Mathf.Min(mpThisSlot / SCharStaticData.AttackNeedToHeal, SCharStaticData.MaxMP_MPSlot / SCharStaticData.AttackNeedToHeal);
 
-        Debug.Log(currentMPEnable);
-
         for (int i = 0; i < currentMPs.Count; i++)
         {
             if (i < currentMPEnable)
