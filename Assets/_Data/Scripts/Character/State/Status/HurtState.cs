@@ -15,6 +15,8 @@ public class HurtState : ICharState<CharBaseState>
         timer = SCharStaticData.HurtTime;
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
+
+        AudioManager.Instance.PlaySFX(ESoundName.TakeDamage);
     }
 
     public void OnExit(CharBaseState context)

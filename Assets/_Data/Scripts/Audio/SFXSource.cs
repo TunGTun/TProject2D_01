@@ -5,6 +5,9 @@ public class SFXSource : MyMonoBehaviour
     [SerializeField] protected AudioSource sfx;
     public AudioSource SFX => sfx;
 
+    [SerializeField] protected SoundData[] sfxSounds;
+    public SoundData[] SFXSounds => sfxSounds;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -15,17 +18,11 @@ public class SFXSource : MyMonoBehaviour
     {
         if (sfx != null) return;
         sfx = GetComponent<AudioSource>();
-
         Debug.Log(transform.name + ": LoadSFXSource", gameObject);
     }
 
     public void PlaySFX(AudioClip clip)
     {
         SFX.PlayOneShot(clip);
-    }
-
-    protected override void Start()
-    {
-        
     }
 }
