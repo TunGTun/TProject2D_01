@@ -1,10 +1,7 @@
 using UnityEngine;
 
-public class AudioManager : MyMonoBehaviour
+public class AudioManager : MySingleton<AudioManager>
 {
-    private static AudioManager _instance;
-    public static AudioManager Instance { get => _instance; }
-
     [Header("--AudioSource--")]
     [SerializeField] protected MusicSource musicSource;
     public MusicSource MusicSource => musicSource;
@@ -21,16 +18,11 @@ public class AudioManager : MyMonoBehaviour
 
     protected override void Awake()
     {
-        base.Awake();
-        if (AudioManager._instance != null) Debug.LogError("Only 1 AudioManager allow to exist");
-        AudioManager._instance = this;
+        
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
-        //musicSource.clip = MusicSource.Music.clip;
-        //musicSource.Play();
     }
 
     protected virtual void LoadMusicSource()
@@ -46,4 +38,16 @@ public class AudioManager : MyMonoBehaviour
         this.sfxSource = GetComponentInChildren<SFXSource>();
         Debug.Log(transform.name + ": LoadSFXSource", gameObject);
     }
+    public void PlayMusic(AudioClip clip, bool loop = true)
+    {
+        MusicSource.Music.clip = clip;
+        MusicSource.Music.loop = loop;
+        MusicSource.Music.Play();
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        SFXSource.PlaySFX(clip);
+    }
+
 }

@@ -21,7 +21,6 @@ public class MusicSource : MyMonoBehaviour
 
     protected override void Start()
     {
-        music.clip = Music.clip;
-        music.Play();
+       
     }
 }

@@ -4,7 +4,8 @@ public class SFXSource : MyMonoBehaviour
 {
     [SerializeField] protected AudioSource sfx;
     public AudioSource SFX => sfx;
-
+    [SerializeField] protected AudioSource Jump;
+    public AudioSource jump => Jump;
     protected override void LoadComponents()
     {
         base.LoadComponents();
