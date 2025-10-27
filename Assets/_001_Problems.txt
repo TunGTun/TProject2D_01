@@ -53,3 +53,7 @@ OK		Di chuyển, nhảy, attack, Outline
 OK      Animation cho jump, ground dash, air dash, doublejump, hit
         
         Fix double jump khi đang jump (velocity bị set lại khi end jump)
+
+		Cổng dịch chuyển - Void Rift , Tên kĩ năng - Riftcleave
+		Năng lượng - Void Essence, vật chứa - Void Vessel
+		Tiền tệ - Soul - Đánh quái rơi ra, dùng R để nhặt

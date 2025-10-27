@@ -2,26 +2,20 @@ using UnityEngine;
 
 public class SaveSlotPlay : ABaseButton
 {
-    [SerializeField] protected int slotIndex;
+    [SerializeField] protected SaveSlotCtrl saveSlotCtrl;
+    public SaveSlotCtrl SaveSlotCtrl => saveSlotCtrl;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.GetSlotIndex();
+        this.LoadSaveSlotCtrl();
     }
 
-    protected virtual void GetSlotIndex()
+    protected virtual void LoadSaveSlotCtrl()
     {
-        string[] parts = transform.parent.name.Split('_');
-
-        if (parts.Length <= 0) return;
-
-        string lastPart = parts[parts.Length - 1];
-
-        if (int.TryParse(lastPart, out int index))
-        {
-            slotIndex = index;
-        }
+        if (saveSlotCtrl != null) return;
+        this.saveSlotCtrl = GetComponentInParent<SaveSlotCtrl>();
+        Debug.LogWarning(transform.name + ": LoadSaveSlotCtrl", gameObject);
     }
 
     protected override void OnClick()
@@ -31,7 +25,7 @@ public class SaveSlotPlay : ABaseButton
 
     protected virtual void Play()
     {
-        SaveLoadManager.Instance.SetSaveSlot(slotIndex);
+        SaveLoadManager.Instance.SetSaveSlot(this.saveSlotCtrl.SlotIndex);
         MySceneManager.Instance.LoadScene(EScene.IntermediaryScene.ToString());
     }
 }
