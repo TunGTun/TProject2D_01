@@ -46,8 +46,6 @@ public class AttackState : ICharState<CharBaseState>
         context.CharCtrl.CharStateCtrl.FlipX();
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
-
-        AudioManager.Instance.PlaySFX(ESoundName.Attack);
     }
 
     public void OnExit(CharBaseState context)

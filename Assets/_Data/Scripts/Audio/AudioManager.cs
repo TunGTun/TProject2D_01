@@ -1,10 +1,8 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MySingleton<AudioManager>
 {
-    [Header("AudioManager")]
+    [Header("--AudioSource--")]
     [SerializeField] protected MusicSource musicSource;
     public MusicSource MusicSource => musicSource;
 
@@ -16,6 +14,15 @@ public class AudioManager : MySingleton<AudioManager>
         base.LoadComponents();
         this.LoadMusicSource();
         this.LoadSFXSource();
+    }
+
+    protected override void Awake()
+    {
+        
+    }
+
+    protected override void Start()
+    {
     }
 
     protected virtual void LoadMusicSource()
@@ -31,31 +38,16 @@ public class AudioManager : MySingleton<AudioManager>
         this.sfxSource = GetComponentInChildren<SFXSource>();
         Debug.Log(transform.name + ": LoadSFXSource", gameObject);
     }
-
-    protected override void Start()
+    public void PlayMusic(AudioClip clip, bool loop = true)
     {
-        base.Start();
-        this.PlayMusic(ESoundName.MainMenu);
+        MusicSource.Music.clip = clip;
+        MusicSource.Music.loop = loop;
+        MusicSource.Music.Play();
     }
 
-    public virtual void PlayMusic(ESoundName name)
+    public void PlaySFX(AudioClip clip)
     {
-        SoundData soundData = Array.Find(this.musicSource.MusicSounds, x => x.soundName == name);
-        this.musicSource.Music.clip = soundData.soundClip;
-        this.musicSource.Music.Play();
+        SFXSource.PlaySFX(clip);
     }
 
-    public void StopMusic()
-    {
-        if (this.musicSource.Music != null)
-        {
-            this.musicSource.Music.Stop();
-        }
-    }
-
-    public void PlaySFX(ESoundName name)
-    {
-        SoundData soundData = Array.Find(this.sfxSource.SFXSounds, x => x.soundName == name);
-        this.sfxSource.SFX.PlayOneShot(soundData.soundClip);
-    }
 }
