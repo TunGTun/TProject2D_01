@@ -13,6 +13,8 @@ public class DeadState : ICharState<CharBaseState>
         context.CharCtrl.RigidBody2D.gravityScale = 0;
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
+
+        AudioManager.Instance.PlaySFX(ESoundName.Dead);
     }
 
     public void OnExit(CharBaseState context)
