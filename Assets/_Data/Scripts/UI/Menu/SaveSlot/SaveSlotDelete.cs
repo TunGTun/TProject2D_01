@@ -27,5 +27,6 @@ public class SaveSlotDelete : ABaseButton
     {
         SaveLoadManager.Instance.DeleteSlot(this.saveSlotCtrl.SlotIndex);
         this.saveSlotCtrl.SaveSlotDeleteHandle();
+        this.saveSlotCtrl.SetSaveSlotImage();
     }
 }

@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayButton : ABaseButton
+public class PlayButton : ATransitionButton
 {
     [SerializeField] protected PanelCtrl panelCtrl;
     public PanelCtrl PanelCtrl => panelCtrl;
@@ -20,7 +20,7 @@ public class PlayButton : ABaseButton
         Debug.Log(transform.name + ": LoadPanelCtrl", gameObject);
     }
 
-    protected override void OnClick()
+    protected override void OnClickTransition()
     {
         this.Play();
     }
