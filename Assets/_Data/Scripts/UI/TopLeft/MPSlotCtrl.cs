@@ -24,10 +24,6 @@ public class MPSlotCtrl : MySingleton<MPSlotCtrl>
             this.mpSlots.Add(mpSlot);
         }
 
-        this.HideMPSlots();
-
-        this.UpdateMaxMP(CharCtrl.Instance.CharData.MaxMP);
-
         Debug.Log(transform.name + ": LoadMPSlots", gameObject);
     }
 
@@ -39,8 +35,12 @@ public class MPSlotCtrl : MySingleton<MPSlotCtrl>
 
         foreach (Transform mpSlot in this.mpSlots)
         {
-            currentMPCtrl = mpSlot.GetComponent<CurrentMPCtrl>();
-            this.currentMPCtrls.Add(currentMPCtrl);
+            foreach (Transform curMP in mpSlot)
+            {
+                currentMPCtrl = curMP.GetComponent<CurrentMPCtrl>();
+                this.currentMPCtrls.Add(currentMPCtrl);
+                break;
+            }
         }
 
         Debug.Log(transform.name + ": LoadCurrentMPCtrls", gameObject);
@@ -57,6 +57,9 @@ public class MPSlotCtrl : MySingleton<MPSlotCtrl>
     public virtual void UpdateMaxMP(int maxMP)
     {
         mpSlotEnable = Mathf.CeilToInt(maxMP * 1.0f / SCharStaticData.MaxMP_MPSlot);
+
+        this.HideMPSlots();
+
         for (int i = 0; i < mpSlotEnable; i++)
         {
             this.mpSlots[i].gameObject.SetActive(true);

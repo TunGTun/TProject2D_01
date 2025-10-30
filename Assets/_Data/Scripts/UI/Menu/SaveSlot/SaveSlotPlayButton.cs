@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SaveSlotPlay : ABaseButton
+public class SaveSlotPlayButton : ABaseButton
 {
     [SerializeField] protected SaveSlotCtrl saveSlotCtrl;
     public SaveSlotCtrl SaveSlotCtrl => saveSlotCtrl;
@@ -26,6 +26,7 @@ public class SaveSlotPlay : ABaseButton
     protected virtual void Play()
     {
         SaveLoadManager.Instance.SetSaveSlot(this.saveSlotCtrl.SlotIndex);
+        AudioManager.Instance.StopMusic();
         MySceneManager.Instance.LoadScene(EScene.IntermediaryScene.ToString());
     }
 }

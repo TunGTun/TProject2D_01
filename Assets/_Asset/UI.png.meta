@@ -1081,10 +1081,10 @@ TextureImporter:
       name: UI_44
       rect:
         serializedVersion: 2
-        x: 352
-        y: 176
-        width: 559
-        height: 13
+        x: 353
+        y: 177
+        width: 557
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class PlayButton : ATransitionButton
+public class SettingButton : ATransitionButton
 {
     [SerializeField] protected PanelCtrl panelCtrl;
     public PanelCtrl PanelCtrl => panelCtrl;
@@ -20,12 +20,12 @@ public class PlayButton : ATransitionButton
 
     protected override void OnClickTransition()
     {
-        this.Play();
+        this.Setting();
     }
 
-    protected virtual void Play()
+    protected virtual void Setting()
     {
-        this.panelCtrl.SelectGame.SetActive(true);
+        this.panelCtrl.Setting.SetActive(true);
         this.panelCtrl.MenuGroup.SetActive(false);
     }
 }

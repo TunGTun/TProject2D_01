@@ -23,9 +23,6 @@ public class InputManager : MySingleton<InputManager>
     [SerializeField] protected bool dashInput;
     public bool DashInput { get => dashInput; }
 
-    //[SerializeField] protected bool leftCtrlInput;
-    //public bool LeftCtrlInput { get => leftCtrlInput; }
-
     [SerializeField] protected bool downInput;
     public bool DownInput { get => downInput; }
 
@@ -49,7 +46,6 @@ public class InputManager : MySingleton<InputManager>
         this.CheckJumpInputDown();
         this.CheckJumpInputUp();
         this.CheckDashInput();
-        //this.CheckLeftCtrlInput();
         this.CheckDownInput();
         this.CheckDownInput();
         this.CheckUpInput();
@@ -112,11 +108,6 @@ public class InputManager : MySingleton<InputManager>
         else
             this.dashInput = false;
     }
-
-    //protected virtual void CheckLeftCtrlInput()
-    //{
-    //    this.leftCtrlInput = Input.GetKeyDown(KeyCode.LeftControl);
-    //}
 
     protected virtual void CheckDownInput()
     {
