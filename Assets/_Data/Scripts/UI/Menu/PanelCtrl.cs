@@ -39,4 +39,16 @@ public class PanelCtrl : MyMonoBehaviour
         this.setting = GameObject.Find("SettingPanel");
         Debug.Log(transform.name + ": LoadSetting", gameObject);
     }
+
+    protected override void Start()
+    {
+        base.Start();
+        this.LoadVolumeOnStart();
+    }
+
+    protected virtual void LoadVolumeOnStart()
+    {
+        SettingPanelCtrl settingPanelCtrl = this.setting.GetComponent<SettingPanelCtrl>();
+        settingPanelCtrl.VolumeSetting.LoadVolume();
+    }
 }

@@ -76,3 +76,6 @@ Sound	Music		MainMenu
 					TakeDamage
 					Dead
 				OK	Parry
+
+		Check point
+		Unlock skill

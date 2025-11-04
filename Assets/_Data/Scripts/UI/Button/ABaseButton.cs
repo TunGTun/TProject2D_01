@@ -28,7 +28,11 @@ public abstract class ABaseButton : MyMonoBehaviour, IPointerEnterHandler, IPoin
 
     protected virtual void AddOnClickEvent()
     {
-        this.button.onClick.AddListener(this.OnClick);
+        this.button.onClick.AddListener(() =>
+        {
+            this.OnClick();
+            EventSystem.current.SetSelectedGameObject(null);
+        });
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

@@ -18,4 +18,5 @@ public static class StateName
     public const string HEAL_STATE = "Heal";
     public const string HURT_STATE = "Hurt";
     public const string DEAD_STATE = "Dead";
+    public const string PAUSE_STATE = "Pause";
 }

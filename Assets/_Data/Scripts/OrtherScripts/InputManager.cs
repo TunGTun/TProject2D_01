@@ -35,8 +35,18 @@ public class InputManager : MySingleton<InputManager>
     [SerializeField] protected bool healInput;
     public bool HealInput { get => healInput; }
 
+    [SerializeField] protected bool backInput;
+    public bool BackInput { get => backInput; }
+
     void Update()
     {
+        this.CheckInput();
+    }
+
+    protected virtual void CheckInput()
+    {
+        this.CheckBackInput();
+
         if (!this.CanControl)
         {
             this._moveInput = 0;
@@ -127,5 +137,10 @@ public class InputManager : MySingleton<InputManager>
     protected virtual void CheckHealInput()
     {
         this.healInput = Input.GetKeyDown(KeyCode.F);
+    }
+
+    protected virtual void CheckBackInput()
+    {
+        this.backInput = Input.GetKeyDown(KeyCode.Escape);
     }
 }

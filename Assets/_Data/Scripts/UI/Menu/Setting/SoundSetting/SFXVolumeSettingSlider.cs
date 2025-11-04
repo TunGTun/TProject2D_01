@@ -21,14 +21,12 @@ public class SFXVolumeSettingSlider : ABaseSlider
     protected virtual void LoadVolumeSetting()
     {
         if (this.volumeSetting != null) return;
-        this.volumeSetting = GetComponentInParent<VolumeSetting>();
+        this.volumeSetting = GetComponentInParent<VolumeSetting>(true);
         Debug.LogWarning(transform.name + ": LoadVolumeSetting", gameObject);
     }
 
-    protected override void Start()
+    public virtual void LoadSFXVolume()
     {
-        base.Start();
-
         if (PlayerPrefs.HasKey("SFXVolume"))
         {
             this.slider.value = PlayerPrefs.GetFloat("SFXVolume");

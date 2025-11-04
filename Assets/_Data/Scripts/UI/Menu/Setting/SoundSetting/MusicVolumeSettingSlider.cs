@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class MusicVolumeSettingSlider : ABaseSlider
 {
-
     [Header("MusicVolumeSettingSlider")]
     [SerializeField] protected VolumeSetting volumeSetting;
 
@@ -21,14 +20,12 @@ public class MusicVolumeSettingSlider : ABaseSlider
     protected virtual void LoadVolumeSetting()
     {
         if (this.volumeSetting != null) return;
-        this.volumeSetting = GetComponentInParent<VolumeSetting>();
+        this.volumeSetting = GetComponentInParent<VolumeSetting>(true);
         Debug.LogWarning(transform.name + ": LoadVolumeSetting", gameObject);
     }
 
-    protected override void Start()
+    public virtual void LoadMusicVolume()
     {
-        base.Start();
-
         if (PlayerPrefs.HasKey("MusicVolume"))
         {
             this.slider.value = PlayerPrefs.GetFloat("MusicVolume");

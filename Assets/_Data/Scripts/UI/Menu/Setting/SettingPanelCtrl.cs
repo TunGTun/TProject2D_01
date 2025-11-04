@@ -8,6 +8,9 @@ public class SettingPanelCtrl : MyMonoBehaviour
     [SerializeField] protected GameObject soundSetting;
     public GameObject SoundSetting => soundSetting;
 
+    [SerializeField] protected VolumeSetting volumeSetting;
+    public VolumeSetting VolumeSetting => volumeSetting;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -26,6 +29,7 @@ public class SettingPanelCtrl : MyMonoBehaviour
     {
         if (this.soundSetting != null) return;
         this.soundSetting = GameObject.Find("SoundSetting");
+        this.volumeSetting = soundSetting.GetComponent<VolumeSetting>();
         Debug.Log(transform.name + ": LoadSoundSetting", gameObject);
     }
 }
