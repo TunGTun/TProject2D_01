@@ -12,13 +12,13 @@ public class InputManager : MySingleton<InputManager>
     protected KeyCode _lastKeyPressed;
 
     [SerializeField] protected float _moveInput;
-    public float MoveInput { get => _moveInput; }
+    public float MoveInput { get => _moveInput; set => _moveInput = value; }
 
     [SerializeField] protected bool jumpInputDown;
-    public bool JumpInputDown { get => jumpInputDown; }
+    public bool JumpInputDown { get => jumpInputDown; set => jumpInputDown = value; }
 
     [SerializeField] protected bool jumpInputUp;
-    public bool JumpInputUp { get => jumpInputUp; }
+    public bool JumpInputUp { get => jumpInputUp; set => jumpInputUp = value; }
 
     [SerializeField] protected bool dashInput;
     public bool DashInput { get => dashInput; }
@@ -47,11 +47,8 @@ public class InputManager : MySingleton<InputManager>
     {
         this.CheckBackInput();
 
-        if (!this.CanControl)
-        {
-            this._moveInput = 0;
-            return;
-        }
+        if (!this.CanControl) return;
+
         this.CheckMoveInput();
         this.CheckJumpInputDown();
         this.CheckJumpInputUp();
@@ -66,6 +63,7 @@ public class InputManager : MySingleton<InputManager>
     public void SetCanControl(bool canControl)
     {
         this.canControl = canControl;
+        this._moveInput = 0;
     }
 
     protected virtual void CheckMoveInput()

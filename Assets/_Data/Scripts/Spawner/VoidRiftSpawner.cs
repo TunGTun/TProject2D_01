@@ -11,7 +11,7 @@ public class VoidRiftSpawner : ABaseSpawner
 
     public Transform CurrentRift { get; private set; }
 
-    [SerializeField] protected LayerMask environmentMask;
+    protected LayerMask environmentMask;
 
     protected override void Awake()
     {

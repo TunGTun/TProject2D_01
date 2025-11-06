@@ -139,6 +139,11 @@ public class CharStateCtrl : BaseChar
         if (InputManager.Instance.MoveInput == 1) this.transform.parent.localScale = new Vector3(1, 1, 1);
         if (InputManager.Instance.MoveInput == -1) this.transform.parent.localScale = new Vector3(-1, 1, 1);
     }
+
+    public virtual bool IsFacingRight()
+    {
+        return Mathf.Approximately(this.charCtrl.transform.localScale.x, 1);
+    }
     
     public void ResetSkill()
     {
