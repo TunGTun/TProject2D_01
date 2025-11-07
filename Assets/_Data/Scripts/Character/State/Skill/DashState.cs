@@ -46,7 +46,9 @@ public class DashState : ICharState<CharBaseState>
         context.CharCtrl.CharStateCtrl.FlipX();
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
-        
+
+        AudioManager.Instance.PlaySFX(ESoundName.Dash);
+
         Vector3 spawnPos = context.CharCtrl.CharBodyCollider.bounds.center - new Vector3(0, context.CharCtrl.CharBodyCollider.bounds.extents.y, 0);
         Quaternion spawnRot = Mathf.Approximately(context.CharCtrl.transform.localScale.x, 1) ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
         FXSpawner.Instance.Spawn(FXSpawner.Instance.DASH_AIR, spawnPos, spawnRot);
@@ -55,8 +57,6 @@ public class DashState : ICharState<CharBaseState>
     public void OnExit(CharBaseState context)
     {
         context.CharCtrl.RigidBody2D.gravityScale = SCharStaticData.GravityScale;
-
-        //context.CharCtrl.NextDashTime = Time.time + context.CharCtrl.CharData.DashCooldown;
     }
 
     public void OnFrameUpdate(CharBaseState context)

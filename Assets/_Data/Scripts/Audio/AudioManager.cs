@@ -1,11 +1,10 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class AudioManager : MyMonoBehaviour
+public class AudioManager : MySingleton<AudioManager>
 {
-    private static AudioManager _instance;
-    public static AudioManager Instance { get => _instance; }
-
-    [Header("--AudioSource--")]
+    [Header("AudioManager")]
     [SerializeField] protected MusicSource musicSource;
     public MusicSource MusicSource => musicSource;
 
@@ -17,20 +16,6 @@ public class AudioManager : MyMonoBehaviour
         base.LoadComponents();
         this.LoadMusicSource();
         this.LoadSFXSource();
-    }
-
-    protected override void Awake()
-    {
-        base.Awake();
-        if (AudioManager._instance != null) Debug.LogError("Only 1 AudioManager allow to exist");
-        AudioManager._instance = this;
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    protected override void Start()
-    {
-        //musicSource.clip = MusicSource.Music.clip;
-        //musicSource.Play();
     }
 
     protected virtual void LoadMusicSource()
@@ -45,5 +30,32 @@ public class AudioManager : MyMonoBehaviour
         if (sfxSource != null) return;
         this.sfxSource = GetComponentInChildren<SFXSource>();
         Debug.Log(transform.name + ": LoadSFXSource", gameObject);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        this.PlayMusic(ESoundName.MainMenu);
+    }
+
+    public virtual void PlayMusic(ESoundName name)
+    {
+        SoundData soundData = Array.Find(this.musicSource.MusicSounds, x => x.soundName == name);
+        this.musicSource.Music.clip = soundData.soundClip;
+        this.musicSource.Music.Play();
+    }
+
+    public void StopMusic()
+    {
+        if (this.musicSource.Music != null)
+        {
+            this.musicSource.Music.Stop();
+        }
+    }
+
+    public void PlaySFX(ESoundName name)
+    {
+        SoundData soundData = Array.Find(this.sfxSource.SFXSounds, x => x.soundName == name);
+        this.sfxSource.SFX.PlayOneShot(soundData.soundClip);
     }
 }

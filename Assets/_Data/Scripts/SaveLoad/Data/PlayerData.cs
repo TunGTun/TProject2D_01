@@ -14,5 +14,8 @@ public class PlayerData
     //Current Stats
     public int CurrentHP;
     public int CurrentMP;
+
+    //Economy
+    public int Money;
 }
 

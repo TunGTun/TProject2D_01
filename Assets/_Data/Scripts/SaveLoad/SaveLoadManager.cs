@@ -59,7 +59,8 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
             MaxMP = CharCtrl.Instance.CharData.MaxMP,
             AttackDamage = CharCtrl.Instance.CharData.AttackDamage,
             CurrentHP = CharCtrl.Instance.CharData.CurrentHP,
-            CurrentMP = CharCtrl.Instance.CharData.CurrentMP
+            CurrentMP = CharCtrl.Instance.CharData.CurrentMP,
+            Money = CharCtrl.Instance.CharData.Money,
         };
 
         string path = Path.Combine(CurrentSlotPath, "playerData.json");
@@ -71,12 +72,13 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
         PlayerData playerData = new PlayerData
         {
             SceneName = EScene.West_Scene_5.ToString(),
-            Position = new Vector3(-8.5f, -1.2f, 0),
+            Position = new Vector3(-4.5f, -1.2f, 0),
             MaxHP = CharCtrl.Instance.CharData.MaxHP,
-            MaxMP = CharCtrl.Instance.CharData.MaxHP,
+            MaxMP = CharCtrl.Instance.CharData.MaxMP,
             AttackDamage = CharCtrl.Instance.CharData.AttackDamage,
             CurrentHP = CharCtrl.Instance.CharData.MaxHP,
-            CurrentMP = CharCtrl.Instance.CharData.MaxHP
+            CurrentMP = CharCtrl.Instance.CharData.MaxMP,
+            Money = 0,
         };
 
         string path = Path.Combine(CurrentSlotPath, "playerData.json");
@@ -109,6 +111,12 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
         MySceneManager.Instance.LoadScene(playerData.SceneName);
         yield return new WaitUntil(() => MySceneManager.Instance.GetCurrentSceneName() == playerData.SceneName);
         CharCtrl.Instance.transform.position = playerData.Position;
+        CharCtrl.Instance.CharData.MaxHP = playerData.MaxHP;
+        CharCtrl.Instance.CharData.MaxMP = playerData.MaxMP;
+        CharCtrl.Instance.CharData.AttackDamage = playerData.AttackDamage;
+        CharCtrl.Instance.CharData.CurrentHP = playerData.CurrentHP;
+        CharCtrl.Instance.CharData.CurrentMP = playerData.CurrentMP;
+        CharCtrl.Instance.CharData.Money = playerData.Money;
     }
 
     public void SaveScene(string sceneName, SceneData data)
@@ -129,10 +137,16 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
         return JsonUtility.FromJson<SceneData>(File.ReadAllText(path));
     }
 
+    public bool HasSaveSlot(int slot)
+    {
+        string path = Path.Combine(rootPath, $"SaveSlot_{slot}");
+        return Directory.Exists(path);
+    }
+
     public void DeleteSlot(int slot)
     {
         string path = Path.Combine(rootPath, $"SaveSlot_{slot}");
-        if (Directory.Exists(path))
+        if (this.HasSaveSlot(slot))
             Directory.Delete(path, true);
     }
 }

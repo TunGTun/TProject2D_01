@@ -1,27 +1,26 @@
 using UnityEngine;
+
 [RequireComponent(typeof(AudioSource))]
 public class MusicSource : MyMonoBehaviour
 {
     [SerializeField] protected AudioSource music;
     public AudioSource Music => music;
 
+    [SerializeField] protected SoundData[] musicSounds;
+    public SoundData[] MusicSounds => musicSounds;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadAudioSource();
+        this.LoadMusic();
     }
 
-    protected virtual void LoadAudioSource()
+    protected virtual void LoadMusic()
     {
         if (music != null) return;
         this.music = GetComponent<AudioSource>();
-
-        Debug.Log(transform.name + ": LoadAudioSource", gameObject);
-    }
-
-    protected override void Start()
-    {
-        music.clip = Music.clip;
-        music.Play();
+        this.music.playOnAwake = true;
+        this.music.loop = true;
+        Debug.Log(transform.name + ": LoadMusic", gameObject);
     }
 }

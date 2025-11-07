@@ -1,13 +1,10 @@
 using UnityEngine;
 
-namespace _Data.Scripts.OrtherScripts
+public class DontDestroyOnLoad : MyMonoBehaviour
 {
-    public class DontDestroyOnLoad : MyMonoBehaviour
+    protected override void Awake()
     {
-        protected override void Awake()
-        {
-            base.Awake();
-            DontDestroyOnLoad(gameObject);
-        }
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
     }
 }

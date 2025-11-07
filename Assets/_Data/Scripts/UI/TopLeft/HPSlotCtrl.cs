@@ -20,10 +20,6 @@ public class HPSlotCtrl : MySingleton<HPSlotCtrl>
             this.hpSlots.Add(hpSlot);
         }
 
-        this.HideHPSlots();
-
-        this.UpdateMaxHP(CharCtrl.Instance.CharData.MaxHP);
-
         Debug.Log(transform.name + ": LoadHPSlots", gameObject);
     }
 
@@ -37,6 +33,8 @@ public class HPSlotCtrl : MySingleton<HPSlotCtrl>
 
     public virtual void UpdateMaxHP(int maxHP)
     {
+        this.HideHPSlots();
+
         for (int i = 0; i < maxHP; i++)
         {
             this.hpSlots[i].gameObject.SetActive(true);

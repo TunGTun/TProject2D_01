@@ -6,6 +6,8 @@ public class StatusState : CharBaseState
     public HealState heal;
     public HurtState hurt;
     public DeadState dead;
+    public CutSceneState cutScene;
+    public SceneTransitionState sceneTransition;
 
     protected override void CreateState()
     {
@@ -13,5 +15,7 @@ public class StatusState : CharBaseState
         heal = new HealState();
         hurt = new HurtState();
         dead = new DeadState();
+        cutScene = new CutSceneState();
+        sceneTransition = new SceneTransitionState();
     }
 }
