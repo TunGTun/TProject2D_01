@@ -72,12 +72,12 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
         PlayerData playerData = new PlayerData
         {
             SceneName = EScene.West_Scene_5.ToString(),
-            Position = new Vector3(-8.5f, -1.2f, 0),
+            Position = new Vector3(-4.5f, -1.2f, 0),
             MaxHP = CharCtrl.Instance.CharData.MaxHP,
-            MaxMP = CharCtrl.Instance.CharData.MaxHP,
+            MaxMP = CharCtrl.Instance.CharData.MaxMP,
             AttackDamage = CharCtrl.Instance.CharData.AttackDamage,
             CurrentHP = CharCtrl.Instance.CharData.MaxHP,
-            CurrentMP = CharCtrl.Instance.CharData.MaxHP,
+            CurrentMP = CharCtrl.Instance.CharData.MaxMP,
             Money = 0,
         };
 

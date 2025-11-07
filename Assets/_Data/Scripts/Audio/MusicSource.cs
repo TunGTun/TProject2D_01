@@ -19,6 +19,7 @@ public class MusicSource : MyMonoBehaviour
     {
         if (music != null) return;
         this.music = GetComponent<AudioSource>();
+        this.music.playOnAwake = true;
         this.music.loop = true;
         Debug.Log(transform.name + ": LoadMusic", gameObject);
     }

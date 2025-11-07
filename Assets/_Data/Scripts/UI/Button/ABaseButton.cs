@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class ABaseButton : MyMonoBehaviour
+public abstract class ABaseButton : MyMonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("ABaseButton")]
     [SerializeField] protected Button button;
@@ -27,8 +28,32 @@ public abstract class ABaseButton : MyMonoBehaviour
 
     protected virtual void AddOnClickEvent()
     {
-        this.button.onClick.AddListener(this.OnClick);
+        this.button.onClick.AddListener(() =>
+        {
+            this.OnClick();
+            EventSystem.current.SetSelectedGameObject(null);
+        });
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        this.OnHoverEnter();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        this.OnHoverExit();
     }
 
     protected abstract void OnClick();
+
+    protected virtual void OnHoverEnter()
+    {
+
+    }
+
+    protected virtual void OnHoverExit()
+    {
+
+    }
+
 }

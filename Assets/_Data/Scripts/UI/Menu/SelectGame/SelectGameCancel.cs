@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SelectGameCancel : ABaseButton
+public class SelectGameCancel : ATransitionButton
 {
     [SerializeField] protected PanelCtrl panelCtrl;
     public PanelCtrl PanelCtrl => panelCtrl;
@@ -18,7 +18,7 @@ public class SelectGameCancel : ABaseButton
         Debug.Log(transform.name + ": LoadPanelCtrl", gameObject);
     }
 
-    protected override void OnClick()
+    protected override void OnClickTransition()
     {
         this.Cancel();
     }

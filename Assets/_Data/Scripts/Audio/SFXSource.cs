@@ -18,6 +18,8 @@ public class SFXSource : MyMonoBehaviour
     {
         if (sfx != null) return;
         sfx = GetComponent<AudioSource>();
+        this.sfx.playOnAwake = true;
+        this.sfx.loop = true;
         Debug.Log(transform.name + ": LoadSFXSource", gameObject);
     }
 

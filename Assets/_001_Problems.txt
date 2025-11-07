@@ -57,3 +57,25 @@ OK      Animation cho jump, ground dash, air dash, doublejump, hit
 		Cổng dịch chuyển - Void Rift , Tên kĩ năng - Riftcleave
 		Năng lượng - Void Essence, vật chứa - Void Vessel
 		Tiền tệ - Soul - Đánh quái rơi ra, dùng R để nhặt
+
+Asset	HP
+		MP, Hộp MP
+		Money (Soul)
+		Soul rơi ra
+
+Sound	Music		MainMenu
+					Boss 1 fight
+					Mở doublejump
+					Mở dash
+		SFX			Move
+					Jump
+					Dash
+					Attack
+					AttackTwo
+					DoubleJump
+					TakeDamage
+					Dead
+				OK	Parry
+
+		Check point
+		Unlock skill
