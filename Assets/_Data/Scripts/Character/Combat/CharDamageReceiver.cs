@@ -12,6 +12,9 @@ public class CharDamageReceiver : MyMonoBehaviour
     [SerializeField] protected CapsuleCollider2D hitBoxCollider;
     public CapsuleCollider2D HitBoxCollider => hitBoxCollider;
 
+    [SerializeField] protected bool canTakeDamage = true;
+    public bool CanTakeDamage { get => canTakeDamage; set => canTakeDamage = value; }
+
     //[Header("Flash Effect")]
     //[SerializeField] protected Material originalMat;
     //[SerializeField] protected Material hitMat;
@@ -60,6 +63,7 @@ public class CharDamageReceiver : MyMonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!canTakeDamage) return;
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy1"))
         {
             this.OnDamageReceived(1, collision.transform);

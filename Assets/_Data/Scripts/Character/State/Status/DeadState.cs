@@ -16,6 +16,7 @@ public class DeadState : ICharState<CharBaseState>
 
         AudioManager.Instance.PlaySFX(ESoundName.Dead);
 
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = false;
         InputManager.Instance.SetCanControl(false);
     }
 
@@ -23,6 +24,7 @@ public class DeadState : ICharState<CharBaseState>
     {
         context.CharCtrl.RigidBody2D.gravityScale = SCharStaticData.GravityScale;
 
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = true;
         InputManager.Instance.SetCanControl(true);
     }
 

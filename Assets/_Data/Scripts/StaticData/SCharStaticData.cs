@@ -40,4 +40,8 @@ public static class SCharStaticData
     public static readonly float RiftOffset = 0.5f;
     public static readonly float RiftExtraOffset = 3.0f;
     public static readonly float RiftDespawnTime = 3.0f;
+
+    //CheckPoint
+    public static readonly float SoulLinkDuration = 0.5f;
+    public static readonly float SpawnDuration = 0.5f;
 }
