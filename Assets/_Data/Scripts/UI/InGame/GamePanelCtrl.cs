@@ -26,6 +26,7 @@ public class GamePanelCtrl : MyMonoBehaviour
     protected virtual void Pause()
     {
         if (!InputManager.Instance.BackInput) return;
+        if (CharCtrl.Instance.CharStateCtrl.StatusState.StateMachine.CurrentState == CharCtrl.Instance.CharStateCtrl.StatusState.sceneTransition) return;
         this.pausePanelCtrl.gameObject.SetActive(true);
         InputManager.Instance.SetCanControl(false);
         Time.timeScale = 0;
