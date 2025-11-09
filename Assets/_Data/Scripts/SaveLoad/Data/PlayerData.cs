@@ -17,5 +17,8 @@ public class PlayerData
 
     //Economy
     public int Money;
+
+    //CheckPoint
+    public CheckPointData LastCheckPoint;
 }
 

@@ -17,11 +17,15 @@ public class HurtState : ICharState<CharBaseState>
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
 
         AudioManager.Instance.PlaySFX(ESoundName.TakeDamage);
+
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = false;
+        InputManager.Instance.SetCanControl(false);
     }
 
     public void OnExit(CharBaseState context)
     {
-        //InputManager.Instance.SetCanControl(true);
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = true;
+        InputManager.Instance.SetCanControl(true);
     }
 
     public void OnFrameUpdate(CharBaseState context)
