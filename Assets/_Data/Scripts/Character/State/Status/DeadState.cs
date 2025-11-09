@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DeadState : ICharState<CharBaseState>
@@ -18,6 +19,9 @@ public class DeadState : ICharState<CharBaseState>
 
         context.CharCtrl.CharDamageReceiver.CanTakeDamage = false;
         InputManager.Instance.SetCanControl(false);
+
+        Vector3 spawnPos = context.CharCtrl.transform.position;
+        FXSpawner.Instance.Spawn(FXSpawner.Instance.DEAD, spawnPos, Quaternion.identity);
     }
 
     public void OnExit(CharBaseState context)

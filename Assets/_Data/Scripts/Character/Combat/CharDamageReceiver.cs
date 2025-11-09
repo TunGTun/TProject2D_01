@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider2D))]
@@ -127,6 +128,27 @@ public class CharDamageReceiver : MyMonoBehaviour
 
     protected virtual void OnDead()
     {
+        StartCoroutine(OnDeadRoutine());
+    }
+
+    protected virtual IEnumerator OnDeadRoutine()
+    {
         this.charCtrl.CharStateCtrl.StatusState.ChangeState(this.charCtrl.CharStateCtrl.StatusState.dead);
+
+        yield return new WaitForSeconds(1f);
+        GamePanelCtrl.Instance.EnableDeadPanel();
+
+        yield return new WaitForSeconds(3f);
+        GamePanelCtrl.Instance.DisableDeadPanel();
+        CheckPointData checkPointData = SaveLoadManager.Instance.PlayerData.LastCheckPoint;
+        this.charCtrl.CharData.AddHP(this.charCtrl.CharData.MaxHP);
+        MySceneManager.Instance.LoadScene(checkPointData.SceneName);
+
+        yield return new WaitUntil(() => MySceneManager.Instance.GetCurrentSceneName() == checkPointData.SceneName);
+        this.transform.parent.position = checkPointData.SpawnPoint;
+        SaveLoadManager.Instance.SavePlayer();
+
+        yield return new WaitForSeconds(SSceneTransitionData.AnimationDuration);
+        this.charCtrl.CharStateCtrl.StatusState.ChangeState(this.charCtrl.CharStateCtrl.StatusState.spawn);
     }
 }

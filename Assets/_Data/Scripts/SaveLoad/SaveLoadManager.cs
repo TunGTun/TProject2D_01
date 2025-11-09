@@ -99,6 +99,8 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
         CharCtrl.Instance.CharData.CurrentHP = playerData.CurrentHP;
         CharCtrl.Instance.CharData.CurrentMP = playerData.CurrentMP;
         CharCtrl.Instance.CharData.Money = playerData.Money;
+
+        CharCtrl.Instance.CharStateCtrl.StatusState.ChangeState(CharCtrl.Instance.CharStateCtrl.StatusState.spawn);
     }
 
     //Scene
