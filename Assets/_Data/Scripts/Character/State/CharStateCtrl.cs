@@ -46,7 +46,7 @@ public class CharStateCtrl : BaseChar
         this.verticalState.ChangeState(this.verticalState.idleGround);
         this.skillState.ChangeState(this.skillState.idleSkill);
         this.statusState.ChangeState(this.statusState.normal);
-        InputBuffer = new InputBuffer(this.charCtrl.CharData.BufferWindow);
+        InputBuffer = new InputBuffer(SCharStaticData.BufferWindow);
     }
 
     private void Update()
@@ -60,18 +60,18 @@ public class CharStateCtrl : BaseChar
         if (InputManager.Instance.AttackInput)
             InputBuffer.AddInput(StateName.ATTACK_ONE_STATE);
 
-        // Debug.Log(this.statusState.StateMachine.CurrentState + " / "
-        //         + this.skillState.StateMachine.CurrentState + " / "
-        //         + this.verticalState.StateMachine.CurrentState + " / "
-        //         + this.horizontalState.StateMachine.CurrentState);
+        //Debug.Log(this.statusState.StateMachine.CurrentState + " / "
+        //        + this.skillState.StateMachine.CurrentState + " / "
+        //        + this.verticalState.StateMachine.CurrentState + " / "
+        //        + this.horizontalState.StateMachine.CurrentState);
 
         // Debug.Log(this.charCtrl.RigidBody2D.linearVelocityY);
     }
 
-    private void FixedUpdate()
-    {
-        this.VelocityHandle.Apply();
-    }
+    //private void FixedUpdate()
+    //{
+    //    this.VelocityHandle.Apply();
+    //}
 
     protected override void LoadComponents()
     {
@@ -138,6 +138,11 @@ public class CharStateCtrl : BaseChar
     {
         if (InputManager.Instance.MoveInput == 1) this.transform.parent.localScale = new Vector3(1, 1, 1);
         if (InputManager.Instance.MoveInput == -1) this.transform.parent.localScale = new Vector3(-1, 1, 1);
+    }
+
+    public virtual bool IsFacingRight()
+    {
+        return Mathf.Approximately(this.charCtrl.transform.localScale.x, 1);
     }
     
     public void ResetSkill()

@@ -29,7 +29,7 @@ public class DoubleJumpState : ICharState<CharBaseState>
         context.CharCtrl.CharStateCtrl.canDoubleJump = false;
 
         context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x, 0);
-        context.CharCtrl.RigidBody2D.AddForce(Vector2.up * context.CharCtrl.CharData.DoubleJumpForce, ForceMode2D.Impulse);
+        context.CharCtrl.RigidBody2D.AddForce(Vector2.up * SCharStaticData.DoubleJumpForce, ForceMode2D.Impulse);
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
 
@@ -40,8 +40,7 @@ public class DoubleJumpState : ICharState<CharBaseState>
 
     public void OnExit(CharBaseState context)
     {
-        if (fx != null)
-            FXSpawner.Instance.Despawn(fx);
+        //FXSpawner.Instance.Despawn(fx);
     }
 
     public void OnFrameUpdate(CharBaseState context)

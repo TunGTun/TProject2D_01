@@ -35,18 +35,20 @@ public class DashState : ICharState<CharBaseState>
             return;
         }
 
-        timer = context.CharCtrl.CharData.DashDuration;
+        timer = SCharStaticData.DashDuration;
         
         context.CharCtrl.CharStateCtrl.canDash = false;
 
         context.CharCtrl.RigidBody2D.gravityScale = 0;
         
-        context.CharCtrl.CharStateCtrl.VelocityHandle.Request(0f, 0f, 100);
+        context.CharCtrl.RigidBody2D.linearVelocity = Vector2.zero;
 
         context.CharCtrl.CharStateCtrl.FlipX();
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
-        
+
+        AudioManager.Instance.PlaySFX(ESoundName.Dash);
+
         Vector3 spawnPos = context.CharCtrl.CharBodyCollider.bounds.center - new Vector3(0, context.CharCtrl.CharBodyCollider.bounds.extents.y, 0);
         Quaternion spawnRot = Mathf.Approximately(context.CharCtrl.transform.localScale.x, 1) ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
         FXSpawner.Instance.Spawn(FXSpawner.Instance.DASH_AIR, spawnPos, spawnRot);
@@ -54,9 +56,7 @@ public class DashState : ICharState<CharBaseState>
 
     public void OnExit(CharBaseState context)
     {
-        context.CharCtrl.RigidBody2D.gravityScale = context.CharCtrl.CharData.GravityScale;
-
-        //context.CharCtrl.NextDashTime = Time.time + context.CharCtrl.CharData.DashCooldown;
+        context.CharCtrl.RigidBody2D.gravityScale = SCharStaticData.GravityScale;
     }
 
     public void OnFrameUpdate(CharBaseState context)
@@ -64,7 +64,7 @@ public class DashState : ICharState<CharBaseState>
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            context.CharCtrl.CharStateCtrl.VelocityHandle.Request(0f, 0f, 100);
+            context.CharCtrl.RigidBody2D.linearVelocity = Vector2.zero;
             context.CharCtrl.CharStateCtrl.SkillState.ChangeState(context.CharCtrl.CharStateCtrl.SkillState.idleSkill);
         }
     }
@@ -72,8 +72,8 @@ public class DashState : ICharState<CharBaseState>
     public void OnPhysicUpdate(CharBaseState context)
     {
         float dir = context.transform.parent.localScale.x;
-        float dashSpeed = context.CharCtrl.CharData.DashForce;
+        float dashSpeed = SCharStaticData.DashForce;
 
-        context.CharCtrl.CharStateCtrl.VelocityHandle.RequestX(dir * dashSpeed, 100);
+        context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(dir * dashSpeed, context.CharCtrl.RigidBody2D.linearVelocity.y);
     }
 }

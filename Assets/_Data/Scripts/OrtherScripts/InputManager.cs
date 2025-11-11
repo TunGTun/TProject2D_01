@@ -12,19 +12,16 @@ public class InputManager : MySingleton<InputManager>
     protected KeyCode _lastKeyPressed;
 
     [SerializeField] protected float _moveInput;
-    public float MoveInput { get => _moveInput; }
+    public float MoveInput { get => _moveInput; set => _moveInput = value; }
 
     [SerializeField] protected bool jumpInputDown;
-    public bool JumpInputDown { get => jumpInputDown; }
+    public bool JumpInputDown { get => jumpInputDown; set => jumpInputDown = value; }
 
     [SerializeField] protected bool jumpInputUp;
-    public bool JumpInputUp { get => jumpInputUp; }
+    public bool JumpInputUp { get => jumpInputUp; set => jumpInputUp = value; }
 
     [SerializeField] protected bool dashInput;
     public bool DashInput { get => dashInput; }
-
-    //[SerializeField] protected bool leftCtrlInput;
-    //public bool LeftCtrlInput { get => leftCtrlInput; }
 
     [SerializeField] protected bool downInput;
     public bool DownInput { get => downInput; }
@@ -35,27 +32,38 @@ public class InputManager : MySingleton<InputManager>
     [SerializeField] protected bool attackInput;
     public bool AttackInput { get => attackInput; }
 
+    [SerializeField] protected bool healInput;
+    public bool HealInput { get => healInput; }
+
+    [SerializeField] protected bool backInput;
+    public bool BackInput { get => backInput; }
+
     void Update()
     {
-        if (!this.CanControl)
-        {
-            this._moveInput = 0;
-            return;
-        }
+        this.CheckInput();
+    }
+
+    protected virtual void CheckInput()
+    {
+        this.CheckBackInput();
+
+        if (!this.CanControl) return;
+
         this.CheckMoveInput();
         this.CheckJumpInputDown();
         this.CheckJumpInputUp();
         this.CheckDashInput();
-        //this.CheckLeftCtrlInput();
         this.CheckDownInput();
         this.CheckDownInput();
         this.CheckUpInput();
         this.CheckAttackClick();
+        this.CheckHealInput();
     }
 
     public void SetCanControl(bool canControl)
     {
         this.canControl = canControl;
+        this._moveInput = 0;
     }
 
     protected virtual void CheckMoveInput()
@@ -109,11 +117,6 @@ public class InputManager : MySingleton<InputManager>
             this.dashInput = false;
     }
 
-    //protected virtual void CheckLeftCtrlInput()
-    //{
-    //    this.leftCtrlInput = Input.GetKeyDown(KeyCode.LeftControl);
-    //}
-
     protected virtual void CheckDownInput()
     {
         this.downInput = Input.GetKey(KeyCode.S);
@@ -129,4 +132,13 @@ public class InputManager : MySingleton<InputManager>
         this.attackInput = Input.GetMouseButtonDown(0);
     }
 
+    protected virtual void CheckHealInput()
+    {
+        this.healInput = Input.GetKeyDown(KeyCode.F);
+    }
+
+    protected virtual void CheckBackInput()
+    {
+        this.backInput = Input.GetKeyDown(KeyCode.Escape);
+    }
 }

@@ -16,14 +16,16 @@ public class AttackTwoState : ICharState<CharBaseState>
 
     public void OnEnter(CharBaseState context)
     {
-        timer = context.CharCtrl.CharData.AttackDuration;
+        timer = SCharStaticData.AttackDuration;
 
-        damageDelayTimer = context.CharCtrl.CharData.AttackDuration / 3f;
+        damageDelayTimer = SCharStaticData.AttackDuration / 3f;
         hasDealtDamage = false;
 
         context.CharCtrl.CharStateCtrl.FlipX();
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
+
+        AudioManager.Instance.PlaySFX(ESoundName.Attack);
     }
 
     public void OnExit(CharBaseState context)

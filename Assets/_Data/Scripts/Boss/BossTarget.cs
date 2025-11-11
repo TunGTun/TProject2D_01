@@ -14,6 +14,7 @@ public class BossTarget : MyMonoBehaviour
     {
         base.LoadComponents();
         this.LoadBaseBossCtrl();
+        this.LoadTarget();
     }
 
     protected virtual void LoadBaseBossCtrl()
@@ -21,5 +22,12 @@ public class BossTarget : MyMonoBehaviour
         if (baseBossCtrl != null) return;
         baseBossCtrl = GetComponentInParent<BaseBossCtrl>();
         Debug.LogWarning(transform.name + ": LoadBaseBossCtrl", gameObject);
+    }
+
+    protected virtual void LoadTarget()
+    {
+        if (target != null) return;
+        target = CharCtrl.Instance.transform;
+        Debug.Log(transform.name + ": LoadTarget", gameObject);
     }
 }

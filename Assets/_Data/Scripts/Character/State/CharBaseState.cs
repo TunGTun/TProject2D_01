@@ -37,7 +37,7 @@ public abstract class CharBaseState : BaseState<CharBaseState>
     {
         if (this is StatusState)
         {
-            base.FrameUpdate();
+            base.PhysicUpdate();
             return;
         }
         if (this.charCtrl.CharStateCtrl.StatusState.StateMachine.CurrentState != null)

@@ -12,9 +12,11 @@ public class HurtState : ICharState<CharBaseState>
     {
         //InputManager.Instance.SetCanControl(false);
 
-        timer = context.CharCtrl.CharData.HurtTime;
+        timer = SCharStaticData.HurtTime;
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
+
+        AudioManager.Instance.PlaySFX(ESoundName.TakeDamage);
     }
 
     public void OnExit(CharBaseState context)

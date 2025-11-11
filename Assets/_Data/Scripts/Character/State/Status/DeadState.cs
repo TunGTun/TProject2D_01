@@ -9,15 +9,21 @@ public class DeadState : ICharState<CharBaseState>
     public void OnEnter(CharBaseState context)
     {
         context.CharCtrl.RigidBody2D.linearVelocity = Vector2.zero;
-
+        
         context.CharCtrl.RigidBody2D.gravityScale = 0;
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
+
+        AudioManager.Instance.PlaySFX(ESoundName.Dead);
+
+        InputManager.Instance.SetCanControl(false);
     }
 
     public void OnExit(CharBaseState context)
     {
-        context.CharCtrl.RigidBody2D.gravityScale = context.CharCtrl.CharData.GravityScale;
+        context.CharCtrl.RigidBody2D.gravityScale = SCharStaticData.GravityScale;
+
+        InputManager.Instance.SetCanControl(true);
     }
 
     public void OnFrameUpdate(CharBaseState context)
