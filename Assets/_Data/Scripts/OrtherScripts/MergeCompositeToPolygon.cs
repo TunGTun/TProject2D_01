@@ -1,33 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Clipper2Lib;
 
 [RequireComponent(typeof(PolygonCollider2D))]
-public class MergeCompositeToPolygon : MyMonoBehaviour
+public class MergeCompositeToPolygon : MySingleton<MergeCompositeToPolygon>
 {
-    [Header("Composite Colliders")]
+    [Header("Source Objects (Auto load by Tag)")]
     [SerializeField] private List<CompositeCollider2D> sourceComposites = new List<CompositeCollider2D>();
 
-    [Header("Polygon Collider")]
+    [Header("Target Polygon")]
     [SerializeField] private PolygonCollider2D targetPolygon;
+
+    [Header("Merge Settings")]
+    [SerializeField] private float scale = 1000f;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadSourceComposites();
-        this.LoadTargetPolygon();
-        this.MergeComposites();
-    }
 
-    protected virtual void LoadSourceComposites()
-    {
-        if (sourceComposites.Count > 0) return;
-        CompositeCollider2D ground = GameObject.Find("Ground").GetComponent<CompositeCollider2D>();
-        this.sourceComposites.Add(ground);
-        CompositeCollider2D wall = GameObject.Find("Wall").GetComponent<CompositeCollider2D>();
-        this.sourceComposites.Add(wall);
-        CompositeCollider2D ceiling = GameObject.Find("Ceiling").GetComponent<CompositeCollider2D>();
-        this.sourceComposites.Add(ceiling);
-        Debug.Log(transform.name + ": LoadSourceComposites", gameObject);
+        this.LoadTargetPolygon();
+        this.LoadSourceComposites();
+
+        this.MergeComposites();
     }
 
     protected virtual void LoadTargetPolygon()
@@ -37,40 +31,72 @@ public class MergeCompositeToPolygon : MyMonoBehaviour
         Debug.LogWarning(transform.name + ": LoadTargetPolygon", gameObject);
     }
 
-    protected virtual void MergeComposites()
+    protected virtual void LoadSourceComposites()
     {
-        List<Vector2[]> allPaths = new List<Vector2[]>();
+        if (this.sourceComposites.Count > 0) return;
+        this.sourceComposites = new List<CompositeCollider2D>();
+
+        CompositeCollider2D fixVoidRift = GameObject.Find("FixVoidRift").GetComponent<CompositeCollider2D>();
+        this.sourceComposites.Add(fixVoidRift);
+
+        string[] tags = { "Ground", "Wall", "Ceiling" };
+        foreach (string tag in tags)
+        {
+            GameObject[] objs = GameObject.FindGameObjectsWithTag(tag);
+            foreach (var obj in objs)
+            {
+                CompositeCollider2D comp = obj.GetComponent<CompositeCollider2D>();
+                if (comp != null && !sourceComposites.Contains(comp))
+                    sourceComposites.Add(comp);
+            }
+        }
+
+        Debug.Log(transform.name + ": LoadSourceComposites", gameObject);
+
+    }
+
+    public virtual void MergeComposites()
+    {
+        PathsD subjectPaths = new PathsD();
 
         foreach (var comp in sourceComposites)
         {
             if (!comp) continue;
-
             int pathCount = comp.pathCount;
 
             for (int i = 0; i < pathCount; i++)
             {
                 int pointCount = comp.GetPathPointCount(i);
-                List<Vector2> worldPoints = new List<Vector2>(pointCount);
                 Vector2[] temp = new Vector2[pointCount];
-
                 comp.GetPath(i, temp);
 
+                PathD path = new PathD(pointCount);
                 for (int j = 0; j < pointCount; j++)
-                    worldPoints.Add(comp.transform.TransformPoint(temp[j]));
+                {
+                    Vector2 worldP = comp.transform.TransformPoint(temp[j]);
+                    path.Add(new PointD(worldP.x * scale, worldP.y * scale));
+                }
 
-                allPaths.Add(worldPoints.ToArray());
+                subjectPaths.Add(path);
             }
         }
 
-        targetPolygon.pathCount = allPaths.Count;
+        PathsD solution = Clipper.Union(subjectPaths, FillRule.NonZero);
 
-        for (int i = 0; i < allPaths.Count; i++)
+        targetPolygon.pathCount = solution.Count;
+
+        for (int i = 0; i < solution.Count; i++)
         {
-            List<Vector2> localPoints = new List<Vector2>(allPaths[i].Length);
-            foreach (var p in allPaths[i])
-                localPoints.Add(transform.InverseTransformPoint(p));
+            PathD path = solution[i];
+            Vector2[] localPoints = new Vector2[path.Count];
 
-            targetPolygon.SetPath(i, localPoints.ToArray());
+            for (int j = 0; j < path.Count; j++)
+            {
+                Vector2 worldPoint = new Vector2((float)(path[j].x / scale), (float)(path[j].y / scale));
+                localPoints[j] = transform.InverseTransformPoint(worldPoint);
+            }
+
+            targetPolygon.SetPath(i, localPoints);
         }
     }
 }
