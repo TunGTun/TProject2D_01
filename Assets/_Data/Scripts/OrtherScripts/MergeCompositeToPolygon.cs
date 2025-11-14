@@ -19,9 +19,11 @@ public class MergeCompositeToPolygon : MySingleton<MergeCompositeToPolygon>
         base.LoadComponents();
 
         this.LoadTargetPolygon();
-        this.LoadSourceComposites();
 
-        this.MergeComposites();
+        this.ResetMergeComposites();
+
+        //this.LoadSourceComposites();
+        //this.MergeComposites();
     }
 
     protected virtual void LoadTargetPolygon()
@@ -33,7 +35,6 @@ public class MergeCompositeToPolygon : MySingleton<MergeCompositeToPolygon>
 
     protected virtual void LoadSourceComposites()
     {
-        if (this.sourceComposites.Count > 0) return;
         this.sourceComposites = new List<CompositeCollider2D>();
 
         CompositeCollider2D fixVoidRift = GameObject.Find("FixVoidRift").GetComponent<CompositeCollider2D>();
@@ -55,7 +56,7 @@ public class MergeCompositeToPolygon : MySingleton<MergeCompositeToPolygon>
 
     }
 
-    public virtual void MergeComposites()
+    protected virtual void MergeComposites()
     {
         PathsD subjectPaths = new PathsD();
 
@@ -98,5 +99,11 @@ public class MergeCompositeToPolygon : MySingleton<MergeCompositeToPolygon>
 
             targetPolygon.SetPath(i, localPoints);
         }
+    }
+
+    public virtual void ResetMergeComposites()
+    {
+        this.LoadSourceComposites();
+        this.MergeComposites();
     }
 }

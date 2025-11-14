@@ -36,7 +36,7 @@ public class InputManager : MySingleton<InputManager>
     public bool HealInput { get => healInput; }
 
     [SerializeField] protected bool backInput;
-    public bool BackInput { get => backInput; }
+    public bool BackInput { get => backInput; set => backInput = value; }
 
     [SerializeField] protected bool interactInput;
     public bool InteractInput { get => interactInput; set => interactInput = value; }
@@ -48,10 +48,10 @@ public class InputManager : MySingleton<InputManager>
 
     protected virtual void CheckInput()
     {
-        this.CheckBackInput();
 
         if (!this.CanControl) return;
 
+        this.CheckBackInput();
         this.CheckMoveInput();
         this.CheckJumpInputDown();
         this.CheckJumpInputUp();

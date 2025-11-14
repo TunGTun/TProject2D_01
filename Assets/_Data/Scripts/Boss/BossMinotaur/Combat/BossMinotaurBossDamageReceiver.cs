@@ -16,9 +16,6 @@ public class BossMinotaurBossDamageReceiver : ABossDamageReceiver
     private bool isFlashing = false;
     private float flashTimer = 0f;
 
-    [Header("Dead")]
-    [SerializeField] protected bool isDead;
-
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -78,17 +75,9 @@ public class BossMinotaurBossDamageReceiver : ABossDamageReceiver
         this.CheckIsDead();
     }
 
-    protected virtual bool CheckIsDead()
+    protected override void OnDead()
     {
-        if (this.baseBossCtrl.BaseBossData.CurrentHealth <= 0) 
-            this.isDead = true;
-        else 
-            this.isDead = false;
-        return this.isDead;
-    }
-
-    protected virtual void OnDead()
-    {
+        base.OnDead();
         this.bossMinotaurCtrl.BaseBossState.ChangeState(this.bossMinotaurCtrl.BaseBossState.dead);
     }
 }

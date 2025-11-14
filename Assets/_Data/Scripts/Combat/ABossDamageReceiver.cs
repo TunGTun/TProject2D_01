@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider2D))]
@@ -11,6 +12,25 @@ public abstract class ABossDamageReceiver : ADamageReceiver
 
     [SerializeField] protected CapsuleCollider2D hitBoxCollider;
     public CapsuleCollider2D HitBoxCollider => hitBoxCollider;
+
+    [Header("Dead")]
+    [SerializeField] protected bool isDead;
+
+    //Dead observer ===============================================================
+    private List<IBossDeathListener> listeners = new List<IBossDeathListener>();
+
+    public void RegisterListener(IBossDeathListener listener)
+    {
+        if (!listeners.Contains(listener))
+            listeners.Add(listener);
+    }
+
+    public void UnregisterListener(IBossDeathListener listener)
+    {
+        if (listeners.Contains(listener))
+            listeners.Remove(listener);
+    }
+    //==============================================================================
 
     protected override void LoadComponents()
     {
@@ -45,5 +65,20 @@ public abstract class ABossDamageReceiver : ADamageReceiver
         this.baseBossCtrl.BaseBossData.CurrentHealth -= damage;
         if (this.baseBossCtrl.BaseBossData.CurrentHealth < 0) 
             this.baseBossCtrl.BaseBossData.CurrentHealth = 0;
+    }
+
+    protected virtual bool CheckIsDead()
+    {
+        if (this.baseBossCtrl.BaseBossData.CurrentHealth <= 0)
+            this.isDead = true;
+        else
+            this.isDead = false;
+        return this.isDead;
+    }
+
+    protected virtual void OnDead()
+    {
+        foreach (var listener in listeners)
+            listener.OnBossDead();
     }
 }

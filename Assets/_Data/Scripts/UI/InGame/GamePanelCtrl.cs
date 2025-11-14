@@ -36,6 +36,7 @@ public class GamePanelCtrl : MySingleton<GamePanelCtrl>
     protected virtual void Pause()
     {
         if (!InputManager.Instance.BackInput) return;
+        InputManager.Instance.BackInput = false;
         if (CharCtrl.Instance.CharStateCtrl.StatusState.StateMachine.CurrentState == CharCtrl.Instance.CharStateCtrl.StatusState.sceneTransition) return;
         this.pausePanelCtrl.gameObject.SetActive(true);
         InputManager.Instance.SetCanControl(false);

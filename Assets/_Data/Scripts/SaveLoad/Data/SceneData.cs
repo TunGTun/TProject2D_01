@@ -8,5 +8,7 @@ public class SceneData
 
     public bool BossDefeated = false;
 
-    public bool isCheckPointActive = false;
+    public bool IsCheckPointActive = false;
+
+    public bool IsDoorOpen = false;
 }
