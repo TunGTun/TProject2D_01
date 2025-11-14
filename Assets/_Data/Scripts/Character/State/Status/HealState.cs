@@ -17,6 +17,9 @@ public class HealState : ICharState<CharBaseState>
         context.CharCtrl.RigidBody2D.gravityScale = 0;
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
+
+        Vector3 spawnPos = context.CharCtrl.transform.position;
+        FXSpawner.Instance.Spawn(FXSpawner.Instance.HEAL, spawnPos, Quaternion.identity);
     }
 
     public void OnExit(CharBaseState context)
