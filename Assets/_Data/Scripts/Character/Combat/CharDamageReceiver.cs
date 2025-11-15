@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider2D))]
@@ -11,6 +12,9 @@ public class CharDamageReceiver : MyMonoBehaviour
 
     [SerializeField] protected CapsuleCollider2D hitBoxCollider;
     public CapsuleCollider2D HitBoxCollider => hitBoxCollider;
+
+    [SerializeField] protected bool canTakeDamage = true;
+    public bool CanTakeDamage { get => canTakeDamage; set => canTakeDamage = value; }
 
     //[Header("Flash Effect")]
     //[SerializeField] protected Material originalMat;
@@ -60,6 +64,7 @@ public class CharDamageReceiver : MyMonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!canTakeDamage) return;
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy1"))
         {
             this.OnDamageReceived(1, collision.transform);
@@ -123,6 +128,27 @@ public class CharDamageReceiver : MyMonoBehaviour
 
     protected virtual void OnDead()
     {
+        StartCoroutine(OnDeadRoutine());
+    }
+
+    protected virtual IEnumerator OnDeadRoutine()
+    {
         this.charCtrl.CharStateCtrl.StatusState.ChangeState(this.charCtrl.CharStateCtrl.StatusState.dead);
+
+        yield return new WaitForSeconds(1f);
+        GamePanelCtrl.Instance.EnableDeadPanel();
+
+        yield return new WaitForSeconds(3f);
+        GamePanelCtrl.Instance.DisableDeadPanel();
+        CheckPointData checkPointData = SaveLoadManager.Instance.PlayerData.LastCheckPoint;
+        this.charCtrl.CharData.AddHP(this.charCtrl.CharData.MaxHP);
+        MySceneManager.Instance.LoadScene(checkPointData.SceneName);
+
+        yield return new WaitUntil(() => MySceneManager.Instance.GetCurrentSceneName() == checkPointData.SceneName);
+        this.transform.parent.position = checkPointData.SpawnPoint;
+        SaveLoadManager.Instance.SavePlayer();
+
+        yield return new WaitForSeconds(SSceneTransitionData.AnimationDuration);
+        this.charCtrl.CharStateCtrl.StatusState.ChangeState(this.charCtrl.CharStateCtrl.StatusState.spawn);
     }
 }

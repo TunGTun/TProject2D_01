@@ -9,6 +9,7 @@ public class BaseBossState : BaseState<BaseBossState>
 
     public BossIdleState idle;
     public BossDeadState dead;
+    public BossCutSceneState cutScene;
 
     protected override void LoadComponents()
     {
@@ -27,5 +28,6 @@ public class BaseBossState : BaseState<BaseBossState>
     {
         idle = new BossIdleState();
         dead = new BossDeadState();
+        cutScene = new BossCutSceneState();
     }
 }

@@ -8,11 +8,12 @@ public class JumpState : ICharState<CharBaseState>
 
     public void OnEnter(CharBaseState context)
     {
-         context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x, 0);
+        context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(context.CharCtrl.RigidBody2D.linearVelocity.x, 0);
         context.CharCtrl.RigidBody2D.AddForce(Vector2.up * SCharStaticData.JumpForce, ForceMode2D.Impulse);
-        // context.CharCtrl.CharStateCtrl.VelocityHandle.LockYOneFrame();
 
-        context.CharCtrl.AnimationCtrl.UpdateAnimation();
+        context.CharCtrl.AnimationCtrl.UpdateAnimation(); 
+        
+        AudioManager.Instance.PlaySFX(ESoundName.Jump);
 
         Vector3 bottomPos = context.CharCtrl.CharBodyCollider.bounds.center - new Vector3(0, context.CharCtrl.CharBodyCollider.bounds.extents.y, 0);
         FXSpawner.Instance.Spawn(FXSpawner.Instance.JUMP, bottomPos, Quaternion.identity);

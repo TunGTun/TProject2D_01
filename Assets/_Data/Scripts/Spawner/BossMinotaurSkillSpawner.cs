@@ -10,6 +10,7 @@ public class BossMinotaurSkillSpawner : ABaseSpawner
     public string FallingRock = "FallingRock";
     public string AttackOneHitBox = "AttackOneHitBox";
     public string AttackFourHitBox = "AttackFourHitBox";
+    public string BossRoarEffect = "BossRoarEffect";
 
     protected override void Awake()
     {

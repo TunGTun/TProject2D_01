@@ -9,6 +9,8 @@ public class FXSpawner : ABaseSpawner
     public readonly string JUMP = "JumpEffect";
     public readonly string DOUBLE_JUMP = "DoubleJumpEffect";
     public readonly string DASH_AIR = "AirDashEffect";
+    public readonly string DEAD = "DeadEffect";
+    public readonly string HEAL = "HealEffect";
     // public readonly string DASH_GROUND = "GroundDashEffect";
 
     protected override void Awake()

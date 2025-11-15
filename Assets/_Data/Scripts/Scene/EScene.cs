@@ -48,3 +48,8 @@ public enum EScene
     East_Scene_4 = 304,
 
 }
+
+public enum ESceneDirection
+{
+    Up, Down, Horizontal
+}

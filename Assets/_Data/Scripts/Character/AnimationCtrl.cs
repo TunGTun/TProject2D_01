@@ -33,7 +33,7 @@ public class AnimationCtrl : BaseChar
         Debug.LogWarning(transform.name + ": LoadAnimator", gameObject);
     }
 
-    protected virtual void ChangeAnimationState(string newState)
+    public virtual void ChangeAnimationState(string newState)
     {
         if (currentAnim == newState) return;
 

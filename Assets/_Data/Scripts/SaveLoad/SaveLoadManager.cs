@@ -4,83 +4,142 @@ using UnityEngine;
 
 public class SaveLoadManager : MySingleton<SaveLoadManager>
 {
-    protected string saveLocation;
+    private string rootPath = @"C:\SaveLoadGame\TKTT\";
+    private int currentSlot = 1;
+
+    public string CurrentSlotPath => Path.Combine(rootPath, $"SaveSlot_{currentSlot}");
+
+    [SerializeField] protected PlayerData playerData;
+    public PlayerData PlayerData => playerData;
 
     protected override void Awake()
     {
         base.Awake();
-        string saveDir = @"C:\SaveLoadGame\TKTT\";
-        //if (!Directory.Exists(saveDir))
-        //    Directory.CreateDirectory(saveDir);
-
-        saveLocation = Path.Combine(saveDir, "saveLoadData.json");
+        if (!Directory.Exists(rootPath))
+            Directory.CreateDirectory(rootPath);
     }
 
-    protected override void Start()
+    //Play
+    public void SavePlayer()
     {
-        base.Start();
-        //this.LoadGame();
-    }
+        this.playerData.SceneName = MySceneManager.Instance.GetCurrentSceneName();
+        this.playerData.Position = CharCtrl.Instance.transform.position;
+        this.playerData.MaxHP = CharCtrl.Instance.CharData.MaxHP;
+        this.playerData.MaxMP = CharCtrl.Instance.CharData.MaxMP;
+        this.playerData.AttackDamage = CharCtrl.Instance.CharData.AttackDamage;
+        this.playerData.CurrentHP = CharCtrl.Instance.CharData.CurrentHP;
+        this.playerData.CurrentMP = CharCtrl.Instance.CharData.CurrentMP;
+        this.playerData.Money = CharCtrl.Instance.CharData.Money;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L)) this.SaveGame();
-    }
-
-    public virtual void SaveGame()
-    {
-        SaveLoadData saveLoadData = new SaveLoadData
+        if (CheckPointCtrl.Instance != null)
         {
-            SceneName = MySceneManager.Instance.GetCurrentSceneName(),
-            PlayerPosition = CharCtrl.Instance.transform.position
-        };
+            if (CheckPointCtrl.Instance.CheckPointInteract.IsActive)
+            {
+                this.playerData.LastCheckPoint.SceneName = this.playerData.SceneName;
+                this.playerData.LastCheckPoint.SpawnPoint = CheckPointCtrl.Instance.SpawnPoint.position;
+            }
+        }
 
-        File.WriteAllText(saveLocation, JsonUtility.ToJson(saveLoadData));
+        string path = Path.Combine(CurrentSlotPath, "playerData.json");
+        File.WriteAllText(path, JsonUtility.ToJson(playerData, true));
     }
 
-    // Chua toi uu
-    public virtual void CreateNewSave()
+    public void CreateNewPlayerSave()
     {
-        SaveLoadData saveLoadData = new SaveLoadData
+        playerData = new PlayerData
         {
             SceneName = EScene.West_Scene_5.ToString(),
-            PlayerPosition = new Vector3(-8.5f, -1.2f, 0)
+            Position = new Vector3(-4.5f, -1.2f, 0),
+            MaxHP = CharCtrl.Instance.CharData.MaxHP,
+            MaxMP = CharCtrl.Instance.CharData.MaxMP,
+            AttackDamage = CharCtrl.Instance.CharData.AttackDamage,
+            CurrentHP = CharCtrl.Instance.CharData.MaxHP,
+            CurrentMP = CharCtrl.Instance.CharData.MaxMP,
+            Money = 0,
+            LastCheckPoint = new CheckPointData
+            {
+                SceneName = EScene.West_Scene_1.ToString(),
+                SpawnPoint = new Vector3(5.5f, 1.565f, 0),
+            }
         };
 
-        File.WriteAllText(saveLocation, JsonUtility.ToJson(saveLoadData));
+        string path = Path.Combine(CurrentSlotPath, "playerData.json");
+        File.WriteAllText(path, JsonUtility.ToJson(playerData, true));
     }
 
-    public virtual bool HasSavedFile()
+    public bool HasPlayerSave()
     {
-        return File.Exists(saveLocation);
-    }
+        string path = Path.Combine(CurrentSlotPath, "playerData.json");
+        return File.Exists(path);
+    } 
 
-    public virtual void LoadGame()
+    public void LoadPlayer()
     {
-        if (this.HasSavedFile())
+        if (this.HasPlayerSave())
         {
-            SaveLoadData saveLoadData = JsonUtility.FromJson<SaveLoadData>(File.ReadAllText(saveLocation));
-            StartCoroutine(LoadGameRoutine(saveLoadData));
+            string path = Path.Combine(CurrentSlotPath, "playerData.json");
+            playerData = JsonUtility.FromJson<PlayerData>(File.ReadAllText(path));
+            StartCoroutine(LoadPlayerRoutine(playerData));
         }
         else
         {
-            this.CreateNewSave();
-            this.LoadGame();
-        }    
+            this.CreateNewPlayerSave();
+            this.LoadPlayer();
+        }
     }
 
-    protected virtual IEnumerator LoadGameRoutine(SaveLoadData saveLoadData)
+    protected virtual IEnumerator LoadPlayerRoutine(PlayerData playerData)
     {
-        MySceneManager.Instance.LoadScene(saveLoadData.SceneName);
+        MySceneManager.Instance.LoadScene(playerData.SceneName);
+        yield return new WaitUntil(() => MySceneManager.Instance.GetCurrentSceneName() == playerData.SceneName);
+        CharCtrl.Instance.transform.position = playerData.Position;
+        CharCtrl.Instance.CharData.MaxHP = playerData.MaxHP;
+        CharCtrl.Instance.CharData.MaxMP = playerData.MaxMP;
+        CharCtrl.Instance.CharData.AttackDamage = playerData.AttackDamage;
+        CharCtrl.Instance.CharData.CurrentHP = playerData.CurrentHP;
+        CharCtrl.Instance.CharData.CurrentMP = playerData.CurrentMP;
+        CharCtrl.Instance.CharData.Money = playerData.Money;
 
-        yield return new WaitUntil(() => MySceneManager.Instance.GetCurrentSceneName() == saveLoadData.SceneName);
-
-        CharCtrl.Instance.transform.position = saveLoadData.PlayerPosition;
+        CharCtrl.Instance.CharStateCtrl.StatusState.ChangeState(CharCtrl.Instance.CharStateCtrl.StatusState.spawn);
     }
 
-    public virtual void DeleteSaveData()
+    //Scene
+    public void SaveScene(string sceneName, SceneData data)
     {
-        if (!this.HasSavedFile()) return;
-        File.Delete(saveLocation);
+        string path = Path.Combine(CurrentSlotPath, $"{sceneName}.json");
+        File.WriteAllText(path, JsonUtility.ToJson(data, true));
+    }
+
+    public bool HasSceneSave(string sceneName)
+    {
+        string path = Path.Combine(CurrentSlotPath, $"{sceneName}.json");
+        return File.Exists(path);
+    }
+
+    public SceneData LoadScene(string sceneName)
+    {
+        string path = Path.Combine(CurrentSlotPath, $"{sceneName}.json");
+        return JsonUtility.FromJson<SceneData>(File.ReadAllText(path));
+    }
+
+    //Slot
+    public void SetSaveSlot(int slot)
+    {
+        currentSlot = Mathf.Clamp(slot, 1, 3);
+        if (!Directory.Exists(CurrentSlotPath))
+            Directory.CreateDirectory(CurrentSlotPath);
+    }
+
+    public bool HasSaveSlot(int slot)
+    {
+        string path = Path.Combine(rootPath, $"SaveSlot_{slot}");
+        return Directory.Exists(path);
+    }
+
+    public void DeleteSlot(int slot)
+    {
+        string path = Path.Combine(rootPath, $"SaveSlot_{slot}");
+        if (this.HasSaveSlot(slot))
+            Directory.Delete(path, true);
     }
 }

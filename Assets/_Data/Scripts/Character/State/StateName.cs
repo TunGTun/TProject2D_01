@@ -18,4 +18,8 @@ public static class StateName
     public const string HEAL_STATE = "Heal";
     public const string HURT_STATE = "Hurt";
     public const string DEAD_STATE = "Dead";
+    public const string CUT_SCENE_STATE = "CutScene";
+    public const string SCENE_TRANSITION_STATE = "SceneTransition";
+    public const string SOUL_LINK_STATE = "SoulLink";
+    public const string SPAWN_STATE = "Spawn";
 }
