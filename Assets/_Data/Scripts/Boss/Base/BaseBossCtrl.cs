@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
 
-public abstract class BaseBossCtrl : MyMonoBehaviour
+public abstract class BaseBossCtrl : MySingleton<BaseBossCtrl>
 {
     [Header("BaseBossCtrl")]
     [SerializeField] protected Rigidbody2D bossRigidbody2D;

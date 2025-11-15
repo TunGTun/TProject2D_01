@@ -34,7 +34,7 @@ public class CheckPointInteract : MyMonoBehaviour
 
     protected virtual void Init()
     {
-        this.isActive = SaveLoadSceneData.Instance.SceneData.isCheckPointActive;
+        this.isActive = SaveLoadSceneData.Instance.SceneData.IsCheckPointActive;
 
         Vector3 temp1 = this.checkPointCtrl.CheckPointWorldCanvas.ActiveGuide.localScale;
         temp1.y = 0f;
@@ -99,7 +99,7 @@ public class CheckPointInteract : MyMonoBehaviour
     protected virtual void Active()
     {
         this.isActive = true;
-        SaveLoadSceneData.Instance.SceneData.isCheckPointActive = this.isActive;
+        SaveLoadSceneData.Instance.SceneData.IsCheckPointActive = this.isActive;
         this.checkPointCtrl.CheckPointPortal.DOScale(Vector3.one, 0.5f);
         this.checkPointCtrl.CheckPointWorldCanvas.ActiveGuide.DOScaleY(0f, 0.5f)
             .OnComplete(() =>

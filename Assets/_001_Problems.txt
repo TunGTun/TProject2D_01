@@ -81,3 +81,5 @@ OK		Check point
 		Unlock skill
 
 		Khi dich chuyen camera vuot ra ngoai gio han
+
+		Cài thư viện Clipper2: https://github.com/AngusJohnson/Clipper2
