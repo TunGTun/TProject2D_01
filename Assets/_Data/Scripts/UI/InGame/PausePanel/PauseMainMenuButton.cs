@@ -46,7 +46,11 @@ public class PauseMainMenuButton : ABaseButton
         MySceneManager.Instance.SceneTransitionAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
         yield return new WaitForSecondsRealtime(SSceneTransitionData.AnimationDuration);
 
-        SaveLoadManager.Instance.SavePlayer();
+        if (SaveLoadSceneData.Instance.Boss == null || (SaveLoadSceneData.Instance.Boss != null && SaveLoadSceneData.Instance.SceneData.BossDefeated))
+        {
+            SaveLoadManager.Instance.SavePlayer();
+        }
+
         Time.timeScale = 1;
 
         MySceneManager.Instance.SceneTransitionAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
