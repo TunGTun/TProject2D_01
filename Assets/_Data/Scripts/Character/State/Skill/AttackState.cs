@@ -15,7 +15,8 @@ public class AttackState : ICharState<CharBaseState>
     protected bool upAttack = false;
     protected bool downAttack = false;  
 
-    protected static readonly int enemyMask = LayerMask.GetMask("Enemy", "Enemy1", "Enemy2");
+    protected static readonly int enemyMask = LayerMask.GetMask("Enemy");
+    protected static readonly int parryMask = LayerMask.GetMask("Enemy1", "Enemy2");
 
     public void OnEnter(CharBaseState context)
     {
