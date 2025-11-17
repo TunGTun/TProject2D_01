@@ -37,8 +37,9 @@ public class MergeCompositeToPolygon : MySingleton<MergeCompositeToPolygon>
     {
         this.sourceComposites = new List<CompositeCollider2D>();
 
-        CompositeCollider2D fixVoidRift = GameObject.Find("FixVoidRift").GetComponent<CompositeCollider2D>();
-        this.sourceComposites.Add(fixVoidRift);
+        CompositeCollider2D fixVoidRift = GameObject.Find("FixVoidRift")?.GetComponent<CompositeCollider2D>();
+        if (fixVoidRift != null)
+            this.sourceComposites.Add(fixVoidRift);
 
         string[] tags = { "Ground", "Wall", "Ceiling" };
         foreach (string tag in tags)
