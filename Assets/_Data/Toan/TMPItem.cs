@@ -23,7 +23,6 @@ public class TMPItem : MyMonoBehaviour
 		this.LoadCharData();
 	}
 
-	// Tải Button
 	protected virtual void LoadBuyButton()
 	{
 		if (this.buyButton != null) return;
@@ -32,7 +31,6 @@ public class TMPItem : MyMonoBehaviour
 		Debug.LogWarning(this.transform.name + ": LoadBuyButton", this.gameObject);
 	}
 
-	// Tải Icon
 	protected virtual void LoadItemIcon()
 	{
 		if (this.itemIcon != null) return;
@@ -41,7 +39,6 @@ public class TMPItem : MyMonoBehaviour
 		Debug.LogWarning(this.transform.name + ": LoadItemIcon", this.gameObject);
 	}
 
-	// Tải CharCtrl của Player
 	protected virtual void LoadCharCtrl()
 	{
 		if (this._charCtrl != null) return;
@@ -54,7 +51,6 @@ public class TMPItem : MyMonoBehaviour
 			Debug.Log("Found CharCtrl: " + this._charCtrl.name);
 	}
 
-	// Tải CharData từ CharCtrl
 	protected virtual void LoadCharData()
 	{
 		if (this._charData != null) return;
@@ -76,7 +72,6 @@ public class TMPItem : MyMonoBehaviour
 			this.buyButton.onClick.AddListener(this.OnBuyClick);
 	}
 
-	// Khi bấm nút mua
 	protected virtual void OnBuyClick()
 	{
 		if (this._used) return;
@@ -87,26 +82,13 @@ public class TMPItem : MyMonoBehaviour
 			return;
 		}
 
-		// Lấy MP thật từ nhân vật
 		int mp = this._charData.CurrentMP;
 		int maxMp = this._charData.MaxMP;
 
 		Debug.Log("Before MP Item → MP: " + mp + "/" + maxMp);
-
-		// Nếu chưa full MP → +1 MP
-		if (mp < maxMp)
-		{
-			this._charData.AddMP(1);
-		}
-		else
-		{
-			// Nếu full MP → tăng MaxMP rồi + MP
-			this._charData.AddMaxMP(1);
-			this._charData.AddMP(1);
-		}
-
+		this._charData.AddMaxMP(100);
+		this._charData.AddMP(100);
 		this.SetUsed();
-
 		Debug.Log("After MP Item → MP: " + this._charData.CurrentMP + "/" + this._charData.MaxMP);
 	}
 

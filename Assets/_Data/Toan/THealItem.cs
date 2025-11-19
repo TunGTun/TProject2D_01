@@ -89,21 +89,9 @@ public class THealItem : MyMonoBehaviour
 		int maxHp = this._charData.MaxHP;
 
 		Debug.Log("Before Heal → HP: " + hp + "/" + maxHp);
-
-		// Nếu chưa full HP → hồi HP
-		if (hp < maxHp)
-		{
-			this._charData.AddHP(1);
-		}
-		else
-		{
-			// Nếu full → tăng max rồi cộng HP
-			this._charData.AddMaxHP(1);
-			this._charData.AddHP(1);
-		}
-
+		this._charData.AddMaxHP(1);
+		this._charData.AddHP(1);
 		this.SetUsed();
-
 		Debug.Log("After Heal → HP: " + this._charData.CurrentHP + "/" + this._charData.MaxHP);
 	}
 
