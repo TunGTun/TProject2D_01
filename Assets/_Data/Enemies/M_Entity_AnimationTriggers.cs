@@ -26,4 +26,9 @@ public class M_Entity_AnimationTriggers : MonoBehaviour
         attackCollider.enabled = false;
 
     }
+
+    public void AttackTrigger()
+    {
+        Debug.Log("AttackTrigger called");
+    }
 }
