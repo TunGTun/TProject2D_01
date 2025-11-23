@@ -22,9 +22,9 @@ public class M_Enemy : M_Entity
     public float moveAnimSpeedMultiplier = 1;
 
     [Header("Player detection")]
-    [SerializeField] private LayerMask whatIsPlayer;
-    [SerializeField] private Transform playerCheck;
-    [SerializeField] private float playerCheckDistance = 10;
+    [SerializeField] protected LayerMask whatIsPlayer;
+    [SerializeField] protected Transform playerCheck;
+    [SerializeField] protected float playerCheckDistance = 10;
 
 
 
@@ -37,7 +37,7 @@ public class M_Enemy : M_Entity
     public RaycastHit2D PlayerDetected()
     {
         RaycastHit2D hit =
-            Physics2D.Raycast(playerCheck.position, Vector2.right * facingDir, playerCheckDistance, whatIsPlayer | whatIsGround);
+            Physics2D.Raycast(playerCheck.position - new Vector3(3f,0f,0f) , Vector2.right * facingDir, playerCheckDistance, whatIsPlayer | whatIsGround);
 
         if (hit.collider == null || hit.collider.gameObject.layer != LayerMask.NameToLayer("Player"))
             return default;

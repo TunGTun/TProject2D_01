@@ -18,5 +18,6 @@ public class M_Enemy_DeadState : M_EnemyState
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 15);
 
         stateMachine.SwitchOffStateMachine();
+
     }
 }

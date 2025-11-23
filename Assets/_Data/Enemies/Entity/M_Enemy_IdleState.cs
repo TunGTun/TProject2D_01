@@ -20,5 +20,6 @@ public class M_Enemy_IdleState : M_Enemy_GroundedState
         if (stateTimer < 0)
             stateMachine.ChangeState(enemy.moveState);
 
+
     }
 }

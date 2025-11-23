@@ -9,7 +9,7 @@ public class M_Entity_AnimationTriggers : MonoBehaviour
     private void Awake()
     {
         entity = GetComponentInParent<M_Entity>();
-        attackCollider = GameObject.Find("SkeletonAttackCollider").GetComponent<CircleCollider2D>();
+        //attackCollider = GameObject.Find("SkeletonAttackCollider").GetComponent<CircleCollider2D>();
         attackCollider.enabled = false;
     }
 

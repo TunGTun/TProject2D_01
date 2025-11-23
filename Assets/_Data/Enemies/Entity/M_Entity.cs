@@ -12,11 +12,11 @@ public class M_Entity : MonoBehaviour
 
     [Header("Collision detection")]
     [SerializeField] protected LayerMask whatIsGround;
-    [SerializeField] private float groundCheckDistance;
-    [SerializeField] private float wallCheckDistance;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private Transform primaryWallCheck;
-    [SerializeField] private Transform secondaryWallCheck;
+    [SerializeField] protected float groundCheckDistance;
+    [SerializeField] protected float wallCheckDistance;
+    [SerializeField] protected Transform groundCheck;
+    [SerializeField] protected Transform primaryWallCheck;
+    [SerializeField] protected Transform secondaryWallCheck;
     public bool groundDetected { get; private set; }
     public bool wallDetected { get; private set; }
 
@@ -24,7 +24,6 @@ public class M_Entity : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
-
         stateMachine = new M_StateMachine();
     }
 
@@ -95,4 +94,7 @@ public class M_Entity : MonoBehaviour
         if(secondaryWallCheck != null)
             Gizmos.DrawLine(secondaryWallCheck.position, secondaryWallCheck.position + new Vector3(wallCheckDistance * facingDir, 0));
     }
+
+
+
 }

@@ -5,7 +5,7 @@ public class M_EnemyHealth : MonoBehaviour
     private M_Entity entity;
 
     [Header("Stats")]
-    [SerializeField] protected int maxHP = 25; 
+    [SerializeField] protected int maxHP = 55; 
     public int MaxHP
     {
         get => maxHP;
@@ -30,7 +30,7 @@ public class M_EnemyHealth : MonoBehaviour
         }
     }
 
-
+    [SerializeField] public bool isDead = false;
     protected virtual void Awake()
     {
         entity = GetComponent<M_Entity>();
@@ -58,7 +58,7 @@ public class M_EnemyHealth : MonoBehaviour
         }
     }
 
-    [SerializeField] protected bool isDead = false;
+   
 
     public bool CheckIsDead()
     {
