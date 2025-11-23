@@ -82,6 +82,11 @@ public class M_Entity : MonoBehaviour
     }
 
 
+    public virtual void EntityDeath()
+    {
+        // Override in derived classes
+    }
+
     protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheck.position, groundCheck.position + new Vector3(0, -groundCheckDistance));

@@ -6,6 +6,7 @@ public class M_Enemy : M_Entity
     public M_Enemy_MoveState moveState;
     public M_Enemy_AttackState attackState;
     public M_Enemy_BattleState battleState;
+    public M_Enemy_DeadState deadState;
 
     [Header("Battle details")]
     public float battleMoveSpeed = 3;
@@ -26,6 +27,12 @@ public class M_Enemy : M_Entity
     [SerializeField] private float playerCheckDistance = 10;
 
 
+
+    public override void EntityDeath()
+    {
+        base.EntityDeath();
+        stateMachine.ChangeState(deadState);
+    }
 
     public RaycastHit2D PlayerDetected()
     {

@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class M_EnemyHealth : MonoBehaviour
 {
+    private M_Entity entity;
+
     [Header("Stats")]
-    [SerializeField] protected int maxHP = 5; 
+    [SerializeField] protected int maxHP = 25; 
     public int MaxHP
     {
         get => maxHP;
@@ -29,6 +31,15 @@ public class M_EnemyHealth : MonoBehaviour
     }
 
 
+    protected virtual void Awake()
+    {
+        entity = GetComponent<M_Entity>();
+        currentHP = maxHP;
+    }
+
+
+
+
     public virtual void AddHP(int hp)
     {
         this.CurrentHP += hp;
@@ -40,7 +51,11 @@ public class M_EnemyHealth : MonoBehaviour
     {
         this.CurrentHP -= damage;
         if (this.CurrentHP < 0)
-            this.CurrentHP = 0;
+        { this.CurrentHP = 0; }
+        if(CheckIsDead() && !isDead)
+        {
+            Die();
+        }
     }
 
     [SerializeField] protected bool isDead = false;
@@ -53,11 +68,8 @@ public class M_EnemyHealth : MonoBehaviour
     }
     public virtual void Die()
     {
-        if (isDead) return;
         isDead = true;
-        // die animation
-        // drop money
-        // destroy object
+        entity.EntityDeath();
     }
 
 }
