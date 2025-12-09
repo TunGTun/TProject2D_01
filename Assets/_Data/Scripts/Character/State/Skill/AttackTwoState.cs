@@ -30,7 +30,7 @@ public class AttackTwoState : ICharState<CharBaseState>
 
     public void OnExit(CharBaseState context)
     {
-        
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = true;
     }
 
     public void OnFrameUpdate(CharBaseState context)
@@ -63,6 +63,14 @@ public class AttackTwoState : ICharState<CharBaseState>
         Vector2 hitboxCenter = context.CharCtrl.PointCtrl.AttackTwoPoint.transform.position;
         Vector2 hitboxSize = new Vector2(SCharStaticData.AttackTwoSize[0], SCharStaticData.AttackTwoSize[1]);
 
+        Collider2D[] parryHits = Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, 0, parryMask);
+
+        if (parryHits.Length != 0)
+        {
+            this.Parry(context);
+            return;
+        }
+
         Collider2D[] hits = Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, 0, enemyMask);
         
         foreach (Collider2D hit in hits)
@@ -87,5 +95,11 @@ public class AttackTwoState : ICharState<CharBaseState>
 
         context.CharCtrl.CharDamageSender.NotifyObservers(context.CharCtrl.CharData.AttackDamage);
         context.CharCtrl.CharDamageSender.ClearObservers();
+    }
+
+    protected virtual void Parry(CharBaseState context)
+    {
+        Debug.Log("Parry");
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = false;
     }
 }
