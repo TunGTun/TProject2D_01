@@ -1,4 +1,4 @@
-using System.Xml;
+﻿using System.Xml;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
@@ -56,5 +56,18 @@ public class M_Enemy_ArcherMan : M_Enemy
         base.Update();
         if (enemyHealth.isDead)
         { Destroy(gameObject, 5f); }
+    }
+
+  
+    [Header("Cài đặt bắn cung")]
+    public GameObject arrowPrefab;  
+    public Transform firePoint;     
+
+    public void Shoot()
+    {
+        if (arrowPrefab != null && firePoint != null)
+        {
+            Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
+        }
     }
 }
