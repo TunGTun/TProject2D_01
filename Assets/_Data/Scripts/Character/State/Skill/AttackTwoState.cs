@@ -11,8 +11,8 @@ public class AttackTwoState : ICharState<CharBaseState>
     private float damageDelayTimer;
     private bool hasDealtDamage = false;
 
-    protected static readonly int enemyMask = LayerMask.GetMask("Enemy", "Enemy1", "Enemy2");
-    protected static readonly Collider2D[] hitBuffer = new Collider2D[10];
+    protected static readonly int enemyMask = LayerMask.GetMask("Enemy");
+    protected static readonly int parryMask = LayerMask.GetMask("Enemy1", "Enemy2");
 
     public void OnEnter(CharBaseState context)
     {
@@ -30,7 +30,7 @@ public class AttackTwoState : ICharState<CharBaseState>
 
     public void OnExit(CharBaseState context)
     {
-        
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = true;
     }
 
     public void OnFrameUpdate(CharBaseState context)
@@ -63,7 +63,16 @@ public class AttackTwoState : ICharState<CharBaseState>
         Vector2 hitboxCenter = context.CharCtrl.PointCtrl.AttackTwoPoint.transform.position;
         Vector2 hitboxSize = new Vector2(SCharStaticData.AttackTwoSize[0], SCharStaticData.AttackTwoSize[1]);
 
+        Collider2D[] parryHits = Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, 0, parryMask);
+
+        if (parryHits.Length != 0)
+        {
+            this.Parry(context);
+            return;
+        }
+
         Collider2D[] hits = Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, 0, enemyMask);
+        
         foreach (Collider2D hit in hits)
         {
             var receiver = hit.GetComponent<ADamageReceiver>();
@@ -86,5 +95,11 @@ public class AttackTwoState : ICharState<CharBaseState>
 
         context.CharCtrl.CharDamageSender.NotifyObservers(context.CharCtrl.CharData.AttackDamage);
         context.CharCtrl.CharDamageSender.ClearObservers();
+    }
+
+    protected virtual void Parry(CharBaseState context)
+    {
+        Debug.Log("Parry");
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = false;
     }
 }

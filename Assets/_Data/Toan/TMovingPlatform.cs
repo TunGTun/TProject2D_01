@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class TMovingPlatform : MyMonoBehaviour
 {
 	[Header("Movement Settings")]
@@ -27,11 +28,9 @@ public class TMovingPlatform : MyMonoBehaviour
 		if (this._rigidbody2D != null) return;
 
 		this._rigidbody2D = this.GetComponent<Rigidbody2D>();
-		if (this._rigidbody2D == null)
-			this._rigidbody2D = this.gameObject.AddComponent<Rigidbody2D>();
-
 		this._rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
 		this._rigidbody2D.freezeRotation = true;
+		Debug.LogWarning(transform.name + "LoadRigidbody2D: ", gameObject);
 	}
 
 	protected void FixedUpdate()
@@ -66,18 +65,5 @@ public class TMovingPlatform : MyMonoBehaviour
 		}
 
 		this._rigidbody2D.MovePosition(pos);
-	}
-
-	// Player đứng sẽ đi theo platform
-	protected void OnCollisionStay2D(Collision2D collision)
-	{
-		if (!collision.collider.CompareTag("Player")) return;
-		collision.transform.SetParent(this.transform);
-	}
-
-	protected void OnCollisionExit2D(Collision2D collision)
-	{
-		if (!collision.collider.CompareTag("Player")) return;
-		collision.transform.SetParent(null);
 	}
 }

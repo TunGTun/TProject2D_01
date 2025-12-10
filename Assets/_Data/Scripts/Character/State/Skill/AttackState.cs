@@ -15,7 +15,8 @@ public class AttackState : ICharState<CharBaseState>
     protected bool upAttack = false;
     protected bool downAttack = false;  
 
-    protected static readonly int enemyMask = LayerMask.GetMask("Enemy", "Enemy1", "Enemy2");
+    protected static readonly int enemyMask = LayerMask.GetMask("Enemy");
+    protected static readonly int parryMask = LayerMask.GetMask("Enemy1", "Enemy2");
 
     public void OnEnter(CharBaseState context)
     {
@@ -53,6 +54,8 @@ public class AttackState : ICharState<CharBaseState>
     public void OnExit(CharBaseState context)
     {
         context.CharCtrl.AnimationCtrl.transform.rotation = Quaternion.identity;
+
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = true;
     }
 
     public void OnFrameUpdate(CharBaseState context)
@@ -108,7 +111,15 @@ public class AttackState : ICharState<CharBaseState>
             hitboxCenter = context.CharCtrl.PointCtrl.AttackPointDown.transform.position;
             hitboxAngle = Mathf.Approximately(context.CharCtrl.transform.localScale.x, -1) ? 90f : -90f;
         }
-        
+
+        Collider2D[] parryHits = Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, hitboxAngle, parryMask);
+
+        if (parryHits.Length != 0)
+        {
+            this.Parry(context);
+            return;
+        }
+
         Collider2D[] hits = Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, hitboxAngle, enemyMask);
         
         foreach (Collider2D hit in hits)
@@ -147,4 +158,9 @@ public class AttackState : ICharState<CharBaseState>
         context.CharCtrl.CharDamageSender.ClearObservers();
     }
 
+    protected virtual void Parry(CharBaseState context)
+    {
+        Debug.Log("Parry");
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = false;
+    }
 }
