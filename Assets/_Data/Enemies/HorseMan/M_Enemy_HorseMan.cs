@@ -3,6 +3,8 @@ using UnityEngine;
 public class M_Enemy_HorseMan : M_Enemy
 {
     [SerializeField] protected M_EnemyHealth enemyHealth;
+    private Vector3 soulSpawnPos;
+    private bool hasSpawnedSoul = false;
 
     protected override void Awake()
     {
@@ -52,8 +54,19 @@ public class M_Enemy_HorseMan : M_Enemy
     protected override void Update()
     {
         base.Update();
-        if (enemyHealth.isDead)
-        { Destroy(gameObject, 5f); }
+        if (enemyHealth.isDead && !hasSpawnedSoul)
+        {
+            hasSpawnedSoul = true;
+
+            // Spawn  drop loot
+            soulSpawnPos = transform.position + Vector3.down * 0.5f;
+
+            Transform soul = FXSpawner.Instance.Spawn(FXSpawner.Instance.SOUL, soulSpawnPos, Quaternion.identity);
+
+            soul.GetComponent<M_SoulReward>().SetReward(1, 3);
+
+            Destroy(gameObject, 5f);
+        }
     }
 
 }
