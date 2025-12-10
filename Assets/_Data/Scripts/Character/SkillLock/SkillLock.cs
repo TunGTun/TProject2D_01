@@ -12,8 +12,8 @@ public class SkillLock : MyMonoBehaviour
 
 	protected virtual void Init()
 	{
-		this.UnlockSkill(ESkill.Dash);
-		this.UnlockSkill(ESkill.DoubleJump);
+		/*this.UnlockSkill(ESkill.Dash);
+		this.UnlockSkill(ESkill.DoubleJump);*/
 	}
 
 	public bool IsUnlocked(ESkill skill)
