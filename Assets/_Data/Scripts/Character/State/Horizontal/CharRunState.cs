@@ -1,3 +1,4 @@
+
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,8 +21,14 @@ public class CharRunState : ICharState<CharBaseState>
 
     public void OnFrameUpdate(CharBaseState context)
     {
+        //if (!context.CharCtrl.EnvironmentChecker.IsGrounded)
+        //{
+        //    AudioManager.Instance.StopMoveSFX();
+        //}
+
         if (InputManager.Instance.MoveInput == 0)
         {
+            //AudioManager.Instance.StopMoveSFX();
             context.CharCtrl.CharStateCtrl.HorizontalState.ChangeState(context.CharCtrl.CharStateCtrl.HorizontalState.idleX);
             return;
         }
@@ -38,5 +45,6 @@ public class CharRunState : ICharState<CharBaseState>
         float moveSpeed = SCharStaticData.MoveSpeed;
 
         context.CharCtrl.RigidBody2D.linearVelocity = new Vector2(moveInput * moveSpeed, context.CharCtrl.RigidBody2D.linearVelocity.y);
+        //AudioManager.Instance.PlayMoveSFX();
     }
 }

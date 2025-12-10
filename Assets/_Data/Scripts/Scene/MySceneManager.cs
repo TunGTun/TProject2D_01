@@ -38,6 +38,8 @@ public class MySceneManager : MySingleton<MySceneManager>
 
         if (SaveLoadSceneData.Instance != null) SaveLoadSceneData.Instance.SaveScene();
 
+        AudioManager.Instance.StopMusic();
+
         SceneManager.LoadSceneAsync(sceneName);
 
         this.sceneTransitionAnimator.SetTrigger(SSceneTransitionData.ANIMATION_START_TRIGGER);

@@ -29,7 +29,8 @@ public class AttackState : ICharState<CharBaseState>
 
         timer = SCharStaticData.AttackDuration;
 
-        damageDelayTimer = SCharStaticData.AttackDuration / 3f;
+        //damageDelayTimer = SCharStaticData.AttackDuration / 3f;
+        damageDelayTimer = 0f;
         hasDealtDamage = false;
 
         if (upAttack)
@@ -60,6 +61,21 @@ public class AttackState : ICharState<CharBaseState>
 
     public void OnFrameUpdate(CharBaseState context)
     {
+        //if (isParry)
+        //{
+        //    parryTimer -= Time.unscaledDeltaTime;
+
+        //    if (parryTimer <= 0f)
+        //    {
+        //        isParry = false;
+        //        Time.timeScale = 1f;
+        //        context.CharCtrl.CharDamageReceiver.CanTakeDamage = true;
+        //    }
+
+        //    return;
+        //}
+
+
         timer -= Time.deltaTime;
 
         if (!hasDealtDamage)
@@ -112,13 +128,13 @@ public class AttackState : ICharState<CharBaseState>
             hitboxAngle = Mathf.Approximately(context.CharCtrl.transform.localScale.x, -1) ? 90f : -90f;
         }
 
-        Collider2D[] parryHits = Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, hitboxAngle, parryMask);
+        //Collider2D[] parryHits = Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, hitboxAngle, parryMask);
 
-        if (parryHits.Length != 0)
-        {
-            this.Parry(context);
-            return;
-        }
+        //if (parryHits.Length != 0)
+        //{
+        //    this.Parry(context);
+        //    return;
+        //}
 
         Collider2D[] hits = Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, hitboxAngle, enemyMask);
         
@@ -158,9 +174,18 @@ public class AttackState : ICharState<CharBaseState>
         context.CharCtrl.CharDamageSender.ClearObservers();
     }
 
+    //private bool isParry = false;
+    //private float parryTimer = 0f;
+    //private const float parryDuration = 0.2f;
+
     protected virtual void Parry(CharBaseState context)
     {
-        Debug.Log("Parry");
-        context.CharCtrl.CharDamageReceiver.CanTakeDamage = false;
+        //AudioManager.Instance.PlaySFX(ESoundName.Parry);
+
+        //isParry = true;
+        //parryTimer = parryDuration;
+
+        //Time.timeScale = 0;
+        //context.CharCtrl.CharDamageReceiver.CanTakeDamage = false;
     }
 }

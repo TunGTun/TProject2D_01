@@ -76,6 +76,8 @@ public class WS6DoorControl : MyMonoBehaviour, IBossDeathListener
         Quaternion spawnRot = Mathf.Approximately(BaseBossCtrl.Instance.transform.localScale.x, 1) ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
         BossMinotaurSkillSpawner.Instance.Spawn(BossMinotaurSkillSpawner.Instance.BossRoarEffect, spawnPos, spawnRot);
 
+        AudioManager.Instance.PlaySFX(ESoundName.MinotaurRoar);
+
         yield return new WaitForSeconds(2.04f);
         this.isCutScene = false;
         CharCtrl.Instance.CharStateCtrl.StatusState.ChangeState(CharCtrl.Instance.CharStateCtrl.StatusState.normal);

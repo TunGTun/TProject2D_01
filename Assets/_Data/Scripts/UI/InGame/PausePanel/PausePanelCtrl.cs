@@ -29,4 +29,16 @@ public class PausePanelCtrl : MyMonoBehaviour
         this.settingPanel = GameObject.Find("SettingPanel");
         Debug.LogWarning(transform.name + ": LoadSettingPanel", gameObject);
     }
+
+    protected override void Start()
+    {
+        base.Start();
+        this.LoadVolumeOnStart();
+    }
+
+    protected virtual void LoadVolumeOnStart()
+    {
+        SettingPanelCtrl settingPanelCtrl = this.settingPanel.GetComponent<SettingPanelCtrl>();
+        settingPanelCtrl.VolumeSetting.LoadVolume();
+    }
 }
