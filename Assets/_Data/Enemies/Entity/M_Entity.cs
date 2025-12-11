@@ -7,8 +7,8 @@ public class M_Entity : MonoBehaviour
     protected M_StateMachine stateMachine;
 
 
-    private bool facingRight = true;
-    public int facingDir { get; private set; } = 1;
+    public bool facingRight = true;
+    public int facingDir { get;  set; } = 1;
 
     [Header("Collision detection")]
     [SerializeField] protected LayerMask whatIsGround;

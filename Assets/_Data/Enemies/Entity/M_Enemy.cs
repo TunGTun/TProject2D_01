@@ -27,8 +27,8 @@ public class M_Enemy : M_Entity
     [SerializeField] protected float playerCheckDistance = 10;
 
     [Header("Soul Details")]
-    [SerializeField] public int maxSoul = 5;
-    [SerializeField] public int minSoul = 0;
+    [SerializeField] public int maxSoul ;
+    [SerializeField] public int minSoul ;
 
     public override void EntityDeath()
     {

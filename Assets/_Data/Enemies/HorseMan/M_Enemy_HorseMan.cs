@@ -63,7 +63,7 @@ public class M_Enemy_HorseMan : M_Enemy
 
             Transform soul = FXSpawner.Instance.Spawn(FXSpawner.Instance.SOUL, soulSpawnPos, Quaternion.identity);
 
-            soul.GetComponent<M_SoulReward>().SetReward(1, 3);
+            soul.GetComponent<M_SoulReward>().SetReward(minSoul, maxSoul);
 
             Destroy(gameObject, 5f);
         }
