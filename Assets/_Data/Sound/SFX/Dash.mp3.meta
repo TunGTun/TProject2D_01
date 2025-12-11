@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Data/Sound/SFX/dead_1.mp3.meta
+guid: 012021fb55644df47a4b3fbc2cdaadf7
+========
 guid: 9e959c9f712919247a79a28287387509
+>>>>>>>> khanhbachay:Assets/_Data/Sound/SFX/Dash.mp3.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8

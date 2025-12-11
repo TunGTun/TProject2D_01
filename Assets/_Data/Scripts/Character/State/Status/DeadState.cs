@@ -15,6 +15,8 @@ public class DeadState : ICharState<CharBaseState>
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
 
+        AudioManager.Instance.StopMusic();
+
         AudioManager.Instance.PlaySFX(ESoundName.Dead);
 
         context.CharCtrl.CharDamageReceiver.CanTakeDamage = false;

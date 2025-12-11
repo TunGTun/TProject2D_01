@@ -80,13 +80,15 @@ public class CharDamageReceiver : MyMonoBehaviour
     {
         this.charCtrl.CharData.SubHP(damage);
         //this.Flash();
+
+        this.charCtrl.CharStateCtrl.StatusState.ChangeState(this.charCtrl.CharStateCtrl.StatusState.hurt);
+        this.Knockback(attacker);
+
         if (this.CheckIsDead())
         {
             this.OnDead();
             return;
         }
-        this.charCtrl.CharStateCtrl.StatusState.ChangeState(this.charCtrl.CharStateCtrl.StatusState.hurt);
-        this.Knockback(attacker);
     }
 
     //protected virtual void Flash()

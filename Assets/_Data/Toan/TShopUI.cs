@@ -8,14 +8,12 @@ public class TShopUI : MyMonoBehaviour
 	[SerializeField] private Button exitButton; // Button TextMeshPro
 
 	private bool _isOpen = false;
-	private CharStateCtrl _charStateCtrl;
 
 	protected override void LoadComponents()
 	{
 		base.LoadComponents();
 		this.LoadShopPanel();
 		this.LoadExitButton();
-		this.LoadCharStateCtrl();
 	}
 
 	protected virtual void LoadShopPanel()
@@ -32,14 +30,6 @@ public class TShopUI : MyMonoBehaviour
 
 		this.exitButton = this.GetComponentInChildren<Button>();
 		Debug.LogWarning(transform.name + ": LoadExitButton", this.gameObject);
-	}
-
-	protected virtual void LoadCharStateCtrl()
-	{
-		if (this._charStateCtrl != null) return;
-
-		this._charStateCtrl = FindObjectOfType<CharStateCtrl>();
-		Debug.LogWarning(transform.name + ": LoadCharStateCtrl", this.gameObject);
 	}
 
 	protected override void Start()
@@ -65,7 +55,7 @@ public class TShopUI : MyMonoBehaviour
 		this.shopPanel.SetActive(true);
 
 		// Khóa điều khiển nhân vật bằng CUTSCENE
-		this._charStateCtrl.StatusState.ChangeState(this._charStateCtrl.StatusState.cutScene);
+		CharCtrl.Instance.CharStateCtrl.StatusState.ChangeState(CharCtrl.Instance.CharStateCtrl.StatusState.cutScene);
 
 		Debug.Log("Shop opened");
 	}
@@ -77,8 +67,8 @@ public class TShopUI : MyMonoBehaviour
 		this._isOpen = false;
 		this.shopPanel.SetActive(false);
 
-		// Mở lại điều khiển nhân vật
-		this._charStateCtrl.StatusState.ChangeState(this._charStateCtrl.StatusState.normal);
+        // Mở lại điều khiển nhân vật
+        CharCtrl.Instance.CharStateCtrl.StatusState.ChangeState(CharCtrl.Instance.CharStateCtrl.StatusState.normal);
 
 		Debug.Log("Shop closed");
 	}

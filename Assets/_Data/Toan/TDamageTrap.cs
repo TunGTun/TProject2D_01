@@ -23,7 +23,7 @@ public class TDamageTrap : MyMonoBehaviour
 	{
 		if (this._charCtrl != null) return;
 
-		this._charCtrl = FindObjectOfType<CharCtrl>();
+		this._charCtrl = CharCtrl.Instance;
 
 		if (this._charCtrl == null)
 			Debug.LogError(this.transform.name + ": CharCtrl NOT FOUND");

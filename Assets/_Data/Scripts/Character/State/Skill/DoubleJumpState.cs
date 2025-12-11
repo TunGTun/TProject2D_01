@@ -33,6 +33,8 @@ public class DoubleJumpState : ICharState<CharBaseState>
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
 
+        AudioManager.Instance.PlaySFX(ESoundName.Jump);
+
         Vector3 spawnPos = context.CharCtrl.AnimationCtrl.transform.position;
         Quaternion spawnRot = Mathf.Approximately(context.CharCtrl.transform.localScale.x, 1) ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
         fx = FXSpawner.Instance.Spawn(FXSpawner.Instance.DOUBLE_JUMP, spawnPos, spawnRot);

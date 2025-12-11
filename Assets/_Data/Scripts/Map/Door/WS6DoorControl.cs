@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WS6DoorControl : MyMonoBehaviour, IBossDeathListener
 {
-    [SerializeField] protected float openPosY = 3.5f;
-    [SerializeField] protected float closePosY = -0.5f;
+    [SerializeField] protected float openPosY = 3.5f - 15f;
+    [SerializeField] protected float closePosY = -0.5f - 15f;
     [SerializeField] protected float transitionDuration = 2f;
 
     [SerializeField] protected bool isCutScene = false;
@@ -75,6 +75,8 @@ public class WS6DoorControl : MyMonoBehaviour, IBossDeathListener
         Vector3 spawnPos = BaseBossCtrl.Instance.transform.position + bossRoarOffset;
         Quaternion spawnRot = Mathf.Approximately(BaseBossCtrl.Instance.transform.localScale.x, 1) ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
         BossMinotaurSkillSpawner.Instance.Spawn(BossMinotaurSkillSpawner.Instance.BossRoarEffect, spawnPos, spawnRot);
+
+        AudioManager.Instance.PlaySFX(ESoundName.MinotaurRoar);
 
         yield return new WaitForSeconds(2.04f);
         this.isCutScene = false;

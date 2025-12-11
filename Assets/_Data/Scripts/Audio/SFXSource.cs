@@ -19,12 +19,7 @@ public class SFXSource : MyMonoBehaviour
         if (sfx != null) return;
         sfx = GetComponent<AudioSource>();
         this.sfx.playOnAwake = true;
-        this.sfx.loop = true;
+        this.sfx.loop = false;
         Debug.Log(transform.name + ": LoadSFXSource", gameObject);
-    }
-
-    public void PlaySFX(AudioClip clip)
-    {
-        SFX.PlayOneShot(clip);
     }
 }
