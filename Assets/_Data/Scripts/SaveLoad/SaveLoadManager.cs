@@ -49,7 +49,7 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
         playerData = new PlayerData
         {
             SceneName = EScene.West_Scene_5.ToString(),
-            Position = new Vector3(-4.5f, -2.44f, 0),
+            Position = new Vector3(-4.5f + 38f, -2.44f - 13f, 0),
             MaxHP = CharCtrl.Instance.CharData.MaxHP,
             MaxMP = CharCtrl.Instance.CharData.MaxMP,
             AttackDamage = CharCtrl.Instance.CharData.AttackDamage,
@@ -59,7 +59,7 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
             LastCheckPoint = new CheckPointData
             {
                 SceneName = EScene.West_Scene_1.ToString(),
-                SpawnPoint = new Vector3(5.5f, 1.565f, 0),
+                SpawnPoint = new Vector3(5.5f, 1.565f + 1f, 0),
             }
         };
 
