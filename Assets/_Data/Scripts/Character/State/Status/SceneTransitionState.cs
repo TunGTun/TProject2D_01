@@ -1,4 +1,3 @@
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class SceneTransitionState : ICharState<CharBaseState>

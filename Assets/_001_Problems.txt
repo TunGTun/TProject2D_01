@@ -95,3 +95,6 @@ OK		Check point
 - Zoom minimap nhanh hon
 - Luu mini khi tat game
 
+
+- Quai khong quay lai khi cham tuong
+- 
