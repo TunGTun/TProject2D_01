@@ -4,6 +4,7 @@ public class M_EnemyHealth : MonoBehaviour
 {
     private M_Entity entity;
 
+
     [Header("Stats")]
     [SerializeField] protected int maxHP = 55; 
     public int MaxHP
@@ -38,8 +39,6 @@ public class M_EnemyHealth : MonoBehaviour
     }
 
 
-
-
     public virtual void AddHP(int hp)
     {
         this.CurrentHP += hp;
@@ -70,6 +69,7 @@ public class M_EnemyHealth : MonoBehaviour
     {
         isDead = true;
         entity.EntityDeath();
+        
     }
 
 }
