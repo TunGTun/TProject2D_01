@@ -83,3 +83,15 @@ OK		Check point
 		Khi dich chuyen camera vuot ra ngoai gio han
 
 		Cài thư viện Clipper2: https://github.com/AngusJohnson/Clipper2
+
+=== 11/12/2025 ===
+- Boss lao den khong danh trung
+- Am thanh dong cua*
+- Guild up attack - down attack
+- Loi tuong trai ws3 - chinh lai gioi han camera - ground chinh thanh 1.5
+- Anh sang ws
+- Ve them mep de khong bi roi
+- Dung inputmanager
+- Zoom minimap nhanh hon
+- Luu mini khi tat game
+

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WS6DoorControl : MyMonoBehaviour, IBossDeathListener
 {
-    [SerializeField] protected float openPosY = 3.5f;
-    [SerializeField] protected float closePosY = -0.5f;
+    [SerializeField] protected float openPosY = 3.5f - 15f;
+    [SerializeField] protected float closePosY = -0.5f - 15f;
     [SerializeField] protected float transitionDuration = 2f;
 
     [SerializeField] protected bool isCutScene = false;

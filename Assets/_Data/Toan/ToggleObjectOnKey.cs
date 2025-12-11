@@ -1,14 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ToggleObjectOnKey : MyMonoBehaviour
 {
-	[SerializeField] private GameObject targetObject; // Object bạn muốn bật/tắt
+	[SerializeField] private GameObject targetObject;
 
 	protected override void Start()
 	{
 		base.Start();
-		targetObject.SetActive(false);
-	}
+		StartCoroutine(TargetActiveRoutine());
+    }
 	protected override void LoadComponents()
 	{
 		base.LoadComponents();
@@ -25,9 +26,14 @@ public class ToggleObjectOnKey : MyMonoBehaviour
 	{
 		if (InputManager.Instance.InteractInput && targetObject != null)
 		{
-			// Đảo trạng thái bật/tắt
 			targetObject.SetActive(!targetObject.activeSelf);
 		}
 	}
+
+	protected virtual IEnumerator TargetActiveRoutine()
+	{
+        yield return new WaitForSeconds(1f);
+        targetObject.SetActive(false);
+    }
 
 }
