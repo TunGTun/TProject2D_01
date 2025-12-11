@@ -3,19 +3,20 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class TPlatformController : MyMonoBehaviour
 {
-	// Quy tắc: [Header()] và [SerializeField] cho biến hiện trong editor, không có "_"
 	[Header("Movement Settings")]
 	[SerializeField] private float moveSpeed = 2f;      // Tốc độ di chuyển (nên là 2f cho cả 3 vật thể)
 	[SerializeField] private float travelDistance = 6f;   // Quãng đường di chuyển tối đa từ tâm (12 ô tổng cộng)
 	[SerializeField] private bool moveRightInitially = true; // Vật thể này có di chuyển sang phải trước không?
 
-	// Quy tắc: Biến không hiện trong editor (private/protected) có "_" ở đầu, chữ đầu viết thường
 	protected Rigidbody2D _rigidbody2D;
 	protected Vector3 _startPos;
-	protected bool _movingRight; // Hướng di chuyển hiện tại
+	protected bool _movingRight;
 
-	// Quy tắc: Hàm viết hoa chữ cái đầu tất cả
-	protected override void Awake()
+    private Vector2 currentVelocity;
+
+	protected bool isPlayerOnPlatform = false;
+
+    protected override void Awake()
 	{
 		base.Awake();
 		this._startPos = this.transform.position; // Lưu vị trí ban đầu
@@ -32,14 +33,12 @@ public class TPlatformController : MyMonoBehaviour
 	{
 		if (this._rigidbody2D != null) return;
 
-		// Quy tắc: Sử dụng this.
 		this._rigidbody2D = this.GetComponent<Rigidbody2D>();
 		this._rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
 		this._rigidbody2D.freezeRotation = true;
 		Debug.LogWarning(this.transform.name + " LoadRigidbody2D: Rigidbody2D loaded successfully.", this.gameObject);
 	}
 
-	// Unity Lifecycle: Dùng FixedUpdate cho vật lý
 	protected void FixedUpdate()
 	{
 		this.MovePlatform();
@@ -47,32 +46,60 @@ public class TPlatformController : MyMonoBehaviour
 
 	protected virtual void MovePlatform()
 	{
-		// Giới hạn Trái/Phải
-		float leftLimit = this._startPos.x - this.travelDistance;
-		float rightLimit = this._startPos.x + this.travelDistance;
+        // tính velocity trước
+        float direction = _movingRight ? 1f : -1f;
+        currentVelocity = new Vector2(direction * moveSpeed, 0f);
 
-		Vector3 pos = this.transform.position;
+        // limits
+        float leftLimit = _startPos.x - travelDistance;
+        float rightLimit = _startPos.x + travelDistance;
 
-		if (this._movingRight)
+        Vector3 pos = transform.position;
+
+        // move theo hướng
+        pos.x += currentVelocity.x * Time.fixedDeltaTime;
+
+        // check giới hạn
+        if (_movingRight && pos.x >= rightLimit)
+        {
+            pos.x = rightLimit;
+            _movingRight = false;
+        }
+        else if (!_movingRight && pos.x <= leftLimit)
+        {
+            pos.x = leftLimit;
+            _movingRight = true;
+        }
+
+        // apply
+        _rigidbody2D.MovePosition(pos);
+		this.SetCharVelocity();
+    }
+
+	protected virtual void SetCharVelocity()
+	{
+        if (!isPlayerOnPlatform) return;
+        CharStateCtrl charStateCtrl = CharCtrl.Instance.CharStateCtrl;
+        if (charStateCtrl.HorizontalState.StateMachine.CurrentState == charStateCtrl.HorizontalState.idleX
+			&& charStateCtrl.VerticalState.StateMachine.CurrentState == charStateCtrl.VerticalState.idleGround)
 		{
-			pos.x += this.moveSpeed * Time.fixedDeltaTime;
-			if (pos.x >= rightLimit)
-			{
-				pos.x = rightLimit;
-				this._movingRight = false; // Đổi hướng sang Trái
-			}
-		}
-		else // Di chuyển sang Trái
-		{
-			pos.x -= this.moveSpeed * Time.fixedDeltaTime;
-			if (pos.x <= leftLimit)
-			{
-				pos.x = leftLimit;
-				this._movingRight = true; // Đổi hướng sang Phải
-			}
-		}
-
-		// Di chuyển Platform
-		this._rigidbody2D.MovePosition(pos);
+			CharCtrl.Instance.RigidBody2D.linearVelocity = currentVelocity;
+        }
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isPlayerOnPlatform = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isPlayerOnPlatform = false;
+        }
+    }
 }
