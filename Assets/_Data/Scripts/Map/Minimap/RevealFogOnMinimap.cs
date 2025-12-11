@@ -3,27 +3,30 @@ using UnityEngine.Tilemaps;
 
 public class RevealFogOnMinimap : MonoBehaviour
 {
-    public Tilemap fogTilemap;
-    public Transform player;
-    private Grid grid;
-
-    void Start()
-    {
-        grid = fogTilemap.layoutGrid;
-    }
+    public Tilemap fogTilemap;   // Tilemap fog
+    public Transform player;     // Player transform
+    public int revealRadius = 1; // 1 = 3x3, 2 = 5x5, 3 = 7x7
 
     void Update()
     {
         if (fogTilemap == null || player == null)
             return;
 
-        // Chuyển player từ worldPosition → localPosition của tilemap
-        Vector3Int cellPos = fogTilemap.WorldToCell(player.position);
+        // Lấy cell tilemap dưới chân player
+        Vector3Int centerCell = fogTilemap.WorldToCell(player.position);
 
-        // Xóa tile fog
-        if (fogTilemap.HasTile(cellPos))
+        // Xoá fog xung quanh theo radius
+        for (int x = -revealRadius; x <= revealRadius; x++)
         {
-            fogTilemap.SetTile(cellPos, null);
+            for (int y = -revealRadius; y <= revealRadius; y++)
+            {
+                Vector3Int cell = centerCell + new Vector3Int(x, y, 0);
+
+                if (fogTilemap.HasTile(cell))
+                {
+                    fogTilemap.SetTile(cell, null);
+                }
+            }
         }
     }
 }
