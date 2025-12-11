@@ -48,4 +48,9 @@ public class M_SoulReward : MyMonoBehaviour
         yield return new WaitForSeconds(lifeTime);
         FXSpawner.Instance.Despawn(this.transform);
     }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        isCollected = false;
+    }
 }

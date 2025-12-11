@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ArcherProjectile : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour
 {
     public float speed = 10f;
 
