@@ -34,7 +34,7 @@ public abstract class TStatueBase : MyMonoBehaviour
 
 	private void Update()
 	{
-		if (this._isPlayerNearby && this._playerSkillLock != null && Input.GetKeyDown(KeyCode.R))
+		if (this._isPlayerNearby && this._playerSkillLock != null && InputManager.Instance.InteractInput)
 		{
 			this.UnlockAndShowUI();
 		}

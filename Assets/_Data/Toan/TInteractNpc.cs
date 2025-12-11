@@ -32,7 +32,7 @@ public class TInteractNpc : MyMonoBehaviour
 		if (!this.playerInRange) return;
 
 		// Nếu thoại chưa xong → bấm R để xem tiếp
-		if (!dialogueFinished && Input.GetKeyDown(KeyCode.R))
+		if (!dialogueFinished && InputManager.Instance.InteractInput)
 		{
 			ShowNextDialogue();
 			return;

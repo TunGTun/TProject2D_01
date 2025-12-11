@@ -4,8 +4,7 @@ public class MinimapToggle : MonoBehaviour
 {
     public GameObject minimapUI;
     public GameObject back;
-    public Camera minimapCamera;      
-    public KeyCode toggleKey = KeyCode.Tab;
+    public Camera minimapCamera;
 
     private bool isOpen = false;
 
@@ -18,7 +17,7 @@ public class MinimapToggle : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(toggleKey))
+        if (InputManager.Instance.MiniMapInput)
         {
             isOpen = !isOpen;
 

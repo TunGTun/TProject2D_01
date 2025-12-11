@@ -74,12 +74,6 @@ public class CharData : MyMonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I)) this.AddMoney(100);
-        if (Input.GetKeyDown(KeyCode.O)) this.UseMoney(1000);
-    }
-
     //HP
     public virtual void AddHP(int hp)
     {

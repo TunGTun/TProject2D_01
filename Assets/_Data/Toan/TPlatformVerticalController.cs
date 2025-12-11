@@ -27,7 +27,7 @@ public class TPlatformVerticalController : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.R))
+		if (InputManager.Instance.InteractInput)
 		{
 			isMoving = true;
 			movingDown = transform.position.y >= startPos.y - 0.01f;

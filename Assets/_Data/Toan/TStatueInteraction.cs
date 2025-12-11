@@ -27,7 +27,7 @@ public class TStatueInteraction : MyMonoBehaviour
 	private void Update()
 	{
 		// Nếu người chơi ở gần VÀ bấm R
-		if (this._isPlayerNearby && Input.GetKeyDown(KeyCode.R))
+		if (this._isPlayerNearby && InputManager.Instance.InteractInput)
 		{
 			Debug.Log("Da bam R");
 			this.ShowNotification();

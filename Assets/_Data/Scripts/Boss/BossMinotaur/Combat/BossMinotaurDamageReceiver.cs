@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BossMinotaurBossDamageReceiver : ABossDamageReceiver
+public class BossMinotaurDamageReceiver : ABossDamageReceiver
 {
     [Header("BossMinotaurDamageReceiver")]
 
@@ -16,10 +16,15 @@ public class BossMinotaurBossDamageReceiver : ABossDamageReceiver
     private bool isFlashing = false;
     private float flashTimer = 0f;
 
+    // Tam
+    [SerializeField] protected GameObject skillFourRunDamage;
+    public GameObject SkillFourRunDamage => skillFourRunDamage;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadBossMinotaurCtrl();
+        this.LoadSkillFourRunDamage();
 
         originalMat = this.baseBossCtrl.BossAnimationCtrl.SpriteRenderer.material;
     }
@@ -37,6 +42,13 @@ public class BossMinotaurBossDamageReceiver : ABossDamageReceiver
         this.hitBoxCollider.isTrigger = true;
         this.hitBoxCollider.size = new Vector2(1.8f, 3.5f);
         this.hitBoxCollider.offset = new Vector2(0f, 0.1f);
+    }
+
+    protected virtual void LoadSkillFourRunDamage()
+    {
+        if (skillFourRunDamage != null) return;
+        skillFourRunDamage = transform.GetChild(0).gameObject;
+        Debug.LogWarning(transform.name + ": LoadSkillFourRunDamage", gameObject);
     }
 
     private void Update()

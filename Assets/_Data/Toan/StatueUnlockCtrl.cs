@@ -11,7 +11,7 @@ public class StatueUnlockCtrl : MyMonoBehaviour
 	private void Update()
 	{
 		// Người ở gần + Bấm R
-		if (this._isPlayerNearby && Input.GetKeyDown(KeyCode.R))
+		if (this._isPlayerNearby && InputManager.Instance.InteractInput)
 		{
 			this.UnlockSkill();
 		}

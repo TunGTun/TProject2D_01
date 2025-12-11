@@ -85,16 +85,17 @@ OK		Check point
 		Cài thư viện Clipper2: https://github.com/AngusJohnson/Clipper2
 
 === 11/12/2025 ===
-- Boss lao den khong danh trung
+- Boss lao den khong danh trung Ok
 - Am thanh dong cua*
-- Guild up attack - down attack
+- Guild up attack - down attack OK
 - Loi tuong trai ws3 - chinh lai gioi han camera - ground chinh thanh 1.5
 - Anh sang ws
 - Ve them mep de khong bi roi
-- Dung inputmanager
-- Zoom minimap nhanh hon
+- Dung inputmanager OK
+- Zoom minimap nhanh hon OK
 - Luu mini khi tat game
 
 
 - Quai khong quay lai khi cham tuong
-- 
+
+- Không save game khi boss chết
