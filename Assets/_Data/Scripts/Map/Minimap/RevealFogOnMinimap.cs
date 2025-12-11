@@ -5,7 +5,8 @@ public class RevealFogOnMinimap : MonoBehaviour
 {
     public Tilemap fogTilemap;   // Tilemap fog
     public Transform player;     // Player transform
-    public int revealRadius = 1; // 1 = 3x3, 2 = 5x5, 3 = 7x7
+    public int revealX = 9;
+    public int revealY = 5;
 
     void Update()
     {
@@ -16,9 +17,9 @@ public class RevealFogOnMinimap : MonoBehaviour
         Vector3Int centerCell = fogTilemap.WorldToCell(player.position);
 
         // Xoá fog xung quanh theo radius
-        for (int x = -revealRadius; x <= revealRadius; x++)
+        for (int x = -revealX; x <= revealX; x++)
         {
-            for (int y = -revealRadius; y <= revealRadius; y++)
+            for (int y = -revealY; y <= revealY; y++)
             {
                 Vector3Int cell = centerCell + new Vector3Int(x, y, 0);
 

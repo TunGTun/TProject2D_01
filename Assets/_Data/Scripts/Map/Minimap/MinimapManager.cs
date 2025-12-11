@@ -15,7 +15,6 @@ public class MinimapManager : MyMonoBehaviour
 
     [Header("Camera/UI")]
     public Camera minimapCamera;
-    public UnityEngine.UI.RawImage minimapUI;
 
     public void ApplySavedReveals()
     {

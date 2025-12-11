@@ -98,4 +98,4 @@ OK		Check point
 
 - Quai khong quay lai khi cham tuong
 
-- Không save game khi boss chết
+- Không save game khi boss chết OK

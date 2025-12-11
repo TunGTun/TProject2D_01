@@ -91,5 +91,7 @@ public class BossMinotaurDamageReceiver : ABossDamageReceiver
     {
         base.OnDead();
         this.bossMinotaurCtrl.BaseBossState.ChangeState(this.bossMinotaurCtrl.BaseBossState.dead);
+        SaveLoadSceneData.Instance.SceneData.BossDefeated = true;
+        SaveLoadSceneData.Instance.SceneData.IsDoorOpen = true;
     }
 }
