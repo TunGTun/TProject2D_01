@@ -99,3 +99,9 @@ OK		Check point
 - Quai khong quay lai khi cham tuong
 
 - Không save game khi boss chết OK
+
+- Fix enemy
+- Bat trigger cho trap
+- Set mask cho main camera
+- Chinh lai con tro chuot
+- Fix loi sau khi giet boss OK

@@ -16,8 +16,16 @@ public class WS6DoorControl : MyMonoBehaviour, IBossDeathListener
     protected override void Start()
     {
         base.Start();
-        this.Init();
-        this.BossDeadObserverInit();
+
+        if (SaveLoadSceneData.Instance.SceneData.BossDefeated == true)
+        {
+            this.transform.parent.gameObject.SetActive(false);
+        }
+        else
+        {
+            this.Init();
+            this.BossDeadObserverInit();
+        }
     }
 
     protected virtual void Init()
@@ -38,7 +46,8 @@ public class WS6DoorControl : MyMonoBehaviour, IBossDeathListener
 
     private void OnDestroy()
     {
-        bossReceiver.UnregisterListener(this);
+        if (bossReceiver != null)
+            bossReceiver.UnregisterListener(this);
     }
 
     private void Update()

@@ -17,7 +17,7 @@ public class MinimapToggle : MonoBehaviour
 
     void Update()
     {
-        if (InputManager.Instance.MiniMapInput)
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             isOpen = !isOpen;
 

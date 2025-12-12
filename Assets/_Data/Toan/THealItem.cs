@@ -6,7 +6,6 @@ public class THealItem : ShopItemBase
 	{
 		if (this._isPurchased)
 		{
-			Debug.Log("Item HP này đã mua rồi!");
 			return;
 		}
 

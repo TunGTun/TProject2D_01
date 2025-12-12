@@ -4,7 +4,6 @@ public class TMPItem : ShopItemBase
 {
 	public override void OnBuy()
 	{
-		// 1. Kiểm tra trạng thái mua
 		if (this._isPurchased)
 		{
 			return;

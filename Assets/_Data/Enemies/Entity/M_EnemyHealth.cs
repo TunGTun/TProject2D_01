@@ -13,7 +13,6 @@ public class M_EnemyHealth : MonoBehaviour
         set
         {
             maxHP = value;
-            HPSlotCtrl.Instance.UpdateMaxHP(this.MaxHP);
         }
     }
 
@@ -27,7 +26,6 @@ public class M_EnemyHealth : MonoBehaviour
         set
         {
             currentHP = value;
-            CurrentHPCtrl.Instance.UpdateCurrentHP(this.currentHP);
         }
     }
 
