@@ -5,5 +5,10 @@ using UnityEngine;
 public class SceneData
 {
     public string SceneName;
-    public bool BossDefeated;
+
+    public bool BossDefeated = false;
+
+    public bool IsCheckPointActive = false;
+
+    public bool IsDoorOpen = false;
 }

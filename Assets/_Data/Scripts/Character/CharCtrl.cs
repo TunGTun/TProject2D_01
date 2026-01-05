@@ -31,6 +31,9 @@ public class CharCtrl : MySingleton<CharCtrl> //Singleton chi dung ben ngoai cha
     [SerializeField] protected CharDamageSender charDamageSender;
     public CharDamageSender CharDamageSender => charDamageSender;
 
+    [SerializeField] protected CharDamageReceiver charDamageReceiver;
+    public CharDamageReceiver CharDamageReceiver => charDamageReceiver;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -42,6 +45,7 @@ public class CharCtrl : MySingleton<CharCtrl> //Singleton chi dung ben ngoai cha
         this.LoadAnimationCtrl();
         this.LoadPointCtrl();
         this.LoadCharDamageSender();
+        this.LoadCharDamageReceiver();
     }
 
     protected virtual void LoadRigidbody2D()
@@ -103,5 +107,12 @@ public class CharCtrl : MySingleton<CharCtrl> //Singleton chi dung ben ngoai cha
         if (charDamageSender != null) return;
         charDamageSender = GetComponentInChildren<CharDamageSender>();
         Debug.LogWarning(transform.name + ": LoadCharDamageSender", gameObject);
+    }
+
+    protected virtual void LoadCharDamageReceiver()
+    {
+        if (charDamageReceiver != null) return;
+        charDamageReceiver = GetComponentInChildren<CharDamageReceiver>();
+        Debug.LogWarning(transform.name + ": LoadCharDamageReceiver", gameObject);
     }
 }

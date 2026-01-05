@@ -36,7 +36,13 @@ public class InputManager : MySingleton<InputManager>
     public bool HealInput { get => healInput; }
 
     [SerializeField] protected bool backInput;
-    public bool BackInput { get => backInput; }
+    public bool BackInput { get => backInput; set => backInput = value; }
+
+    [SerializeField] protected bool interactInput;
+    public bool InteractInput { get => interactInput; set => interactInput = value; }
+
+    [SerializeField] protected bool miniMapInput;
+    public bool MiniMapInput { get => miniMapInput; set => miniMapInput = value; }
 
     void Update()
     {
@@ -45,10 +51,10 @@ public class InputManager : MySingleton<InputManager>
 
     protected virtual void CheckInput()
     {
-        this.CheckBackInput();
 
         if (!this.CanControl) return;
 
+        this.CheckBackInput();
         this.CheckMoveInput();
         this.CheckJumpInputDown();
         this.CheckJumpInputUp();
@@ -58,6 +64,8 @@ public class InputManager : MySingleton<InputManager>
         this.CheckUpInput();
         this.CheckAttackClick();
         this.CheckHealInput();
+        this.CheckInteractInput();
+        this.CheckMiniMapInput();
     }
 
     public void SetCanControl(bool canControl)
@@ -140,5 +148,15 @@ public class InputManager : MySingleton<InputManager>
     protected virtual void CheckBackInput()
     {
         this.backInput = Input.GetKeyDown(KeyCode.Escape);
+    }
+
+    protected virtual void CheckInteractInput()
+    {
+        this.interactInput = Input.GetKeyDown(KeyCode.R);
+    }
+
+    protected virtual void CheckMiniMapInput()
+    {
+        this.miniMapInput = Input.GetKeyDown(KeyCode.Tab);
     }
 }

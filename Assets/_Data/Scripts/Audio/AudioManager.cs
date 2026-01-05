@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MySingleton<AudioManager>
@@ -42,7 +41,14 @@ public class AudioManager : MySingleton<AudioManager>
     {
         SoundData soundData = Array.Find(this.musicSource.MusicSounds, x => x.soundName == name);
         this.musicSource.Music.clip = soundData.soundClip;
+        this.musicSource.Music.volume = soundData.volume;
         this.musicSource.Music.Play();
+    }
+
+    public virtual void PlayOneShotMusic(ESoundName name)
+    {
+        SoundData soundData = Array.Find(this.musicSource.MusicSounds, x => x.soundName == name);
+        this.musicSource.Music.PlayOneShot(soundData.soundClip, soundData.volume);
     }
 
     public void StopMusic()
@@ -56,6 +62,23 @@ public class AudioManager : MySingleton<AudioManager>
     public void PlaySFX(ESoundName name)
     {
         SoundData soundData = Array.Find(this.sfxSource.SFXSounds, x => x.soundName == name);
-        this.sfxSource.SFX.PlayOneShot(soundData.soundClip);
+        this.sfxSource.SFX.PlayOneShot(soundData.soundClip, soundData.volume);
+    }
+
+    public void PlayMoveSFX()
+    {
+        SoundData soundData = Array.Find(this.sfxSource.SFXSounds, x => x.soundName == ESoundName.Move);
+        if (this.sfxSource.SFX.isPlaying) return;
+        this.sfxSource.SFX.clip = soundData.soundClip;
+        this.sfxSource.SFX.volume = soundData.volume;
+        this.sfxSource.SFX.loop = true;
+        this.sfxSource.SFX.Play();
+    }
+
+    public void StopMoveSFX()
+    {
+        if (!this.sfxSource.SFX.isPlaying) return;
+        this.sfxSource.SFX.Stop();
+        this.sfxSource.SFX.loop = false;
     }
 }

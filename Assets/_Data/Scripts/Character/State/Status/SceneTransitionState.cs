@@ -1,4 +1,3 @@
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class SceneTransitionState : ICharState<CharBaseState>
@@ -20,6 +19,7 @@ public class SceneTransitionState : ICharState<CharBaseState>
 
         CurrentMoveInput = InputManager.Instance.MoveInput;
 
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = false;
         InputManager.Instance.SetCanControl(false);
 
         if (Direction == ESceneDirection.Up)
@@ -33,6 +33,7 @@ public class SceneTransitionState : ICharState<CharBaseState>
 
     public void OnExit(CharBaseState context)
     {
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = true;
         InputManager.Instance.SetCanControl(true);
         context.transform.parent.gameObject.tag = originalTag;
     }

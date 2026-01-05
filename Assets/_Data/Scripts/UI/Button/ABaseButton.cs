@@ -30,6 +30,7 @@ public abstract class ABaseButton : MyMonoBehaviour, IPointerEnterHandler, IPoin
     {
         this.button.onClick.AddListener(() =>
         {
+            AudioManager.Instance.PlaySFX(ESoundName.ButtonClick);
             this.OnClick();
             EventSystem.current.SetSelectedGameObject(null);
         });
@@ -48,7 +49,7 @@ public abstract class ABaseButton : MyMonoBehaviour, IPointerEnterHandler, IPoin
 
     protected virtual void OnHoverEnter()
     {
-
+        AudioManager.Instance.PlaySFX(ESoundName.ButtonHover);
     }
 
     protected virtual void OnHoverExit()

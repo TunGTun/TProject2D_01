@@ -34,7 +34,7 @@ public class BossMinotaurSkillFour : IBossSkill
 
                 phase = EBossMinotaurState.Run;
 
-                bossCtrl.ABossDamageReceiver.gameObject.layer = LayerMask.NameToLayer("Enemy2");
+                (bossCtrl.ABossDamageReceiver as BossMinotaurDamageReceiver).SkillFourRunDamage.layer = LayerMask.NameToLayer("Enemy1");
 
                 break;
 
@@ -53,8 +53,8 @@ public class BossMinotaurSkillFour : IBossSkill
                 ceilingCol = (bossCtrl.BaseBossEnvironmentChecker as BossMinotaurEnvironmentChecker).CeilingCol;
                 this.SpawnRocks(bossCtrl);
 
-                bossCtrl.ABossDamageReceiver.gameObject.layer = LayerMask.NameToLayer("Enemy");
-                
+                (bossCtrl.ABossDamageReceiver as BossMinotaurDamageReceiver).SkillFourRunDamage.layer = LayerMask.NameToLayer("Default");
+
                 break;
 
             case EBossMinotaurState.FallingRock:

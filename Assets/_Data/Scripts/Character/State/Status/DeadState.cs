@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DeadState : ICharState<CharBaseState>
@@ -14,15 +15,22 @@ public class DeadState : ICharState<CharBaseState>
 
         context.CharCtrl.AnimationCtrl.UpdateAnimation();
 
+        AudioManager.Instance.StopMusic();
+
         AudioManager.Instance.PlaySFX(ESoundName.Dead);
 
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = false;
         InputManager.Instance.SetCanControl(false);
+
+        Vector3 spawnPos = context.CharCtrl.transform.position;
+        FXSpawner.Instance.Spawn(FXSpawner.Instance.DEAD, spawnPos, Quaternion.identity);
     }
 
     public void OnExit(CharBaseState context)
     {
         context.CharCtrl.RigidBody2D.gravityScale = SCharStaticData.GravityScale;
 
+        context.CharCtrl.CharDamageReceiver.CanTakeDamage = true;
         InputManager.Instance.SetCanControl(true);
     }
 

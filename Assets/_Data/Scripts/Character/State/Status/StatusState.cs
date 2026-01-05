@@ -8,6 +8,8 @@ public class StatusState : CharBaseState
     public DeadState dead;
     public CutSceneState cutScene;
     public SceneTransitionState sceneTransition;
+    public SoulLinkState soulLink;
+    public SpawnState spawn;
 
     protected override void CreateState()
     {
@@ -17,5 +19,7 @@ public class StatusState : CharBaseState
         dead = new DeadState();
         cutScene = new CutSceneState();
         sceneTransition = new SceneTransitionState();
+        soulLink = new SoulLinkState();
+        spawn = new SpawnState();
     }
 }

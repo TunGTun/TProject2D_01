@@ -59,8 +59,8 @@ OK      Animation cho jump, ground dash, air dash, doublejump, hit
 		Tiền tệ - Soul - Đánh quái rơi ra, dùng R để nhặt
 
 Asset	HP
-		MP, Hộp MP
-		Money (Soul)
+OK		MP, Hộp MP
+OK		Money (Soul)
 		Soul rơi ra
 
 Sound	Music		MainMenu
@@ -77,5 +77,31 @@ Sound	Music		MainMenu
 					Dead
 				OK	Parry
 
-		Check point
+OK		Check point
 		Unlock skill
+
+		Khi dich chuyen camera vuot ra ngoai gio han
+
+		Cài thư viện Clipper2: https://github.com/AngusJohnson/Clipper2
+
+=== 11/12/2025 ===
+- Boss lao den khong danh trung Ok
+- Am thanh dong cua*
+- Guild up attack - down attack OK
+- Loi tuong trai ws3 - chinh lai gioi han camera - ground chinh thanh 1.5
+- Anh sang ws
+- Ve them mep de khong bi roi
+- Dung inputmanager OK
+- Zoom minimap nhanh hon OK
+- Luu mini khi tat game
+
+
+- Quai khong quay lai khi cham tuong
+
+- Không save game khi boss chết OK
+
+- Fix enemy
+- Bat trigger cho trap
+- Set mask cho main camera
+- Chinh lai con tro chuot
+- Fix loi sau khi giet boss OK

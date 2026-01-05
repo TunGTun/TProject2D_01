@@ -47,6 +47,9 @@ public enum EScene
     East_Scene_3 = 303,
     East_Scene_4 = 304,
 
+    // Ending
+    Ending = 1001,
+
 }
 
 public enum ESceneDirection

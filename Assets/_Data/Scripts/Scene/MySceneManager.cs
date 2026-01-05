@@ -35,7 +35,13 @@ public class MySceneManager : MySingleton<MySceneManager>
             yield return new WaitForSecondsRealtime(SSceneTransitionData.AnimationDuration);
         else
             yield return new WaitForSeconds(SSceneTransitionData.AnimationDuration);
+
+        if (SaveLoadSceneData.Instance != null) SaveLoadSceneData.Instance.SaveScene();
+
+        AudioManager.Instance.StopMusic();
+
         SceneManager.LoadSceneAsync(sceneName);
+
         this.sceneTransitionAnimator.SetTrigger(SSceneTransitionData.ANIMATION_START_TRIGGER);
     }
 
