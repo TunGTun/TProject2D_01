@@ -12,6 +12,8 @@ public class FXSpawner : ABaseSpawner
     public readonly string DEAD = "DeadEffect";
     public readonly string HEAL = "HealEffect";
     public readonly string SOUL = "SoulReward";
+    public readonly string TELEPORT = "TeleportEffect";
+    public readonly string VOIDRIFTDESPAWN = "VoidRiftDespawnEffect";
     // public readonly string DASH_GROUND = "GroundDashEffect";
 
     protected override void Awake()

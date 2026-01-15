@@ -72,6 +72,17 @@ public class InputManager : MySingleton<InputManager>
     {
         this.canControl = canControl;
         this._moveInput = 0;
+
+        this.jumpInputDown = false;
+        this.jumpInputUp = false;
+        this.dashInput = false;
+        this.downInput = false;
+        this.upInput = false;
+        this.attackInput = false;
+        this.healInput = false;
+        this.backInput = false;
+        this.interactInput = false;
+        this.miniMapInput = false;
     }
 
     protected virtual void CheckMoveInput()

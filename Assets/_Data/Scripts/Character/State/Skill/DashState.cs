@@ -14,6 +14,7 @@ public class DashState : ICharState<CharBaseState>
 
         if (voidRift != null)
         {
+            FXSpawner.Instance.Spawn(FXSpawner.Instance.TELEPORT, context.CharCtrl.transform.position, Quaternion.identity);
             context.CharCtrl.transform.position = voidRift.position;
             VoidRiftSpawner.Instance.Despawn(voidRift);
             context.CharCtrl.CharStateCtrl.SkillState.ChangeState(context.CharCtrl.CharStateCtrl.SkillState.idleSkill);

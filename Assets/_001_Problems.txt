@@ -105,3 +105,17 @@ OK		Check point
 - Set mask cho main camera
 - Chinh lai con tro chuot
 - Fix loi sau khi giet boss OK
+
+=== 05/01/2026 ===
+-		Background - Scene Trans - Light - Vi tri, so luong Enemy - WS1
+-OK		Tele effect
+-OK		Boss boder
+-OK		Void rift light
+-		Transition WS2-WS1
+-OK		Enemy boder
+-		Bay WS2
+-OK		Enemy take damage effect
+-		Soul roi ra
+-OK		Reset input
+-		Respawn point sai so voi vi tri check point
+-		Shop - Mo skill (Lam lai)

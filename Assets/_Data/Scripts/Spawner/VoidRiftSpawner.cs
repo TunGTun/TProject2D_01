@@ -95,6 +95,7 @@ public class VoidRiftSpawner : ABaseSpawner
     {
         base.Despawn(obj);
         CurrentRift = null;
+        FXSpawner.Instance.Spawn(FXSpawner.Instance.VOIDRIFTDESPAWN, obj.position, Quaternion.identity);
     }
     
     public Vector2 FindNearestEdgePoint(PolygonCollider2D poly, Vector2 point, bool isHorizontal)
