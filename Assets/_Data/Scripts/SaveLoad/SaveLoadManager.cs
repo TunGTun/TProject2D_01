@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -29,6 +30,7 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
         this.playerData.AttackDamage = CharCtrl.Instance.CharData.AttackDamage;
         this.playerData.CurrentHP = CharCtrl.Instance.CharData.CurrentHP;
         this.playerData.CurrentMP = CharCtrl.Instance.CharData.CurrentMP;
+        //this.playerData.UnlockedSkills = CharCtrl.Instance.CharStateCtrl.SkillLock.unlockedSkills;
         this.playerData.Money = CharCtrl.Instance.CharData.Money;
 
         if (CheckPointCtrl.Instance != null)
@@ -55,6 +57,7 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
             AttackDamage = CharCtrl.Instance.CharData.AttackDamage,
             CurrentHP = CharCtrl.Instance.CharData.MaxHP,
             CurrentMP = CharCtrl.Instance.CharData.MaxMP,
+            //UnlockedSkills = new HashSet<ESkill>(),
             Money = 0,
             LastCheckPoint = new CheckPointData
             {
@@ -98,6 +101,7 @@ public class SaveLoadManager : MySingleton<SaveLoadManager>
         CharCtrl.Instance.CharData.AttackDamage = playerData.AttackDamage;
         CharCtrl.Instance.CharData.CurrentHP = playerData.CurrentHP;
         CharCtrl.Instance.CharData.CurrentMP = playerData.CurrentMP;
+        //CharCtrl.Instance.CharStateCtrl.SkillLock.unlockedSkills = playerData.UnlockedSkills;
         CharCtrl.Instance.CharData.Money = playerData.Money;
 
         CharCtrl.Instance.CharStateCtrl.StatusState.ChangeState(CharCtrl.Instance.CharStateCtrl.StatusState.spawn);

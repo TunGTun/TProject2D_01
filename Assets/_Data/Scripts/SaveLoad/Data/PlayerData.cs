@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -14,6 +15,9 @@ public class PlayerData
     //Current Stats
     public int CurrentHP;
     public int CurrentMP;
+
+    //SkillUnlock
+    //public HashSet<ESkill> UnlockedSkills;
 
     //Economy
     public int Money;

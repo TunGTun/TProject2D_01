@@ -61,9 +61,4 @@ public class CheckPointCtrl : MySingleton<CheckPointCtrl>
         this.checkPointWorldCanvas = GetComponentInChildren<CheckPointWorldCanvas>(true);
         Debug.Log(transform.name + ": LoadCheckPointWorldCanvas", gameObject);
     }
-
-    private void Update()
-    {
-        Debug.Log(this.spawnPoint.transform.position);
-    }
 }

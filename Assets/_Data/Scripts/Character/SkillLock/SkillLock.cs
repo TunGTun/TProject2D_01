@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class SkillLock : MyMonoBehaviour
 {
-	protected HashSet<ESkill> unlockedSkills = new HashSet<ESkill>();
+	public HashSet<ESkill> unlockedSkills = new HashSet<ESkill>();
 
 	protected override void Start()
 	{
